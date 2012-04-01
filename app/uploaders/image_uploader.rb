@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -33,11 +34,21 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
+  process :resize_to_fit => [400, 400]
+  version :thumb do
+    process :resize_to_fit => [100, 100]
+  end
+
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
+  def extension_white_list
+   %w(jpg jpeg gif png bmp JPG JPEG GIF PNG BMP)
+  end
+
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
@@ -45,4 +56,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def default_url
+    "/assets/default_images/" + [version_name, "default.png"].compact.join('_')
+  end
 end

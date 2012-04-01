@@ -1,0 +1,23 @@
+<%= text_field :search, :query %>
+
+<div id="nav">
+  <ol>
+    <li>
+      <h2><span id="nav_region">Region</span></h2>
+      <div>
+        <%= render :partial => 'main/region' %>
+      </div>
+    </li>
+    <li>
+      <h2><span id="nav_map">Map</span></h2>
+      <div>
+        <%= render :partial => 'main/map' %>
+      </div>
+    </li>
+    <li>
+      <h2><span id="nav_search">Search</span></h2>
+      <div>
+        <%= render :partial => 'main/search' %>
+      </div>
+    </li>
+</div>

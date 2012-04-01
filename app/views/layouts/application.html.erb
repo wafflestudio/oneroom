@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oneroom</title>
+  <title>Project Oneroom</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_RLxR1wom4dMhw5EaityZt4ZgsmlXVgE&sensor=true"></script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="container">
+    <div id="header">
+      <%= render :partial => 'layouts/header' %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <%= render :partial => 'layouts/footer' %>
+    </div>
+  </div>
 </body>
 </html>
