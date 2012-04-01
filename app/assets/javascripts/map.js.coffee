@@ -19,24 +19,17 @@ $(document).ready ->
   #init locations
   window.map.loc = {
     default: new google.maps.LatLng(37.459300249665695, 126.95059418678284),
-    nok: new google.maps.LatLng(37.47060916727359, 126.9401228427887),
-    ent: new google.maps.LatLng(37.47883430817924, 126.95232152938843),
-    nak: new google.maps.LatLng(37.47760825763003, 126.96056127548218)
+    nokdoo: new google.maps.LatLng(37.47060916727359, 126.9401228427887),
+    entrance: new google.maps.LatLng(37.47883430817924, 126.95232152938843),
+    nakseongdae: new google.maps.LatLng(37.47760825763003, 126.96056127548218)
   }
 
   #load google map
   map_options = {
-    center: window.map.loc.nok,
+    center: window.map.loc.nokdoo,
     zoom: 18,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   window.map.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-
-  #bind link to region
-  $("#region a").each ->
-    $(this).click ->
-      window.map.moveTo($(this).attr('id'))
-      return false
-
   return true
 

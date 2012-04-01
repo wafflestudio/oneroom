@@ -15,3 +15,4 @@
 //= require_directory ./plugins/dependency
 //= require_directory ./plugins
 //= require_directory .
+//= require_tree ./backbone
