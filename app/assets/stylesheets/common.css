@@ -23,6 +23,7 @@ a:hover {color: #666;}
 
 .left {float: left;}
 .right {float: right;}
+.transparent {display: none;}
 
 .clearfix {
     display: block;

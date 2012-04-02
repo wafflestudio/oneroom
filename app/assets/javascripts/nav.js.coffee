@@ -11,14 +11,3 @@ class Nav
 #variables
 window.nav = new Nav
 
-#init
-$(document).ready ->
-  #Accodion
-  $("#nav").liteAccordion({
-    containerWidht: 960,
-    containerHeight: 500,
-    activateOn: 'click',
-    firstSlide: 2,
-    slideSpeed: 500,
-    easing: 'easeInOutQuart'
-  })

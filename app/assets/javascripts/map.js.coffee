@@ -13,23 +13,3 @@ class Map
 
 #variables
 window.map = new Map
-
-#init
-$(document).ready ->
-  #init locations
-  window.map.loc = {
-    default: new google.maps.LatLng(37.459300249665695, 126.95059418678284),
-    nokdoo: new google.maps.LatLng(37.47060916727359, 126.9401228427887),
-    entrance: new google.maps.LatLng(37.47883430817924, 126.95232152938843),
-    nakseongdae: new google.maps.LatLng(37.47760825763003, 126.96056127548218)
-  }
-
-  #load google map
-  map_options = {
-    center: window.map.loc.nokdoo,
-    zoom: 18,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  window.map.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-  return true
-

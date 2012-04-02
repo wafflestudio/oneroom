@@ -10,6 +10,12 @@ Oneroom::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
+  resources :main, :only => ['index'] do
+    collection do
+      get :about
+      get :contact
+    end
+  end
   resources :room
   resources :users
   resources :session
