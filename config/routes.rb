@@ -16,7 +16,7 @@ Oneroom::Application.routes.draw do
       get :contact
     end
   end
-  resources :room
+  resources :rooms
   resources :users
   resources :session
 

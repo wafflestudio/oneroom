@@ -1,12 +1,18 @@
 window.App.Controllers.Map = Backbone.Router.extend({
   routes: {
     "map": "index",
-    "map/:id": "show"
+    "map/:id": "showRegion"
+    "map/room/:id": "showRoom"
   }
 
   index: ->
     window.nav.navigate("nav_map")
 
-  show: (id) ->
+  showRegion: (id) ->
     window.map.moveTo(id)
+    window.nav.navigate("nav_map")
+
+  showRoom: (id) ->
+    alert("show tooltip about room " + id)
+    window.nav.navigate("nav_map")
 })

@@ -69,6 +69,9 @@ $(document).ready ->
   }
   window.map.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
 
+  #load room pins
+  window.room.get(window.map.mapobj)
+
   #default colorboxes
   init_colorbox(".modal")
 
