@@ -1,7 +1,7 @@
 #class
 class Room
-  rooms = null
-  pins = []
+  rooms: null
+  pins: []
 
   #= get whole rooms
   get: (map) ->
@@ -14,13 +14,16 @@ class Room
 
   #= pin marker to map
   addPins: (map, rooms) ->
+    self = this
+
     $.each(rooms, (key, val) ->
       new_pin = new google.maps.Marker({
         position: new google.maps.LatLng(val.lat, val.lng),
-        title: val.name
+        title: val.name,
+        id: val._id
       })
       new_pin.setMap(map)
-      pins.push(new_pin)
+      self.pins.push(new_pin)
 
       #listen click event
       google.maps.event.addListener(new_pin, 'click', (event) ->
@@ -29,11 +32,19 @@ class Room
     )
 
   #= remove all pins
-  removePins: (map) ->
-    $.each(pins, (key, val) ->
-      val.setMap(null)
-    )
+  removePins: () ->
+    self = this
+    for pin in self.pins
+      pin.setMap(null)
     pins = []
+
+  #= find pins from id
+  findPin: (id) ->
+    self = this
+    for pin in self.pins
+      if(pin.id == id)
+        return pin
+
 
 #variables
 window.room = new Room

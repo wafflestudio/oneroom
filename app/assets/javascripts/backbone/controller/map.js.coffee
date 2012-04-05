@@ -13,6 +13,14 @@ window.App.Controllers.Map = Backbone.Router.extend({
     window.nav.navigate("nav_map")
 
   showRoom: (id) ->
-    alert("show tooltip about room " + id)
-    window.nav.navigate("nav_map")
+    marker = window.room.findPin(id)
+    infowindow = new google.maps.InfoWindow({
+      content: "loading.."
+    })
+    infowindow.open(window.map.mapobj, marker)
+
+    $.getJSON("rooms/" + id + "/info", (res) ->
+      infowindow.setContent(res.html)
+      init_colorbox(".pin_modal")
+    )
 })

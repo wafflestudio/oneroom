@@ -1,10 +1,10 @@
 #functions
-init_colorbox = (div) ->
+@init_colorbox = (div) ->
   $(div).colorbox({
     transition: 'fade'
   })
 
-init_qtip = (div) ->
+@init_qtip = (div) ->
   $(div).each ->
     $(this).qtip({
       content: {

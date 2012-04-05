@@ -14,7 +14,13 @@ class RoomsController < ApplicationController
     render :json => @rooms
   end
 
+  def info
+    @room = Room.find(params[:id])
+    render :json => {'html' => render_to_string('info.html.erb')}
+  end
+
   def show
+    @room = Room.find(params[:id])    
   end
 
   def new
