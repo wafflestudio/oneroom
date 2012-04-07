@@ -1,6 +1,7 @@
 #functions
-@init_colorbox = (div) ->
-  $(div).colorbox({
+@call_colorbox = (url) ->
+  $.colorbox({
+    href: url,
     transition: 'fade'
   })
 
@@ -71,9 +72,6 @@ $(document).ready ->
 
   #load room pins
   window.room.get(window.map.mapobj)
-
-  #default colorboxes
-  init_colorbox(".modal")
 
   #default qtip
   init_qtip(".tooltip")

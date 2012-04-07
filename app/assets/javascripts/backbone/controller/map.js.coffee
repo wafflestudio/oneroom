@@ -14,6 +14,8 @@ window.App.Controllers.Map = Backbone.Router.extend({
 
   showRoom: (id) ->
     marker = window.room.findPin(id)
+    #TODO: get marker if do not exist
+    #TODO: route url when infowindow closed
     infowindow = new google.maps.InfoWindow({
       content: "loading.."
     })
@@ -21,6 +23,5 @@ window.App.Controllers.Map = Backbone.Router.extend({
 
     $.getJSON("rooms/" + id + "/info", (res) ->
       infowindow.setContent(res.html)
-      init_colorbox(".pin_modal")
     )
 })
