@@ -2,6 +2,7 @@
 class Map
   mapobj: null
   loc: null
+  infowindow: null
 
   #= move to location
   moveTo: (loc_id) ->

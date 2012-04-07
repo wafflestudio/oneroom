@@ -1,11 +1,17 @@
 == Project Oneroom
 Yaw!
+
 By Wafflestudio
-link:http://wafflestudio.com
+(link:http://wafflestudio.com)
+and
 Trilby
-link:http://trilby.me
+(link:http://trilby.me)
+
+== Current Status
+1. Backbone / RoR Connection
+2. Plugins applied
 
 == To Do
-1. Backbone.js model/controller baseline
-2. Backbone Model and Google Map/Accordian Navigator Connection
-3. Backbone and RoR Connection
+1. Room Info & Show on RoR Controller/View Side
+2. Evaluation
+3. User connection and filtering

@@ -1,8 +1,10 @@
 #functions
-@call_colorbox = (url) ->
+@call_colorbox = (url, callback_url) ->
   $.colorbox({
     href: url,
-    transition: 'fade'
+    transition: 'fade',
+    onClosed: () ->
+      if callback_url then window.location.href = callback_url
   })
 
 @init_qtip = (div) ->
@@ -69,6 +71,12 @@ $(document).ready ->
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   window.map.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
+  window.map.infowindow = new google.maps.InfoWindow({
+      content: "loading.."
+  })
+  google.maps.event.addListener(window.map.infowindow, 'closeclick', () ->
+    window.location.href = "#map"
+  )
 
   #load room pins
   window.room.get(window.map.mapobj)
