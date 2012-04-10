@@ -5,8 +5,8 @@ window.App.Controllers.Main = Backbone.Router.extend({
   }
 
   about: () ->
-    call_colorbox("/main/about")
+    call_colorbox("/main/about", "#")
 
   contact: () ->
-    call_colorbox("/main/contact")
+    call_colorbox("/main/contact", "#")
 })

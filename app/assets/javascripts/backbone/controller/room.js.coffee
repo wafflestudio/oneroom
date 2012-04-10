@@ -4,6 +4,6 @@ window.App.Controllers.Room = Backbone.Router.extend({
   }
 
   showRoom: (id) ->
-    call_colorbox("/rooms/" + id)
+    call_colorbox("/rooms/" + id, "#map")
 
 })

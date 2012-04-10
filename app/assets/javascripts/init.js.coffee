@@ -17,7 +17,6 @@
           type: 'GET',
           success: (data, status) ->
             this.set('content.text', data)
-            init_colorbox('.inner_modal')
             return true
         },
         title: {
@@ -72,7 +71,8 @@ $(document).ready ->
   }
   window.map.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
   window.map.infowindow = new google.maps.InfoWindow({
-      content: "loading.."
+      content: "loading..",
+      maxWidth: 200
   })
   google.maps.event.addListener(window.map.infowindow, 'closeclick', () ->
     window.location.href = "#map"

@@ -6,5 +6,5 @@ class Evaluation
 
   #=== Relations ===
   has_one :user
-
+  belongs_to :room
 end

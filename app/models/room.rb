@@ -6,8 +6,9 @@ class Room
   field :lat, type: String
   field :lng, type: String
 
-  #field :address, type: String
-  #field :phone, type: String
+  field :address, type: String
+  field :phone, type: String
+  field :description, type: String
 
   #=== Relations ===
   has_many :evaluations

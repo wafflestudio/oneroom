@@ -1,1 +1,15 @@
-NEW USER FORM
+<%= form_for(@user, :remote => true) do |f| %>
+  Username
+  <%= f.text_field :username %>
+
+  Password
+  <%= f.password_field :password %>
+
+  Password
+  <%= f.password_field :password_confirmation %>
+
+  Email
+  <%= f.text_field :email %>
+
+  <%= f.submit 'Create' %>
+<% end -%>

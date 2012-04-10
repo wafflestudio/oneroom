@@ -1,3 +1,22 @@
-SHOW ROOM INFO
-
-<%= @room.name %>
+<div>
+  <%= @room.name %>
+  <br>
+  <%= @room.address %>
+  <br>
+  (<%= @room.phone %>)
+</div>
+<br>
+<div>
+  월세/전세/관리비/기타 정보
+</div>
+<br>
+<table>
+  <tr>
+    <th>평가아이디</th>
+    <th>월세/원룸</th>
+    <th>Good / Bad</th>
+  </tr>
+  <tr>
+    <td colspan=3>자세한 평가 내용</td>
+  </tr>
+</table>

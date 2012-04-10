@@ -14,9 +14,9 @@ window.App.Controllers.Map = Backbone.Router.extend({
 
   showRoom: (id) ->
     marker = window.room.findPin(id)
-    infowindow = window.map.infowindow
     #TODO: get marker if do not exist
-    #TODO: route url when infowindow closed
+
+    infowindow = window.map.infowindow
     infowindow.setContent("loading..")
     infowindow.open(window.map.mapobj, marker)
 

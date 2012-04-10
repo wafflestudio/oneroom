@@ -1,5 +1,8 @@
 <div>
-  <%= @room.name %>
+  사진<br>
+  <%= link_to @room.name, "#rooms/#{@room.id}" %>
 </div>
 
-<%= link_to "More..", "#rooms/#{@room.id}" %>
+<div>
+  <%= cut_str(@room.description, 50, "...") %>
+</div>

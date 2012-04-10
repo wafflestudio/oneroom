@@ -3,11 +3,13 @@ class Room
   rooms: null
   pins: []
 
-  #= get whole rooms
-  get: (map) ->
+  #= get rooms
+  get: (map, params) ->
     self = this
+    url = "rooms"
+    url += "?" + params if params
 
-    $.getJSON("rooms", (res) ->
+    $.getJSON(url, (res) ->
       rooms = res
       self.addPins(map, rooms)
     )
