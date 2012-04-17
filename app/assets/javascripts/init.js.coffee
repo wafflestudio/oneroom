@@ -79,7 +79,7 @@ $(document).ready ->
   )
 
   #load room pins
-  window.room.get(window.map.mapobj)
+  window.map.addPins(window.room)
 
   #default qtip
   init_qtip(".tooltip")

@@ -10,7 +10,12 @@ class RoomsController < ApplicationController
 
   public
   def index
-    @rooms = Room.all
+    if params[:id]
+      @rooms = Room.where(:_id => params[:id])
+    else
+      @rooms = Room.all
+    end
+
     render :json => @rooms
   end
 

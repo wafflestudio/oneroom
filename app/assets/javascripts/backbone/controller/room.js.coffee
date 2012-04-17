@@ -4,6 +4,8 @@ window.App.Controllers.Room = Backbone.Router.extend({
   }
 
   showRoom: (id) ->
+    #TODO: don't reload showInfo if infowindow exist
+    window.room.showInfo(window.map, id)
     call_colorbox("/rooms/" + id, "#map")
 
 })

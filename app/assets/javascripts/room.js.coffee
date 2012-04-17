@@ -1,51 +1,35 @@
 #class
 class Room
   rooms: null
-  pins: []
 
-  #= get rooms
-  get: (map, params) ->
+
+  #==== STATUS ====
+  #= get status
+  getStatus: () ->
+    status = $("#status").html()
+    if(status == "0" or status == 0)
+      return false
+    else
+      return true
+
+  #= set status
+  setStatus: (status) ->
+    $("#status").html(status)
+
+  #==== ROOM ====
+  #= show room info
+  showInfo: (map_inst, id) ->
     self = this
-    url = "rooms"
-    url += "?" + params if params
+    status = this.getStatus()
 
-    $.getJSON(url, (res) ->
-      rooms = res
-      self.addPins(map, rooms)
-    )
-
-  #= pin marker to map
-  addPins: (map, rooms) ->
-    self = this
-
-    $.each(rooms, (key, val) ->
-      new_pin = new google.maps.Marker({
-        position: new google.maps.LatLng(val.lat, val.lng),
-        title: val.name,
-        id: val._id
-      })
-      new_pin.setMap(map)
-      self.pins.push(new_pin)
-
-      #listen click event
-      google.maps.event.addListener(new_pin, 'click', (event) ->
-        window.location.href = "#map/room/" + val._id
-      )
-    )
-
-  #= remove all pins
-  removePins: () ->
-    self = this
-    for pin in self.pins
-      pin.setMap(null)
-    pins = []
-
-  #= find pins from id
-  findPin: (id) ->
-    self = this
-    for pin in self.pins
-      if(pin.id == id)
-        return pin
+    if(status)
+      marker = map_inst.findPin(id)
+      map_inst.showInfoWindow(id, marker)
+    else
+      call_func = () ->
+        marker = map_inst.findPin(id)
+        map_inst.showInfoWindow(id, marker)
+      map_inst.addPins(self, id, call_func)
 
 
 #variables

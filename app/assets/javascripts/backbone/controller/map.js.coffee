@@ -13,14 +13,5 @@ window.App.Controllers.Map = Backbone.Router.extend({
     window.nav.navigate("nav_map")
 
   showRoom: (id) ->
-    marker = window.room.findPin(id)
-    #TODO: get marker if do not exist
-
-    infowindow = window.map.infowindow
-    infowindow.setContent("loading..")
-    infowindow.open(window.map.mapobj, marker)
-
-    $.getJSON("rooms/" + id + "/info", (res) ->
-      infowindow.setContent(res.html)
-    )
+    window.room.showInfo(window.map, id)
 })
