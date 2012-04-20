@@ -4,7 +4,8 @@
     <%= text_field :session, :username %>
     PWD
     <%= text_field :session, :password %>
-    <%= submit_tag 'Login' %>
-    <%= link_to 'Sign Up', new_user_path, :class => 'inner_modal' %>
+
+    <%= link_to 'Login', session_index_path %>
+    <%= link_to 'Sign Up', "#users/new" %>
   <% end %>
 </div>

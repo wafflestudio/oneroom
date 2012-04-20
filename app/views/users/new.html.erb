@@ -8,8 +8,12 @@
   Password
   <%= f.password_field :password_confirmation %>
 
+
+  Name
+  <%= f.text_field :email %>
+
   Email
   <%= f.text_field :email %>
 
-  <%= f.submit 'Create' %>
+  <%= link_to 'Create', user_path %>
 <% end -%>

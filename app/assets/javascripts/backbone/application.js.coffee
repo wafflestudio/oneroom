@@ -7,6 +7,7 @@ window.App = {
     new window.App.Controllers.Region()
     new window.App.Controllers.Search()
     new window.App.Controllers.Room()
+    new window.App.Controllers.User()
     Backbone.history.start()
     return true
 }
