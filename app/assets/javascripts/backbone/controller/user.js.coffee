@@ -4,8 +4,7 @@ window.App.Controllers.User = Backbone.Router.extend({
   }
 
   newUser: () ->
-    #TODO: colorbox
-    call_colorbox("/users/new", "#")
+    call_colorbox("/users/new")
 
 
 })

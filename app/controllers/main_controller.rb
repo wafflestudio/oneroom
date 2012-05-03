@@ -10,6 +10,7 @@ class MainController < ApplicationController
     end
   end
 
+  public
   def index    
   end
 

@@ -7,7 +7,8 @@ class UsersController < ApplicationController
       'tooltip'
     end
   end
-
+  
+  public
   def new
     @user = User.new
   end

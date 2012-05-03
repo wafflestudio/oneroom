@@ -4,7 +4,9 @@
     href: url,
     transition: 'fade',
     onClosed: () ->
-      if callback_url then window.location.href = callback_url
+      if callback_url
+        window.location.href = callback_url
+        return false
   })
 
 @init_qtip = (div) ->

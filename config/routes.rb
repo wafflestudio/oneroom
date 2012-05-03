@@ -16,11 +16,13 @@ Oneroom::Application.routes.draw do
       get :contact
     end
   end
+
   resources :rooms do
     member do
       get :info
     end
   end
+
   resources :users
   resources :session
 
