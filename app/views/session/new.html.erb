@@ -1,11 +1,11 @@
 <div>
-  <%= form_tag session_index_path, :remote => true do %>
+  <%= form_tag session_index_path, :id => "new_session", :remote => true do %>
     ID
     <%= text_field :session, :username %>
     PWD
-    <%= text_field :session, :password %>
+    <%= password_field :session, :password %>
 
-    <%= link_to 'Login', session_index_path %>
+    <%= link_to_function 'Login', nil, :id => "login", :rel => "#new_session" %>
     <%= link_to 'Sign Up', "#users/new" %>
   <% end %>
 </div>

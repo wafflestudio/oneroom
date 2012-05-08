@@ -1,6 +1,6 @@
 <% if @session %>
   <%= @session.name %>
-  로그아웃
+  <%= link_to_function "Logout", "", :id => "logout" %>
 <% else %>
   <%= link_to_function "Login/Sign up", "", :class => "tooltip", :rel => new_session_path, :title => 'Login / Sign Up' %>
 <% end %>

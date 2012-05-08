@@ -1,4 +1,5 @@
 #functions
+#=== Colorbox ===
 @get_colorbox = () ->
   return $("#cboxLoadedContent")
 
@@ -14,7 +15,8 @@
       callback_function() if callback_function
   })
 
-@init_qtip = (div) ->
+#=== qTip
+@init_qtip = (div, callback_function) ->
   $(div).each ->
     $(this).qtip({
       content: {
@@ -24,6 +26,7 @@
           type: 'GET',
           success: (data, status) ->
             this.set('content.text', data.html)
+            callback_function() if callback_function
             return true
         },
         title: {
@@ -49,6 +52,13 @@
     })
     return false
 
+#=== Humane ===
+@flash_notice = (msg) ->
+  humane.log(msg, {addnCls: 'human-jackedup-info'})
+
+@flash_error = (msg) ->
+  humane.log(msg, {addnCls: 'human-jackedup-error'})
+ 
 
 #init
 $(document).ready ->
@@ -88,6 +98,6 @@ $(document).ready ->
   #load room pins
   window.map.addPins(window.room)
 
-  #default qtip
-  init_qtip(".tooltip")
+  #session load
+  window.user.reload()
 ###

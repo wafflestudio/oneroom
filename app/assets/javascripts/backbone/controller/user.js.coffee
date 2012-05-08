@@ -8,19 +8,18 @@ window.App.Controllers.User = Backbone.Router.extend({
       cb = get_colorbox()
       submitButton = cb.find("#submit")
       form = $(submitButton.attr('rel'))
-      submitButton.click(() ->
+      submitButton.live('click', () ->
         form.ajaxSubmit({
           success: (res, status) ->
-            console.log(res)
-            data = res.data
             if res.status == 'success'
               user = window.user
-              user.setSession(data.status)
-              user.set(data.data)
+              user.setSession(res.status)
+              user.set(res.data)
+              user.reload()
               $.colorbox.close()
-              user.reload
+              flash_notice(res.msg)
             else
-              #TODO: humane alert, reload _header
+              flash_error(res.msg)
           error: (res, status) ->
             #TODO: humane alert
         })

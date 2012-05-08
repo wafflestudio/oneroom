@@ -1,5 +1,10 @@
 class User
   include Mongoid::Document
+  before_create :user_before_create
+
+  #=== Constants
+  NOTEXIST = 1
+  PASSWORD = 2
 
   #=== Fields ===
   field :username, type: String

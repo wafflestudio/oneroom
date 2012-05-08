@@ -24,9 +24,10 @@ Oneroom::Application.routes.draw do
   end
 
   resources :users
-  resources :session, :only => ['new', 'create', 'destroy'] do
+  resources :session, :only => ['new', 'create'] do
     collection do
       get :show
+      delete :destroy
     end
   end
 
