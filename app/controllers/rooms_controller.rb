@@ -16,16 +16,27 @@ class RoomsController < ApplicationController
       @rooms = Room.all
     end
 
+    #TODO: select only needed info
+
     render :json => @rooms
   end
 
   def info
     @room = Room.find(params[:id])
-    render :json => {'html' => render_to_string('info.html.erb')}
+    if @session
+      render :json => {'html' => render_to_string('_info.html.erb')}
+    else
+      render :json => {'html' => render_to_string('_info_login.html.erb')}
+    end
   end
 
   def show
-    @room = Room.find(params[:id])    
+    @room = Room.find(params[:id])   
+    if @session
+      render '_show.html.erb'
+    else
+      render '_show_login.html.erb'
+    end
   end
 
   def new

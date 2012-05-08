@@ -27,7 +27,11 @@ class SessionController < ApplicationController
   end
 
   def show
-    render :json => {'session' => @session, 'html' => render_to_string('_show.html.erb')}
+    if @session
+      render :json => {'session' => @session, 'html' => render_to_string('_show.html.erb')}
+    else
+      render :json => {'session' => nil, 'html' => render_to_string('_login.html.erb')}
+    end
   end
 
   def destroy
