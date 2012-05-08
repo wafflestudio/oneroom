@@ -1,4 +1,4 @@
-<%= form_for(@user, :remote => true) do |f| %>
+<%= form_for(@user) do |f| %>
   <table>
     <tr>
       <td>Username</td>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td>Name</td>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :name %></td>
     </tr>
     <tr>
       <td>Email</td>
@@ -22,7 +22,7 @@
     </tr>
     <tr>
       <td colspan=2>
-        전송버튼
+        <%= link_to_function "Submit", nil, :id => 'submit', :rel => '#new_user' %>
       </td>
   </table>
 <% end -%>

@@ -24,7 +24,11 @@ Oneroom::Application.routes.draw do
   end
 
   resources :users
-  resources :session
+  resources :session, :only => ['new', 'create', 'destroy'] do
+    collection do
+      get :show
+    end
+  end
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

@@ -1,8 +1,12 @@
 class Room
   include Mongoid::Document
 
+  #=== Constants ===
+  #ROOM TYPE
+
   #=== Fields ===
   field :name, type: String
+  field :type, type: Integer
   field :lat, type: String
   field :lng, type: String
 

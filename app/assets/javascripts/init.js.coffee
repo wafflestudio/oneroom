@@ -1,5 +1,8 @@
 #functions
-@call_colorbox = (url, callback_url) ->
+@get_colorbox = () ->
+  return $("#cboxLoadedContent")
+
+@call_colorbox = (url, callback_url, callback_function) ->
   $.colorbox({
     href: url,
     transition: 'fade',
@@ -7,6 +10,8 @@
       if callback_url
         window.location.href = callback_url
         return false
+    onComplete: () ->
+      callback_function() if callback_function
   })
 
 @init_qtip = (div) ->
@@ -18,7 +23,7 @@
           url: $(this).attr('rel'),
           type: 'GET',
           success: (data, status) ->
-            this.set('content.text', data)
+            this.set('content.text', data.html)
             return true
         },
         title: {
