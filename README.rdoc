@@ -10,8 +10,8 @@ Trilby
 == Current Status
 1. Backbone / RoR Connection
 2. Plugins applied
+3. Session
 
 == To Do
-1. Room Info & Show on RoR Controller/View Side
-2. Evaluation
-3. User connection and filtering
+1. Evaluation
+2. User Email Authentication

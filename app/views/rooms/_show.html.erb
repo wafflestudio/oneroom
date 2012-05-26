@@ -10,13 +10,21 @@
   월세/전세/관리비/기타 정보
 </div>
 <br>
+
+<%= link_to '평가하기', "#rooms/#{@room.id}/evaluations/new" %>
+<br>
+
+평가목록
+
 <table>
+  <% @evaluations.each do |ev| %>
   <tr>
-    <th>평가아이디</th>
+    <th><%= ev.user.name %></th>
     <th>월세/원룸</th>
-    <th>Good / Bad</th>
+    <th><%= ev.like %></th>
   </tr>
   <tr>
-    <td colspan=3>자세한 평가 내용</td>
+    <td colspan=3><%= ev.content %></td>
   </tr>
+  <% end %>
 </table>

@@ -15,6 +15,21 @@
       callback_function() if callback_function
   })
 
+@submit_colorbox = (submitButton, success, error) ->
+  cb = get_colorbox()
+  submitButton = cb.find(submitButton)
+  form = $(submitButton.attr('rel'))
+  submitButton.live('click', () ->
+    form.ajaxSubmit({
+      success: (res) ->
+        if res.status == 'success'
+          success(res)
+        else
+          error(res)
+      error: error
+    })
+  )
+
 #=== qTip
 @init_qtip = (div, callback_function) ->
   $(div).each ->

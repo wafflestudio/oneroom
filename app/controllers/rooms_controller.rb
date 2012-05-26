@@ -24,14 +24,15 @@ class RoomsController < ApplicationController
   def info
     @room = Room.find(params[:id])
     if @session
-      render :json => {'html' => render_to_string('_info.html.erb')}
+      return_html('_info.html.erb')
     else
-      render :json => {'html' => render_to_string('_info_login.html.erb')}
+      return_html('_info_login.html.erb')
     end
   end
 
   def show
-    @room = Room.find(params[:id])   
+    @room = Room.find(params[:id])
+    @evaluations = @room.evaluations
     if @session
       render '_show.html.erb'
     else

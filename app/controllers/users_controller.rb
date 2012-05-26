@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   public
   def new
     @user = User.new
+    render '_new.html.erb'
   end
 
   def create
@@ -21,15 +22,15 @@ class UsersController < ApplicationController
 
       if user
         session[:user] = user.id
-        render :json => {'status' => 'success', 'msg' => 'User created.', 'data' => user}
+        return_data('success', 'User created', user)
         return
       else
-        render :json => {'status' => 'error', 'msg' => "Input is not valid."}
+        return_data('error', 'Input is not valid', nil)
         return
       end
     end
 
-    render :json => {'status' => 'error', 'msg' => "Error Occurred on save."}
+    return_data('error', 'Error Occurred on save', nil)
   end
 
   def edit

@@ -14,5 +14,12 @@ class ApplicationController < ActionController::Base
     #TODO
   end
 
+  def return_data status, msg, data
+    render :json => {'status' => status, 'msg' => msg, 'data' => data}
+  end
+
+  def return_html html
+    render :json => {'html' => render_to_string(html)}
+  end
 
 end
