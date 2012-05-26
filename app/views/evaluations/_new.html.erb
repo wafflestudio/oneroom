@@ -1,16 +1,3 @@
-<div>
-  <%= @room.name %>
-  <br>
-  <%= @room.address %>
-  <br>
-  (<%= @room.phone %>)
-</div>
-<br>
-<div>
-  월세/전세/관리비/기타 정보
-</div>
-<br>
-
 이 방 평가하기..
 
 <%= form_for(@evaluation, :url => room_evaluations_path(:room_id => @room)) do |f| %>
@@ -25,9 +12,9 @@
   <br>
  정보
   <br>
-  <%= f.radio_button :type, 1 %>
+  <%= f.radio_button :type, Evaluation::RENT %>
   월세
-  <%= f.radio_button :type, 2 %>
+  <%= f.radio_button :type, Evaluation::LEASE %>
   전세
   <br>
   보증금

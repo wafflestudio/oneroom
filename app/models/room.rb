@@ -1,3 +1,4 @@
+#encoding: UTF-8
 class Room
   include Mongoid::Document
 
@@ -17,4 +18,6 @@ class Room
   #=== Relations ===
   has_many :evaluations
   embeds_many :images
+
+
 end

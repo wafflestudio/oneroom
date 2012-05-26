@@ -1,5 +1,11 @@
+#encoding: UTF-8
 class Evaluation
   include Mongoid::Document
+
+  #=== Constants ===
+  #ROOM TYPE
+  RENT = 1
+  LEASE = 2
 
   #=== Fields ===
   field :content, type: String
@@ -44,4 +50,11 @@ class Evaluation
     nil
   end
 
+  def type_name
+    if self.type == RENT
+      return '월세'
+    elsif self.type == LEASE
+      return '전세'
+    end
+  end
 end

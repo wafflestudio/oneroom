@@ -1,10 +1,12 @@
 class EvaluationsController < ApplicationController
   layout :choose_layout
 
+  before_filter :init_room
+
   private
   def choose_layout
     if ['new'].include? action_name
-      'tooltip'
+      'room'
     end
   end
 

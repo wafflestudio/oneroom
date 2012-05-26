@@ -3,8 +3,8 @@ class RoomsController < ApplicationController
 
   private
   def choose_layout
-    if ['show', 'new', 'update'].include? action_name
-      'tooltip'
+    if ['show', 'new'].include? action_name
+      'room'
     end
   end
 
