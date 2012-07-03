@@ -2,7 +2,22 @@
   사진<br>
   <%= link_to @room.name, "#rooms/#{@room.id}" %>
 </div>
-
+<div>
+  <% if @room_info[:fee][Evaluation::RENT] %>
+    월세
+    <%= @room_info[:fee][Evaluation::RENT].fee %>
+  <% end %>
+  <br>
+  <% if @room_info[:fee][Evaluation::LEASE] %>
+    전세
+    <%= @room_info[:fee][Evaluation::LEASE].fee %>
+  <% end %>
+  <br>
+  관리비
+  <%= @room_info[:maintenance].maintenance %>
+  <%= @room_info[:maintenance].maintenance_detail %>
+  <br>
+</div>
 <div>
   <%= cut_str(@room.description, 50, "...") %>
 </div>

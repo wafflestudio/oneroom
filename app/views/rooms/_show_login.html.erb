@@ -1,22 +1,6 @@
-<div>
-  <%= @room.name %>
-  <br>
-  로그인이 필요합니다 
-  <br>
+<%= link_to '평가하기', "#rooms/#{@room.id}/evaluations/new" %>
+<br>
 
-</div>
-<br>
-<div>
-  월세/전세/관리비/기타 정보
-</div>
-<br>
-<table>
-  <tr>
-    <th>평가아이디</th>
-    <th>월세/원룸</th>
-    <th>Good / Bad</th>
-  </tr>
-  <tr>
-    <td colspan=3>자세한 평가 내용</td>
-  </tr>
-</table>
+평가목록
+
+로그인이 필요합니다

@@ -39,7 +39,7 @@ class EvaluationsController < ApplicationController
       end
     end
 
-    return_data('error', 'Error Occurred on save', nil)
+    return_data('error', 'Error Occurred on save', @evaluation.errors)
   end
 
   def update

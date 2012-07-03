@@ -8,10 +8,15 @@
   <tr>
     <th><%= ev.user.name %></th>
     <th><%= ev.type_name %></th>
+    <td><%= ev.fee %></td>
     <th><%= ev.like %></th>
   </tr>
   <tr>
-    <td colspan=3><%= ev.content %></td>
+    <th>관리비<th>
+    <td colspan=3><%= ev.maintenance %> <%= ev.maintenance_detail %></td>
+  </tr>
+  <tr>
+    <td colspan=4><%= ev.content %></td>
   </tr>
   <% end %>
 </table>

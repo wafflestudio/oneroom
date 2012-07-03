@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
 
   def info
     @room = Room.find(params[:id])
+    @room_info = @room.info
     if @session
       return_html('_info.html.erb')
     else
@@ -32,6 +33,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @room_info = @room.info
     @evaluations = @room.evaluations
     if @session
       render '_show.html.erb'

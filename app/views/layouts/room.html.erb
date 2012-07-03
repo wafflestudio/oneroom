@@ -6,7 +6,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render :partial => 'rooms/header' %>
+  <% if @session %>
+    <%= render :partial => 'rooms/header' %>
+  <% else %>
+    <%= render :partial => 'rooms/header_login' %>
+  <% end %>
   <div>
     <%= yield %>
   </div>
