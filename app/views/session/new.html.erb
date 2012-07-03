@@ -5,7 +5,7 @@
     PWD
     <%= password_field :session, :password %>
 
-    <%= link_to_function 'Login', nil, :id => "login", :rel => "#new_session" %>
-    <%= link_to 'Sign Up', "#users/new" %>
+    <%= link_to_function 'Login', nil, :id => "login", :class => "btn", :rel => "#new_session" %>
+    <%= link_to 'Sign Up', "#users/new", :class => "btn btn-primary" %>
   <% end %>
 </div>

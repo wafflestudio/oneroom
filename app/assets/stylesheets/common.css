@@ -8,7 +8,7 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
-	font-family: 'Lucida Fax', '맑은 고딕';
+	font-family: 'Helvetica', '맑은 고딕', '굴림';
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -17,10 +17,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /*--- common ---*/
 a {color: #444; text-decoration: none; cursor: pointer; }
+/*
 a:link {color: #444;}
 a:visited {color: #444;}
 a:hover {color: #666;}
-
+*/
 .left {float: left;}
 .right {float: right;}
 .transparent {display: none;}

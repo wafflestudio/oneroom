@@ -25,7 +25,7 @@ class User
           $(self.login_button).live('click', () ->
             self.login()
           )
-        init_qtip(".tooltip", callback)
+        init_qtip(".qtip2", callback)
       else
         self.setSession(true)
         $(self.logout_button).live('click', () ->

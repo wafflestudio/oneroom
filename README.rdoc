@@ -12,8 +12,10 @@ Trilby
 2. Plugins applied
 3. User&Session Control
 4. Evaluation Creation&Visualization
+5. Bootstrap(temp)
 
 == To Do
 1. Search
 2. User Email Authentication
-3. Bootstrap?
+3. Room Suggestion&Edit
+4. Room Photo Upload
