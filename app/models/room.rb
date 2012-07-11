@@ -30,6 +30,10 @@ class Room
     info[:fee] = {Evaluation::RENT => Evaluation.most_common(evs_re, 'rent'), Evaluation::LEASE => Evaluation.most_common(evs_le, 'deposit')}
     info[:maintenance] = Evaluation.most_common(evs, 'maintenance')
 
+    evs_like = evs.select{|e| e.like}
+    evs_dislike = evs.select{|e| !e.like}
+
+    info[:like] = {:true => evs_like.count, :false => evs_dislike.count}
     info
   end
 end

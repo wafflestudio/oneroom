@@ -57,4 +57,7 @@ class RoomsController < ApplicationController
 
   def destroy
   end
+
+  def search
+  end
 end

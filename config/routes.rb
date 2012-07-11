@@ -21,6 +21,9 @@ Oneroom::Application.routes.draw do
     member do
       get :info
     end
+    collection do
+      get :search
+    end
     resources :evaluations
   end
 

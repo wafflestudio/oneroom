@@ -1,9 +1,44 @@
-Search Options
+
 
 <div>
-  지역
+<%= form_tag search_rooms_path, :id => 'search_advanced', :class => 'well' do  %> 
+  <div>
+  <h3>지역</h3>
+  <br>
+  <%= check_box :region, :nokdoo, {}, true, false %>
+  녹두
 
-  가격
+  <%= check_box :region, :entrance, {}, true, false %>
+  서울대입구
+ 
+  <%= check_box :region, :nakseongdae, {}, true, false %>
+  낙성대
 
-  기타
+  </div>
+  <div>
+  <h3>가격</h3>
+  <br>
+  <%= check_box :type, :rent, {}, true, false %>
+  월세
+  <br>
+  보증금
+  <%= text_field :price, :deposit, {:id => "rent_deposit-value"} %>
+  <div id="rent_deposit-slider"></div>
+  <br>
+  월세
+  <%= text_field :price, :rent, {:id => "rent_rent-value"} %>
+  <div id="rent_rent-slider"></div>
+ 
+  <br>
+  <%= check_box :type, :lease, {}, true, false %>
+  전세
+  <br>
+  보증금
+  <%= text_field :price, :deposit, {:id => "lease_deposit-value"} %>
+  <div id="lease_deposit-slider"></div>
+
+  </div>
+  
+  <%= link_to_function 'Search', nil, :id => 'submit', :class => 'btn-large btn-inverse', :rel => '#search_advanced' %>
+<% end %>
 </div>

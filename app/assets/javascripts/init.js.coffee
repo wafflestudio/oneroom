@@ -73,7 +73,6 @@
 
 @flash_error = (msg) ->
   humane.log(msg, {addnCls: 'human-jackedup-error'})
- 
 
 #init
 $(document).ready ->

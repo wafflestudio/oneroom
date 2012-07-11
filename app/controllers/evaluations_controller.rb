@@ -12,6 +12,7 @@ class EvaluationsController < ApplicationController
 
   def init_room
     @room = Room.find(params[:room_id]) 
+    @room_info = @room.info
   end
 
   public

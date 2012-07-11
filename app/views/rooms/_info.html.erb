@@ -1,6 +1,9 @@
 <div>
-  사진<br>
+  사진
+  <br>
   <%= link_to @room.name, "#rooms/#{@room.id}" %>
+  <br>
+  <span class="label label-success">Good</span> <%= @room_info[:like][:true] %> / <span class="label label-warning">Bad</span> <%= @room_info[:like][:false] %>
 </div>
 <div>
   <% if @room_info[:fee][Evaluation::RENT] %>
