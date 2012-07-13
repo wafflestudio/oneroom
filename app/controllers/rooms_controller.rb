@@ -58,6 +58,10 @@ class RoomsController < ApplicationController
   def destroy
   end
 
+  # SEARCH ROOMS!
   def search
+    @rooms  = Room.where('name LIKE ?', params[:search][:name])
+
+    render :json => @rooms
   end
 end

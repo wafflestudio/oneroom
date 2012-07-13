@@ -1,8 +1,9 @@
 <div id="status" class="transparent">0</div>
 <div>
-<%= form_tag search_rooms_path, :id => 'search_basic', :class => 'well, form-search' %>
-  <%= text_field :search, :query %>
+<%= form_tag search_rooms_path, :id => 'search_basic', :class => 'well, form-search' do %>
+  <%= text_field :search, :name %>
   <%= link_to_function 'Search', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#search_basic' %>
+<% end %>
 </div>
 <div id="nav">
   <ol>
