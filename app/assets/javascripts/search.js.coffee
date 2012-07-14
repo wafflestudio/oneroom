@@ -1,5 +1,8 @@
 #class
 class Search
+  search_basic_div: ".search_basic"
+  search_advanced_div: ".search_advanced"
+
   initSlider: (div, value_div, min, max, init_min, init_max) ->
     $(value_div).val(init_min + "만원" + " ~ " + init_max + "만원" )
     $(div).slider({
@@ -11,15 +14,25 @@ class Search
         $(value_div).val(ui.values[0] + "만원" + " ~ " + ui.values[1] + "만원" )
     })
 
-  searchBasic: (keyword) ->
-    #do basic search
+  initSearch: () ->
     self = this
-    $.get("/search?name=" + keyword, (res) ->
-      console.log(res)
+    $(".search_btn").live('click', () ->
+      type = $(this).attr("rel")
+      params = $(self.search_basic_div + " input").fieldSerialize()
+
+      if type == self.search_basic_div
+        params = params + "&search[type]=1"
+      else
+        params = params + "&" + $(self.search_advanced_div + " input").fieldSerialize() + "&search[type]=2"
+
+      window.location.href = "#search/" + params
     )
 
-  searchAdvanced: () ->
-    #do advanced search
+  search: (keyword) ->
+    self = this
+    $.get("/rooms/search?" + keyword, (res) ->
+      console.log(res)
+    )
 
 #variables
 window.search = new Search

@@ -112,6 +112,9 @@ $(document).ready ->
   #load room pins
   window.map.addPins(window.room)
 
+  #init search
+  window.search.initSearch()
+
   #load search sliders
   window.search.initSlider("#rent_deposit-slider", "#rent_deposit-value", 0, 1200, 200, 500)
   window.search.initSlider("#rent_rent-slider", "#rent_rent-value", 0, 80, 30, 40)

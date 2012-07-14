@@ -1,7 +1,4 @@
-
-
-<div>
-<%= form_tag search_rooms_path, :id => 'search_advanced', :class => 'well' do  %> 
+<div class="search_form search_advanced">
   <div>
   <h3>지역</h3>
   <br>
@@ -22,11 +19,11 @@
   월세
   <br>
   보증금
-  <%= text_field :price, :deposit, {:id => "rent_deposit-value"} %>
+  <%= text_field :rent, :deposit, {:id => "rent_deposit-value"} %>
   <div id="rent_deposit-slider"></div>
   <br>
   월세
-  <%= text_field :price, :rent, {:id => "rent_rent-value"} %>
+  <%= text_field :rent, :rent, {:id => "rent_rent-value"} %>
   <div id="rent_rent-slider"></div>
  
   <br>
@@ -34,11 +31,10 @@
   전세
   <br>
   보증금
-  <%= text_field :price, :deposit, {:id => "lease_deposit-value"} %>
+  <%= text_field :lease, :deposit, {:id => "lease_deposit-value"} %>
   <div id="lease_deposit-slider"></div>
 
   </div>
   
-  <%= link_to_function 'Search', nil, :id => 'submit', :class => 'btn-large btn-inverse', :rel => '#search_advanced' %>
-<% end %>
+  <%= link_to_function 'Search', nil, :class => 'search_btn btn-large btn-inverse', :rel => '.search_advanced' %>
 </div>

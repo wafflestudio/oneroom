@@ -60,7 +60,11 @@ class RoomsController < ApplicationController
 
   # SEARCH ROOMS!
   def search
-    @rooms  = Room.where('name LIKE ?', params[:search][:name])
+    if params[:search][:type].to_i != SEARCH_ADVANCED
+      @rooms = Room.where(:name => /#{params[:search][:keyword]}/)
+    else
+      @rooms = Room.where(:name => /#{params[:search][:keyword]}/)
+    end
 
     render :json => @rooms
   end
