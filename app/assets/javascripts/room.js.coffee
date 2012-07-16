@@ -17,20 +17,33 @@ class Room
     $("#status").html(status)
 
   #==== ROOM ====
+  #= get rooms on condition
+  getRooms: (id, callback) ->
+    self = this
+    self.setStatus(0)
+  
+    url = "rooms"
+    url += "?" + "id=" + id if id
+
+    $.getJSON(url, (res) ->
+      window.map.addPins(res.data)
+      self.setStatus(1)
+      callback() if callback
+    )
+
   #= show room info
-  showInfo: (map_inst, id) ->
+  showInfo: (id) ->
     self = this
     status = this.getStatus()
 
     if(status)
-      marker = map_inst.findPin(id)
-      map_inst.showInfoWindow(id, marker)
+      marker = window.map.findPin(id)
+      window.map.showInfoWindow(id, marker)
     else
       call_func = () ->
-        marker = map_inst.findPin(id)
-        map_inst.showInfoWindow(id, marker)
-      map_inst.addPins(self, id, call_func)
-
+        marker = window.map.findPin(id)
+        window.map.showInfoWindow(id, marker)
+      self.getRooms(id, call_func)
 
 #variables
 window.room = new Room

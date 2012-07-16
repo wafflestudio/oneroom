@@ -17,25 +17,25 @@ class SessionController < ApplicationController
 		user = User.login(params[:session][:username], params[:session][:password])
 
     if user == User::NOTEXIST
-      render :json => {'status' => 'error', 'msg' => 'User does not exist.'} 
+      return_data('error', 'User does not exist.', nil)
     elsif user == User::PASSWORD
-      render :json => {'status' => 'error', 'msg' => 'Password does not match.'}
+      return_data('error', 'Password does not match.', nil)
     else
       session[:user] = user.id
-      render :json => {'status' => 'success', 'msg' => 'Logged in', 'data' => user}
+      return_data('success', 'Logged in', user)
     end
   end
 
   def show
     if @session
-      render :json => {'session' => @session, 'html' => render_to_string('_show.html.erb')}
+      return_data_and_html('success', nil, @session, render_to_string('_show.html.erb'))
     else
-      render :json => {'session' => nil, 'html' => render_to_string('_login.html.erb')}
+      return_data_and_html('success', nil, nil, render_to_string('_login.html.erb'))
     end
   end
 
   def destroy
     reset_session
-    render :json => {'msg' => 'Logged out'}
+    return_data('success', 'Loggde out', nil)
   end
 end

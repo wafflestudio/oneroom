@@ -19,11 +19,15 @@
   월세
   <br>
   보증금
-  <%= text_field :rent, :deposit, {:id => "rent_deposit-value"} %>
+  <%= hidden_field :rent, :deposit_min, {:id => "rent_deposit-min"} %>
+  <%= hidden_field :rent, :deposit_max, {:id => "rent_deposit-max"} %>
+  <div id="rent_deposit-value"></div>
   <div id="rent_deposit-slider"></div>
   <br>
   월세
-  <%= text_field :rent, :rent, {:id => "rent_rent-value"} %>
+  <%= hidden_field :rent, :rent_min, {:id => "rent_rent-min"} %>
+  <%= hidden_field :rent, :rent_max, {:id => "rent_rent-max"} %>
+  <div id="rent_rent-value"></div>
   <div id="rent_rent-slider"></div>
  
   <br>
@@ -31,7 +35,9 @@
   전세
   <br>
   보증금
-  <%= text_field :lease, :deposit, {:id => "lease_deposit-value"} %>
+  <%= hidden_field :lease, :deposit_min, {:id => "lease_deposit-min"} %>
+  <%= hidden_field :lease, :deposit_max, {:id => "lease_deposit-max"} %>
+  <div id="lease_deposit-value"></div>
   <div id="lease_deposit-slider"></div>
 
   </div>

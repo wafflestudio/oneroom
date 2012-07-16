@@ -8,5 +8,6 @@ window.App.Controllers.Search = Backbone.Router.extend({
     window.nav.navigate("nav_search")
 
   search: (keyword) ->
+    window.nav.navigate("nav_map")
     window.search.search(keyword)
 })

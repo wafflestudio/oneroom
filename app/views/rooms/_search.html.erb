@@ -1,0 +1,9 @@
+<h3>검색결과</h3>
+
+<table>
+  <% @rooms.each do |r| %>
+  <tr>
+    <td><%= link_to_function r.name, "", :class => 'searched_room', :rel => r.id %></td>
+  </tr>
+  <% end %>
+</table>

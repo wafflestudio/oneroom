@@ -110,15 +110,15 @@ $(document).ready ->
   )
 
   #load room pins
-  window.map.addPins(window.room)
+  window.room.getRooms()
 
   #init search
   window.search.initSearch()
 
   #load search sliders
-  window.search.initSlider("#rent_deposit-slider", "#rent_deposit-value", 0, 1200, 200, 500)
-  window.search.initSlider("#rent_rent-slider", "#rent_rent-value", 0, 80, 30, 40)
-  window.search.initSlider("#lease_deposit-slider", "#lease_deposit-value", 2000, 10000, 3000, 7000)
+  window.search.initSlider("#rent_deposit", 0, 1200, 200, 500)
+  window.search.initSlider("#rent_rent", 0, 80, 30, 40)
+  window.search.initSlider("#lease_deposit", 2000, 10000, 3000, 7000)
 
   #session load
   window.user.reload()

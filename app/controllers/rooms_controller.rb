@@ -8,6 +8,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  SEARCH_BASIC = 1
+  SEARCH_ADVANCED = 2
+
   public
   def index
     if params[:id]
@@ -18,7 +21,7 @@ class RoomsController < ApplicationController
 
     #TODO: select only needed info
 
-    render :json => @rooms
+    return_data('success', nil, @rooms)
   end
 
   def info
@@ -63,9 +66,14 @@ class RoomsController < ApplicationController
     if params[:search][:type].to_i != SEARCH_ADVANCED
       @rooms = Room.where(:name => /#{params[:search][:keyword]}/)
     else
+      #advanced search
       @rooms = Room.where(:name => /#{params[:search][:keyword]}/)
     end
 
-    render :json => @rooms
+    if @rooms.length > 0
+      return_data_and_html('success', nil, @rooms, render_to_string('_search.html.erb'))
+    else
+      return_data('error', 'No room found', nil)
+    end
   end
 end

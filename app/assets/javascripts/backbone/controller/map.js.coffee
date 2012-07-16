@@ -9,9 +9,9 @@ window.App.Controllers.Map = Backbone.Router.extend({
     window.nav.navigate("nav_map")
 
   showRegion: (id) ->
-    window.map.moveTo(id)
+    window.map.moveTo(window.map.loc[id])
     window.nav.navigate("nav_map")
 
   showRoom: (id) ->
-    window.room.showInfo(window.map, id)
+    window.room.showInfo(id)
 })

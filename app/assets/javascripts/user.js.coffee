@@ -19,7 +19,7 @@ class User
     self = this
     $.get("/session", (res) ->
       $(self.session_div).html(res.html)
-      if res.session == null
+      if res.data == null
         self.setSession(false)
         callback = () ->
           $(self.login_button).live('click', () ->
