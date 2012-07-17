@@ -16,12 +16,12 @@ Trilby
 3. User&Session Control
 4. Evaluation Creation&Visualization
 5. Bootstrap
+6. Search
 
 == To Do
-1. Search
-2. User Email Authentication
-3. Room Suggestion&Edit
-4. Room Photo Upload
-5. Snulife Data 연동
-6. Design ㅠㅠ
-7. Real Data 
+1. User Email Authentication
+2. Room Suggestion&Edit
+3. Room Photo Upload
+4. Snulife Data 연동
+5. Design ㅠㅠ
+6. Real Data 

@@ -2,6 +2,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
   routes: {
     "rooms/:id": "showRoom"
     "rooms/:id/evaluations/new": "newEvaluation"
+    "rooms/new/:latlng": "newRoom"
   }
 
   showRoom: (id) ->
@@ -24,4 +25,14 @@ window.App.Controllers.Room = Backbone.Router.extend({
 
     call_colorbox("/rooms/" + id + "/evaluations/new", "#map", callback)
 
+  newRoom: (latlng) ->
+    pos = latlng.split(',')
+    callback = () ->
+      successCallback = (res) ->
+        flash_notice(res.msg)
+      errorCallback =  (res, status) ->
+        flash_error(res.msg)
+      submit_colorbox("#submit", successCallback, errorCallback)
+
+    call_colorbox("/rooms/new?lat=" + pos[0] + "&lng=" + pos[1], "#map", callback)
 })

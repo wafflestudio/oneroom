@@ -10,8 +10,10 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  def require_session
-    #TODO
+  def require_session_json
+    unless @session
+      return_data('error', 'Login needed', nil)
+    end
   end
 
   def return_data status, msg, data

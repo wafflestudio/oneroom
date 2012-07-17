@@ -1,10 +1,13 @@
 class RoomsController < ApplicationController
   layout :choose_layout
+  before_filter :require_session_json, :only => [:new, :search]
 
   private
   def choose_layout
-    if ['show', 'new'].include? action_name
+    if ['show'].include? action_name
       'room'
+    else
+      'tooltip'
     end
   end
 
@@ -21,16 +24,6 @@ class RoomsController < ApplicationController
     return_data('success', nil, @rooms)
   end
 
-  def info
-    @room = Room.find(params[:id])
-    @room_info = @room.info
-    if @session
-      return_html('_info.html.erb')
-    else
-      return_html('_info_login.html.erb')
-    end
-  end
-
   def show
     @room = Room.find(params[:id])
     @room_info = @room.info
@@ -43,6 +36,8 @@ class RoomsController < ApplicationController
   end
 
   def new
+    @room = Room.new
+    render '_new.html.erb'
   end
 
   def create
@@ -56,6 +51,21 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+  end
+
+  # INFO WINDOWS 
+  def info
+    @room = Room.find(params[:id])
+    @room_info = @room.info
+    if @session
+      return_html('_info.html.erb')
+    else
+      return_html('_info_login.html.erb')
+    end
+  end
+
+  def info_new
+    return_html('_info_new.html.erb')
   end
 
   # SEARCH ROOMS!
