@@ -5,6 +5,7 @@ class Search
   search_result_div: "#search_result"
 
   searched_room: ".searched_room"
+  search_close: "#search_close"
 
   result_status: false
 
@@ -70,12 +71,20 @@ class Search
           window.map.focusPin(id)
           window.room.showInfo(id)
         )
+        $(self.search_close).live('click', () ->
+          self.setResultStatus(false)
+          self.hideResult()
+          window.map.removePins()
+          window.room.getRooms()
+        )
 
         self.setResultStatus(true)
         self.showResult()
       else
         flash_error(res.msg)
     )
+
+  
 
 #variables
 window.search = new Search

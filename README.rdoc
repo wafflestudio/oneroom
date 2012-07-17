@@ -7,15 +7,21 @@ and
 Trilby
 (link:http://trilby.me)
 
+== Objective
+8월 중에 오픈하긔
+
 == Current Status
 1. Backbone / RoR Connection
 2. Plugins applied
 3. User&Session Control
 4. Evaluation Creation&Visualization
-5. Bootstrap(temp)
+5. Bootstrap
 
 == To Do
 1. Search
 2. User Email Authentication
 3. Room Suggestion&Edit
 4. Room Photo Upload
+5. Snulife Data 연동
+6. Design ㅠㅠ
+7. Real Data 
