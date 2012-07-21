@@ -3,9 +3,10 @@ class Evaluation
   include Mongoid::Document
 
   #=== Constants ===
-  #ROOM TYPE
+  #CONTRACT TYPE
   RENT = 1
   LEASE = 2
+  BOARDING = 3
 
   #=== Fields ===
   field :content, type: String

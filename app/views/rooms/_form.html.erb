@@ -12,6 +12,7 @@
   <%= f.text_field :name %>
   <br>
   종류
+  <%= f.select :type, Room.option_for_type %>
   <br>
   지역
   <%= f.select :region, Room.option_for_region %>

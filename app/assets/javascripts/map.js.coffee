@@ -6,6 +6,22 @@ class Map
   pins: []
   new_pin: null
 
+  type: {
+    new: 0,
+    oneroom: 1,
+    tworoom: 2,
+    office: 3,
+    boarding: 4
+  }
+
+  marker: {
+    new: "/assets/marker/marker_new.png",
+    oneroom: "/assets/marker/marker_oneroom.png",
+    tworoom: "/assets/marker/marker_tworoom.png",
+    office: "/assets/marker/marker_office.png",
+    boarding: "/assets/marker/marker_boarding.png"
+  }
+
   #==== INIT
   initLoc: () ->
     self = this
@@ -34,6 +50,7 @@ class Map
     self.new_pin = new google.maps.Marker({
       id: 0,
       position: new google.maps.LatLng(37.459300249665695, 126.95059418678284)
+      icon: self.getPinImage(self.type.new)
     })
     self.new_pin.setMap(self.mapobj)
     google.maps.event.addListener(self.mapobj, 'click', (event) ->
@@ -69,7 +86,9 @@ class Map
       new_pin = new google.maps.Marker({
         position: new google.maps.LatLng(val.lat, val.lng),
         title: val.name,
-        id: val._id
+        id: val._id,
+        title: val.name,
+        icon: self.getPinImage(val.type)
       })
       new_pin.setMap(self.mapobj)
       self.pins.push(new_pin)
@@ -99,6 +118,21 @@ class Map
   focusPin: (id) ->
     self = this
     self.moveTo(self.findPin(id).position)
+
+  #= pin image
+  getPinImage: (type) ->
+    self = this
+    if(type == self.type.oneroom)
+      img = self.marker.oneroom
+    else if(type == self.type.tworoom)
+      img = self.marker.tworoom
+    else if(type == self.type.office)
+      img = self.marker.office
+    else if(type == self.type.boarding)
+      img = self.marker.boarding
+    else if(type == self.type.new)
+      img = self.marker.new
+    return img
 
   #==== INFO WINDOW ====
   #= show info window

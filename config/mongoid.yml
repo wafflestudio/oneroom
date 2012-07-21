@@ -1,6 +1,8 @@
 development:
   host: localhost
   database: yyhpys_oneroom_development
+  options:
+    raise_not_found_error: false
 
 test:
   host: localhost
@@ -13,8 +15,6 @@ production:
   username: <%= ENV['MONGOID_USERNAME'] %>
   password: <%= ENV['MONGOID_PASSWORD'] %>
   database: <%= ENV['MONGOID_DATABASE'] %>
-  # slaves:
-  #   - host: slave1.local
-  #     port: 27018
-  #   - host: slave2.local
-  #     port: 27019
+  options:
+    raise_not_found_error: false
+

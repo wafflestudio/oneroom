@@ -71,6 +71,13 @@ class Search
           window.map.focusPin(id)
           window.room.showInfo(id)
         )
+        $(self.searched_room).mouseenter(() ->
+            id = $(this).attr('rel')
+            window.map.findPin(id).setAnimation(google.maps.Animation.BOUNCE)
+          ).mouseleave(() ->
+            id = $(this).attr('rel')
+            window.map.findPin(id).setAnimation(null)
+        )
         $(self.search_close).live('click', () ->
           self.setResultStatus(false)
           self.hideResult()

@@ -10,8 +10,13 @@ class Room
 
   REGION = [NOKDOO, ENTRANCE, NAKSEONGDAE]
 
-
   #ROOM TYPE
+  ONEROOM = {:id => 1, :name => "원룸"}
+  TWOROOM = {:id => 2, :name => "투룸 이상"}
+  OFFICETEL = {:id => 3, :name => "오피스텔"}
+  BOARDING = {:id => 4, :name => "하숙"}
+
+  TYPE = [ONEROOM, TWOROOM, OFFICETEL, BOARDING]
 
   #SEARCH TYPE
   SEARCH_BASIC = 1
@@ -42,6 +47,14 @@ class Room
     end
     nil
   end
+
+	def self.option_for_type
+		v = []
+		TYPE.each do |e|
+			v << [e[:name], e[:id]]
+		end
+		v
+	end
 
 	def self.option_for_region
 		v = []
@@ -100,6 +113,10 @@ class Room
       end
     end
 
-    rooms.paginate(:page => params[:page], :per_page => 10)
+    if rooms.size > 0
+      rooms = rooms.paginate(:page => params[:page], :per_page => 10)
+    end
+
+    rooms
   end
 end
