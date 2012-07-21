@@ -17,10 +17,10 @@ Trilby
 4. Evaluation Creation&Visualization
 5. Bootstrap
 6. Search
+7. Room CRU
 
 == To Do
 1. User Email Authentication
-2. Room Suggestion&Edit
 3. Room Photo Upload
 4. Snulife Data 연동
 5. Design ㅠㅠ

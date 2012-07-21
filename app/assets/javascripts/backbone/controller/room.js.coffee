@@ -3,6 +3,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
     "rooms/:id": "showRoom"
     "rooms/:id/evaluations/new": "newEvaluation"
     "rooms/new/:latlng": "newRoom"
+    "rooms/:id/edit": "editRoom"
   }
 
   showRoom: (id) ->
@@ -29,13 +30,27 @@ window.App.Controllers.Room = Backbone.Router.extend({
     pos = latlng.split(',')
     callback = () ->
       successCallback = (res) ->
+        id = res.data[0]._id
         window.map.new_pin.setVisible(false)
         window.map.addPins(res.data)
-        $.colorbox.close()
+        window.location.href = "/#rooms/" + id
         flash_notice(res.msg)
       errorCallback =  (res, status) ->
         flash_error(res.msg)
       submit_colorbox("#submit", successCallback, errorCallback)
 
     call_colorbox("/rooms/new?lat=" + pos[0] + "&lng=" + pos[1], "#map", callback)
+
+  editRoom: (id) ->
+    callback = () ->
+      successCallback = (res) ->
+        id = res.data[0]._id
+        window.location.href = "/#rooms/" + id
+        flash_notice(res.msg)
+      errorCallback =  (res, status) ->
+        flash_error(res.msg)
+      submit_colorbox("#submit", successCallback, errorCallback)
+
+    call_colorbox("/rooms/" + id + "/edit", "#map", callback)
+   
 })

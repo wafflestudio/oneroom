@@ -19,6 +19,7 @@
   cb = get_colorbox()
   submitButton = cb.find(submitButton)
   form = $(submitButton.attr('rel'))
+  submitButton.die()
   submitButton.live('click', () ->
     form.ajaxSubmit({
       success: (res) ->

@@ -1,0 +1,39 @@
+<% unless params[:id] %>
+  <% url = rooms_path %>
+<% else %>
+  <% url = room_path(@room) %>
+<% end %>
+
+<%= form_for(@room, :url => url) do |f| %>
+  <%= f.text_field :lat, :value => @room.lat %>
+  <%= f.text_field :lng, :value => @room.lng %>
+  <br>
+  이름
+  <%= f.text_field :name %>
+  <br>
+  종류
+  <br>
+  지역
+  <%= f.select :region, Room.option_for_region %>
+  <br>
+  주소
+  <%= f.text_field :address %>
+  <br>
+  전화
+  <%= f.text_field :phone %>
+  <br>
+  설명
+  <%= f.text_area :description %>
+  <br>
+  그림
+  <br>
+
+  <% unless params[:id] %>
+    <%= link_to_function 'Submit', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#new_room' %> 
+  <% else %>
+    <%= link_to_function 'Update', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '.edit_room' %> 
+  <% end %>
+<% end %>
+
+
+

@@ -37,6 +37,9 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+    @room.lat = params[:lat]
+    @room.lng = params[:lng]
+
     render '_new.html.erb'
   end
 
@@ -59,10 +62,21 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    
+    @room = Room.find(params[:id]) 
+
+    render '_edit.html.erb'
   end
 
   def update
+    @room = Room.find(params[:id]) 
+
+    if @room.update_attributes(params[:room])
+      return_data('success', 'Room updated', [@room])
+      return
+    else
+      return_data('error', 'Error occured on update', nil)
+      return
+    end
   end
 
   def destroy
