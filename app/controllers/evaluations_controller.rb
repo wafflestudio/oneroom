@@ -23,7 +23,12 @@ class EvaluationsController < ApplicationController
 
   def new
     @evaluation = Evaluation.new
-    render '_new.html.erb'
+
+    if @session
+      render '_new.html.erb'
+    else
+      return_data('error', 'Login needed', nil)
+    end
   end
 
   def create

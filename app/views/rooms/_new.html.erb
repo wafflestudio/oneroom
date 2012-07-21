@@ -11,6 +11,7 @@
   종류
   <br>
   지역
+  <%= f.select :region, Room.option_for_region %>
   <br>
   주소
   <%= f.text_field :address %>

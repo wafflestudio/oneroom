@@ -3,7 +3,7 @@
 <%= form_for(@evaluation, :url => room_evaluations_path(:room_id => @room)) do |f| %>
  평가
   <br>
-  <%= f.radio_button :like, true %>
+  <%= f.radio_button :like, true, {:checked => true} %>
   좋아요
   <%= f.radio_button :like, false %>
   싫어요

@@ -4,9 +4,12 @@ class Room
 
   #=== Constants ===
   #REGION TYPE
-  NOKDOO = 1
-  ENTRANCE = 2
-  NAKSEONGDAE = 3
+  NOKDOO = {:id => 1, :name => "녹두"}
+  ENTRANCE = {:id => 2, :name => "서울대입구"}
+  NAKSEONGDAE = {:id => 3, :name => "낙성대"}
+
+  REGION = [NOKDOO, ENTRANCE, NAKSEONGDAE]
+
 
   #ROOM TYPE
 
@@ -30,20 +33,44 @@ class Room
   embeds_many :images
 
   #=== Functions ===
+  def self.add_room params
+    r = Room.new(params)
+    if r.save
+      return r
+    else
+      r.destroy
+    end
+    nil
+  end
+
+	def self.option_for_region
+		v = []
+		REGION.each do |e|
+			v << [e[:name], e[:id]]
+		end
+		v
+	end
+
   def info 
     info = Hash.new
     evs = self.evaluations
-   
+    info[:size] = evs.size
+ 
+    evs_like = evs.select{|e| e.like}
+    evs_dislike = evs.select{|e| !e.like}
+
+    info[:like] = {:true => evs_like.count, :false => evs_dislike.count}
+
+    unless evs.size > 0
+      return info
+    end
+
     evs_re = evs.select{|e| e.type == Evaluation::RENT}
     evs_le = evs.select{|e| e.type == Evaluation::LEASE}
    
     info[:fee] = {Evaluation::RENT => Evaluation.most_common(evs_re, 'rent'), Evaluation::LEASE => Evaluation.most_common(evs_le, 'deposit')}
     info[:maintenance] = Evaluation.most_common(evs, 'maintenance')
 
-    evs_like = evs.select{|e| e.like}
-    evs_dislike = evs.select{|e| !e.like}
-
-    info[:like] = {:true => evs_like.count, :false => evs_dislike.count}
     info
   end
 

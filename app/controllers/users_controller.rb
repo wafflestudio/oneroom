@@ -25,12 +25,12 @@ class UsersController < ApplicationController
         return_data('success', 'User created', user)
         return
       else
-        return_data('error', 'Input is not valid', nil)
+        return_data('error', 'Error occurred on save', nil)
         return
       end
     end
 
-    return_data('error', 'Error Occurred on save', nil)
+    return_data('error', 'Input is not valid', nil)
   end
 
   def edit

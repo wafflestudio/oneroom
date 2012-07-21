@@ -29,6 +29,9 @@ window.App.Controllers.Room = Backbone.Router.extend({
     pos = latlng.split(',')
     callback = () ->
       successCallback = (res) ->
+        window.map.new_pin.setVisible(false)
+        window.map.addPins(res.data)
+        $.colorbox.close()
         flash_notice(res.msg)
       errorCallback =  (res, status) ->
         flash_error(res.msg)

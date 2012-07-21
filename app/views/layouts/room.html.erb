@@ -9,7 +9,7 @@
   <% if @session %>
     <%= render :partial => 'rooms/header' %>
   <% else %>
-    <%= render :partial => 'rooms/header_login' %>
+    <%= render :partial => 'rooms/session/header' %>
   <% end %>
   <div>
     <%= yield %>

@@ -7,19 +7,23 @@
 </div>
 <br>
 <div>
-  <% if @room_info[:fee][Evaluation::RENT] %>
-    월세
-    <%= @room_info[:fee][Evaluation::RENT].fee %>
+  <% if @room_info[:size] > 0 %>
+    <% if @room_info[:fee][Evaluation::RENT] %>
+      월세
+      <%= @room_info[:fee][Evaluation::RENT].fee %>
+    <% end %>
+    <br>
+    <% if @room_info[:fee][Evaluation::LEASE] %>
+      전세
+      <%= @room_info[:fee][Evaluation::LEASE].fee %>
+    <% end %>
+    <br>
+    관리비
+    <%= @room_info[:maintenance].maintenance %>
+    <%= @room_info[:maintenance].maintenance_detail %>
+  <% else %>
+    평가가 없습니다
   <% end %>
-  <br>
-  <% if @room_info[:fee][Evaluation::LEASE] %>
-    전세
-    <%= @room_info[:fee][Evaluation::LEASE].fee %>
-  <% end %>
-  <br>
-  관리비
-  <%= @room_info[:maintenance].maintenance %>
-  <%= @room_info[:maintenance].maintenance_detail %>
   <br>
 </div>
 

@@ -28,16 +28,20 @@ class Evaluation
   belongs_to :room
 
   #=== Validations ===
+  validates_inclusion_of :like, :in => [true, false]
   validates_presence_of :content
-  validates_presence_of :like
 
   validates_presence_of :type
   validates_presence_of :deposit
-  validates_numericality_of :rent, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_numericality_of :rent, :only_integer => true, :greater_than_or_equal_to => 0, :if => :is_rent?
   validates_numericality_of :deposit, :only_integer => true, :greater_than_or_equal_to => 0
 
   validates_presence_of :maintenance
   validates_numericality_of :maintenance, :only_integer => true, :greater_than_or_equal_to => 0
+
+  def is_rent?
+    type == Evaluation::RENT
+  end
 
   #=== Functions ===
   def self.add_evaluation eval_param, user, room
