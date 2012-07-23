@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @room_info = @room.info
-    @evaluations = @room.evaluations
+    @evaluations = @room.evaluations.page(params[:page])
     if @session
       render '/rooms/_show.html.erb'
     else

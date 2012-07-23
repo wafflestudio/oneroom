@@ -2,13 +2,13 @@
   <div>
   <h3>지역</h3>
   <br>
-  <%= check_box :region, Room::NOKDOO, {}, true, false %>
+  <%= check_box :region, Room::NOKDOO[:id], {}, true, false %>
   녹두
 
-  <%= check_box :region, Room::ENTRANCE, {}, true, false %>
+  <%= check_box :region, Room::ENTRANCE[:id], {}, true, false %>
   서울대입구
  
-  <%= check_box :region, Room::NAKSEONGDAE, {}, true, false %>
+  <%= check_box :region, Room::NAKSEONGDAE[:id], {}, true, false %>
   낙성대
 
   </div>

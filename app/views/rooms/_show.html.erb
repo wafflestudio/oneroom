@@ -26,3 +26,5 @@ Good <%= @room_info[:like][:true] %> / Bad <%= @room_info[:like][:false] %>
   </tr>
   <% end %>
 </table>
+
+<%= paginate @evaluations, :theme => 'evaluations' %>

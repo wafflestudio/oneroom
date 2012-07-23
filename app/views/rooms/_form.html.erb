@@ -5,8 +5,8 @@
 <% end %>
 
 <%= form_for(@room, :url => url) do |f| %>
-  <%= f.text_field :lat, :value => @room.lat %>
-  <%= f.text_field :lng, :value => @room.lng %>
+  <%= f.hidden_field :lat, :value => @room.lat %>
+  <%= f.hidden_field :lng, :value => @room.lng %>
   <br>
   이름
   <%= f.text_field :name %>

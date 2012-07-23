@@ -41,9 +41,12 @@ class Map
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     self.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-    self.infowindow = new google.maps.InfoWindow({
-        content: "loading..",
-        maxWidth: 200
+    self.infowindow = new InfoBubble({
+      content: "Loading..",
+      maxWidth: 200,
+      arrowPosition: 20,
+      arrowSize:5,
+      padding: 5
     })
 
     #show add room pin
@@ -144,6 +147,7 @@ class Map
 
     $.getJSON("rooms/" + id + "/info", (res) ->
       infowindow.setContent(res.html)
+      infowindow.open(this.mapobj, marker)
     )
   
 #variables

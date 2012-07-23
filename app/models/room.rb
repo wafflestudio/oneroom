@@ -113,10 +113,6 @@ class Room
       end
     end
 
-    if rooms.size > 0
-      rooms = rooms.paginate(:page => params[:page], :per_page => 10)
-    end
-
-    rooms
+    rooms.page(params[:page]).per(5)
   end
 end

@@ -8,4 +8,16 @@ module ApplicationHelper
     str.gsub("\n", "<br/>")
   end
 
+  #pagination
+  def search_url url
+    url.gsub!("rooms/search?", "search/")
+    hash_url(url)
+  end
+
+  def hash_url url
+    if url[0] == "/"
+      url.gsub!(/^\//, "/#")
+    end
+    url
+  end
 end
