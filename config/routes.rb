@@ -35,6 +35,8 @@ Oneroom::Application.routes.draw do
       delete :destroy
     end
   end
+
+  resources :images
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

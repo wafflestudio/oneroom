@@ -25,6 +25,8 @@ class Room
   #=== Fields ===
   field :name, type: String
   field :type, type: Integer
+  field :image_ids, type: Array, default: []
+
   field :lat, type: String
   field :lng, type: String
   

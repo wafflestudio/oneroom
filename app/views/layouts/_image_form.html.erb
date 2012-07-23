@@ -1,0 +1,17 @@
+<%= file_field "uploadify", :image, :id => 'images', :class => 'uploadify_image_input' %>
+
+<%= hidden_field "#{model}", :image_ids, :name => "uploadify[images]", :real_name => "#{model}[image_ids][]", :id => 'uploadify_image_original', :value => nil %>
+<div id="uploadify_image_ids">
+  <% if object %>
+  <% object.image_ids.each do |i| %>
+    <%= hidden_field "#{model}", :image_ids, :name => "#{model}[image_ids][]", :value => i %>
+  <% end %>
+  <% end %>
+</div>
+<div id="uploadify_image_thumbnails">
+  <% if object %>
+  <% object.image_ids.each do |i| %>
+    <%= image_tag Image.find(i).image.thumb %>
+  <% end %>
+  <% end %>
+</div>

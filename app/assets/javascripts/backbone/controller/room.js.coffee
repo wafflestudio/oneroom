@@ -29,6 +29,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
   newRoom: (latlng) ->
     pos = latlng.split(',')
     callback = () ->
+      init_uploadify()
       successCallback = (res) ->
         id = res.data[0]._id
         window.map.new_pin.setVisible(false)

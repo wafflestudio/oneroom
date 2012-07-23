@@ -75,6 +75,25 @@
 @flash_error = (msg) ->
   humane.log(msg, {addnCls: 'human-jackedup-error'})
 
+#=== Uploadify
+@init_uploadify = () ->
+  $('input.uploadify_image_input').uploadify(
+    swf: '/assets/uploadify/uploadify.swf',
+    uploader: '/images#create',
+    fileTypeExt : '*.png;*.jpg;*.jpeg;*.gif',
+    multi: true,
+    auto: true,
+    onUploadSuccess: (file, data, status) ->
+      if status
+        res = $.parseJSON(data)
+        new_name = $("#uploadify_image_original").attr('real_name')
+        new_input = $("#uploadify_image_original").clone().attr('id', 'uploadify_cloned').attr('name', new_name)
+        $("#uploadify_image_ids").append(new_input.val(res.data._id))
+        $("#uploadify_image_thumbnails").append("<img src='" + res.data.image.thumb.url + "' />")
+
+  )
+
+
 #init
 $(document).ready ->
   #Accodion

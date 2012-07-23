@@ -15,13 +15,11 @@ Trilby
 2. Plugins applied
 3. User&Session Control
 4. Evaluation Creation&Visualization
-5. Bootstrap
 6. Search
-7. Room CRU
+7. Room CRU and Photo Upload
 
 == To Do
 1. User Email Authentication
-3. Room Photo Upload
 4. Snulife Data 연동
-5. Design ㅠㅠ
-6. Real Data 
+5. Design and layout with bootstrap
+6. Real Data!! 

@@ -27,6 +27,8 @@
   <%= f.text_area :description %>
   <br>
   그림
+  <%= render :partial => 'layouts/image_form', :locals => {:model => 'room', :object => @room} %>
+
   <br>
 
   <% unless params[:id] %>

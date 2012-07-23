@@ -1,5 +1,5 @@
 <div>
-  사진
+  <%= link_to image_tag(img(@room).image.thumb) %>
   <br>
   <%= link_to @room.name, "#rooms/#{@room.id}" %>
   <br>

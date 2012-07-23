@@ -5,7 +5,11 @@
   <br>
   (<%= @room.phone %>)
 </div>
-<br>
+<div>
+  <% imgs(@room).each do |i| %>
+    <%= image_tag i.image.thumb %>
+  <% end %>
+</div>
 <div>
   <% if @room_info[:size] > 0 %>
     <% if @room_info[:fee][Evaluation::RENT] %>

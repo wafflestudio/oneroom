@@ -20,4 +20,19 @@ module ApplicationHelper
     end
     url
   end
+
+
+  #=== Images Methods ===#
+  def imgs obj
+    Image.find(obj.image_ids)
+  end
+
+  def img obj
+    if obj.image_ids.size > 0
+      Image.find(obj.image_ids[0])
+    else
+      Image.first
+    end
+  end
+
 end
