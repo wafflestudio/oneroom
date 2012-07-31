@@ -1,18 +1,11 @@
-<div id="status" class="transparent">0</div>
-<div class="search_form search_basic">
-
-  <%= text_field :search, :keyword %>
-  <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
-
+<div>
+  <%= link_to "녹두", "#map/nokdoo" %>
+  <%= link_to "서울대입구", "#map/entrance" %>
+  <%= link_to "낙성대", "#map/nakseongdae" %>
 </div>
+
 <div id="nav">
   <ol>
-    <li>
-      <h2><a href="#region"><span id="nav_region">Region</span></a></h2>
-      <div>
-        <%= render :partial => 'main/region' %>
-      </div>
-    </li>
     <li>
       <h2><a href="#map"><span id="nav_map">Map</span></a></h2>
       <div>
@@ -23,6 +16,12 @@
       <h2><a href="#search"><span id="nav_search">Search</span></a></h2>
       <div>
         <%= render :partial => 'main/search' %>
+      </div>
+    </li>
+    <li>
+      <h2><a href="#about"><span id="nav_about">About</span></a></h2>
+      <div>
+        <%= render :partial => 'main/about' %>
       </div>
     </li>
 </div>

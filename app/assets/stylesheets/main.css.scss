@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+//evaluations
+.form-horizontal {
+  input[type=text] {
+    width: 500px;
+  }
+  textarea {
+    width: 500px;
+    height: 200px;
+  }
+  .control-label {
+
+  }
+}
+
+
+//search
 #search_result {
   position: absolute;
   display: none;
@@ -11,3 +28,5 @@
   overflow: auto;
   z-index: 9999;
 }
+
+

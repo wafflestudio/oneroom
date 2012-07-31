@@ -2,7 +2,6 @@ window.App = {
   Views: {},
   Controllers: {},
   init: () ->
-    new window.App.Controllers.Main()
     new window.App.Controllers.Map()
     new window.App.Controllers.Region()
     new window.App.Controllers.Search()

@@ -89,6 +89,14 @@ class Room
     info
   end
 
+  def type_name
+    TYPE.each do |t|
+      if self.type == t[:id]
+        return t[:name]
+      end
+    end
+  end
+
   def self.search params
     if params[:search][:type].to_i != SEARCH_ADVANCED
       rooms = Room.where(:name => /#{params[:search][:keyword]}/)

@@ -1,5 +1,15 @@
-<h1>Project Oneroom</h1>
-
-<div id="session">
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+    <a class="brand" href="#">Project Oneroom</a>
+    <div class="search_form search_basic">
+      <div class="input-append">
+      <%= text_field :search, :keyword %>
+      <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
+      </div>
+    </div>
+    <div id="session"></div>
+  </div>
 </div>
 
+<div id="status" class="transparent">0</div>

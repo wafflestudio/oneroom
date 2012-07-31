@@ -37,3 +37,24 @@ a:hover {color: #666;}
     visibility: hidden;
 }
 
+.h1,.h2,.h3,.h4,.h5,.h6 {
+  margin:0;
+  font-family:inherit;
+  font-weight:bold;
+  color:inherit;
+  text-rendering:optimizelegibility;
+}
+
+.h1-w,.h2-w,.h3-w,.h4-w,.h5-w,.h6-w {
+  font-weight:normal;
+}
+.h1{font-size:30px;line-height:36px}
+.h2{font-size:24px;line-height:36px}
+.h3{font-size:18px;line-height:27px}
+.h4,.h5,.h6{line-height:18px}
+.h4{font-size:14px}
+.h5{font-size:12px}
+.h6{font-size:11px;color:#999;text-transform:uppercase}
+
+/* room */
+#cboxLoadedContent {padding: 15px;}

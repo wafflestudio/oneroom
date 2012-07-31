@@ -7,6 +7,10 @@
   $.colorbox({
     href: url,
     transition: 'fade',
+    width: '850px',
+    close: '<button id="search_close" class="close">&times;</button>',
+    escKey: false,
+    arrowKey: false,
     onClosed: () ->
       if callback_url
         window.location.href = callback_url
@@ -98,10 +102,10 @@
 $(document).ready ->
   #Accodion
   $("#nav").liteAccordion({
-    containerWidht: 960,
-    containerHeight: 500,
+    containerWidth: 1040,
+    containerHeight: 540,
     activateOn: 'click',
-    firstSlide: 2,
+    firstSlide: 1,
     slideSpeed: 500,
     easing: 'easeInOutQuart'
   })

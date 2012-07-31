@@ -43,7 +43,7 @@ class Map
     self.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
     self.infowindow = new InfoBubble({
       content: "Loading..",
-      maxWidth: 200,
+      maxWidth: 260,
       arrowPosition: 20,
       arrowSize:5,
       padding: 5

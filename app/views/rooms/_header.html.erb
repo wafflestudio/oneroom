@@ -1,33 +1,37 @@
-<div>
-  <%= @room.name %>
-  <br>
-  <%= @room.address %>
-  <br>
-  (<%= @room.phone %>)
+<div class="row span10">
+  <div class="span2">
+    <%= link_to image_tag(img(@room).image.thumb) %>
+    <%# imgs(@room).each do |i| %>
+    <%#= image_tag i.image.thumb %>
+    <%# end %>  
+  </div>
+  <table>
+    <tr>
+      <td>
+        <h2><%= @room.name %></h2>
+      </td>
+      <td>
+        <span class="label label-inverse"><%= @room.type_name %></span>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan=2 class="span6">
+        <blockquote>
+        <strong><%= @room.address %></strong></br>
+        <small><%= @room.phone %></small>
+        </blockquote>
+      </td>
+      <td rowspan=2>
+        <p>
+          <span class="label label-success">좋아요</span> <%= @room_info[:like][:true] %> / 
+          <span class="label label-warning">싫어요</span> <%= @room_info[:like][:false] %>
+        </p>
+        <p>
+          <%= link_to '평가', "#rooms/#{@room.id}/evaluations/new", :class => 'btn btn-small'%>
+          <%= link_to '정보 수정', "#rooms/#{@room.id}/edit", :class => 'btn btn-small' %>
+        </p>
+      </td>
+    </tr>
+  </table>
 </div>
-<div>
-  <% imgs(@room).each do |i| %>
-    <%= image_tag i.image.thumb %>
-  <% end %>
-</div>
-<div>
-  <% if @room_info[:size] > 0 %>
-    <% if @room_info[:fee][Evaluation::RENT] %>
-      월세
-      <%= @room_info[:fee][Evaluation::RENT].fee %>
-    <% end %>
-    <br>
-    <% if @room_info[:fee][Evaluation::LEASE] %>
-      전세
-      <%= @room_info[:fee][Evaluation::LEASE].fee %>
-    <% end %>
-    <br>
-    관리비
-    <%= @room_info[:maintenance].maintenance %>
-    <%= @room_info[:maintenance].maintenance_detail %>
-  <% else %>
-    평가가 없습니다
-  <% end %>
-  <br>
-</div>
-

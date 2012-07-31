@@ -4,39 +4,61 @@
   <% url = room_path(@room) %>
 <% end %>
 
-<%= form_for(@room, :url => url) do |f| %>
-  <%= f.hidden_field :lat, :value => @room.lat %>
-  <%= f.hidden_field :lng, :value => @room.lng %>
-  <br>
-  이름
-  <%= f.text_field :name %>
-  <br>
-  종류
-  <%= f.select :type, Room.option_for_type %>
-  <br>
-  지역
-  <%= f.select :region, Room.option_for_region %>
-  <br>
-  주소
-  <%= f.text_field :address %>
-  <br>
-  전화
-  <%= f.text_field :phone %>
-  <br>
-  설명
-  <%= f.text_area :description %>
-  <br>
-  그림
-  <%= render :partial => 'layouts/image_form', :locals => {:model => 'room', :object => @room} %>
-
-  <br>
-
-  <% unless params[:id] %>
-    <%= link_to_function 'Submit', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#new_room' %> 
-  <% else %>
-    <%= link_to_function 'Update', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '.edit_room' %> 
+<div class="row span10">
+  <%= form_for(@room, :url => url, :html => {:class => "form-horizontal"}) do |f| %>
+    <%= f.hidden_field :lat, :value => @room.lat %>
+    <%= f.hidden_field :lng, :value => @room.lng %>
+    <div class="control-group">
+      <label class="control-label h5">이름</label>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">종류</label>
+      <div class="controls">
+        <%= f.select :type, Room.option_for_type %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">지역</label>
+      <div class="controls">
+        <%= f.select :region, Room.option_for_region %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">주소</label>
+      <div class="controls">
+        <%= f.text_field :address %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">전화</label>
+      <div class="controls">
+        <%= f.text_field :phone %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">설명</label>
+      <div class="controls">
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">그림</label>
+      <div class="controls">
+        <%= render :partial => 'layouts/image_form', :locals => {:model => 'room', :object => @room} %>
+      </div>
+    </div>
   <% end %>
-<% end %>
 
-
+  <div class="offset7 span3">
+    <% unless params[:id] %>
+      <%= link_to_function '추가하기', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#new_room' %> 
+    <% else %>
+      <%= link_to_function '수정하기', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '.edit_room' %>
+      <%= link_to '뒤로', "#rooms/#{@room.id}", :class => 'btn' %>
+    <% end %>
+  </div>
+</div>
 

@@ -1,44 +1,85 @@
-이 방 평가하기..
+<div class="row span10">
+  <%= form_for(@evaluation, :url => room_evaluations_path(:room_id => @room), :html => {:class => "form-horizontal"}) do |f| %>
+    <div class="control-group">
+      <label class="control-label h5">평가</label>
+      <div class="controls">
+        <label class="radio">
+          <%= f.radio_button :like, true, {:checked => true} %>
+          좋아요
+        </label>
+        <label class="radio">
+          <%= f.radio_button :like, false %>
+          싫어요
+        </label>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">상세 내용</label>
+      <div class="controls">
+        <%= f.text_area :content %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">정보</label>
+      <div class="controls">
+        <label class="radio">
+          <%= f.radio_button :type, Evaluation::RENT %>
+          월세
+        </label>
+        <label class="radio">
+          <%= f.radio_button :type, Evaluation::LEASE %>
+          전세
+        </label>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">보증금</label>
+      <div class="controls">
+        <div class="input-append">
+          <%= f.text_field :deposit %>
+          <span class="add-on">만원</span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">월세</label>
+      <div class="controls">
+        <div class="input-append">
+          <%= f.text_field :rent %>
+          <span class="add-on">만원</span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">관리비</label>
+      <div class="controls">
+        <div class="input-append">
+          <%= f.text_field :maintenance %>
+          <span class="add-on">만원</span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label h5">포함항목</label>
+      <div class="controls">
+        <label class="checkbox">
+          <%= f.check_box :gas, {}, true, false %>
+          가스비
+        </label>
+        <label class="checkbox">
+          <%= f.check_box :electricity, {}, true, false %>
+          전기료
+        </label>
+        <label class="checkbox">
+          <%= f.check_box :water, {}, true, false %>
+          수도료
+        </label>
+      </div>
+    </div>
+  <% end %>
 
-<%= form_for(@evaluation, :url => room_evaluations_path(:room_id => @room)) do |f| %>
- 평가
-  <br>
-  <%= f.radio_button :like, true, {:checked => true} %>
-  좋아요
-  <%= f.radio_button :like, false %>
-  싫어요
-  <br>
-  <%= f.text_area :content %>
-  <br>
- 정보
-  <br>
-  <%= f.radio_button :type, Evaluation::RENT %>
-  월세
-  <%= f.radio_button :type, Evaluation::LEASE %>
-  전세
-  <br>
-  보증금
-  <%= f.text_field :deposit %>
-  <br>
-  월세
-  <%= f.text_field :rent %>
-  <br>
-  관리비
-  <%= f.text_field :maintenance %>
-  <br>
-  포함항목
-  <br>
-  <%= f.check_box :gas, {}, true, false %>
-  가스비
-  <%= f.check_box :electricity, {}, true, false %>
-  전기료
-  <%= f.check_box :water, {}, true, false %>
-  수도료
-
-  <%= link_to_function 'Submit', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#new_evaluation' %>
-  
-<% end %>
-
-<br>
-
-<%= link_to_function '뒤로', "#rooms/#{@room.id}" %>
+  <div class="offset7 span3">
+    <%= link_to_function '작성하기', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => '#new_evaluation' %>
+    <%= link_to '뒤로', "#rooms/#{@room.id}", :class => 'btn' %>
+  </div>
+</div>
