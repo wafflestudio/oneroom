@@ -1,3 +1,4 @@
+#encoding: utf-8
 class UsersController < ApplicationController
   layout :choose_layout
 
@@ -22,15 +23,15 @@ class UsersController < ApplicationController
 
       if user
         session[:user] = user.id
-        return_data('success', 'User created', user)
+        return_data('success', '가입 되었습니다.', user)
         return
       else
-        return_data('error', 'Error occurred on save', nil)
+        return_data('error', '가입 과정에서 문제가 발생했습니다. 다시 시도해주세요.', nil)
         return
       end
     end
 
-    return_data('error', 'Input is not valid', nil)
+    return_data('error', '입력 내용이 유효하지 않습니다.', nil)
   end
 
   def edit
@@ -47,28 +48,26 @@ class UsersController < ApplicationController
     if user
       user.update_attribute(:authorized, user.auth_token == params[:token])
       if user.authorized
-        flash[:success] = "Authorized"
+        return_data('success', '인증이 완료되었습니다!', nil)
       else
-        flash[:error] = "Cannot authorize user"
+        return_data('error', '인증 과정에서 에러가 발생했습니다.', nil)
       end
     else
-      flash[:error] = "Cannot find user"
+      return_data('error', '잘못된 접근입니다.', nil)
     end
-    redirect_to root_path
   end
 
   def require_auth_token
     if @session
       unless @session.email.end_with? "@snu.ac.kr"
-        render :text => "You're not SNU student"
+        return_data('error', '서울대학교 학생만 인증하실 수 있습니다.', nil)
       else
         @session.generate_auth_token
         AuthMailer.send_auth_token(@session).deliver
-        render :text => "authorization email sent"
+        return_data('success', '메일이 전송되었습니다.', nil)
       end
     else
-      #TODO : error 처리
-      render :text => "You're not logged in"
+      return_data('error', '로그인이 필요합니다.', nil)
     end
   end
 end

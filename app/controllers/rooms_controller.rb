@@ -1,3 +1,4 @@
+#encoding: utf-8
 class RoomsController < ApplicationController
   layout :choose_layout
   before_filter :require_session_json, :only => [:search]
@@ -50,15 +51,15 @@ class RoomsController < ApplicationController
       room = Room.add_room(params[:room])
 
       if room
-        return_data('success', 'Room created', [room])
+        return_data('success', '방 정보를 생성하였습니다.', [room])
         return
       else
-        return_data('error', 'Error occured on save', nil)
+        return_data('error', '생성 과정에서 문제가 발생했습니다. 다시 시도해주세요.', nil)
         return
       end
     end
 
-    return_data('error', 'Input is not valid', nil)
+    return_data('error', '입력 내용이 유효하지 않습니다.', nil)
   end
 
   def edit
@@ -72,10 +73,10 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id]) 
 
     if @room.update_attributes(params[:room])
-      return_data('success', 'Room updated', [@room])
+      return_data('success', '정보를 수정하였습니다.', [@room])
       return
     else
-      return_data('error', 'Error occured on update', nil)
+      return_data('error', '수정 과정에서 문제가 발생했습니다. 다시 시도해주세요.', nil)
       return
     end
   end
@@ -109,7 +110,7 @@ class RoomsController < ApplicationController
     if @rooms.length > 0
       return_data_and_html('success', nil, @rooms, render_to_string('_search.html.erb'))
     else
-      return_data('error', 'No room found', nil)
+      return_data('error', '검색 결과가 없습니다.', nil)
     end
   end
 end

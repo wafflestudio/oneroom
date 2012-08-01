@@ -1,2 +1,8 @@
 <%= @session.name %>
 <%= link_to_function "Logout", "", :id => "logout" %>
+<% if @session.authorized -%>
+  서울대 인증회원
+<% else -%>
+  <%= link_to '서울대 인증하기', "#users/#{@session.id}/auth" -%>
+<% end -%>
+

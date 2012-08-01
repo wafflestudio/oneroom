@@ -1,6 +1,8 @@
 window.App.Controllers.User = Backbone.Router.extend({
   routes: {
     "users/new": "new"
+    "users/:id/auth": "sendAuth"
+    "users/:id/auth/:token": "auth"
   }
 
   new: () ->
@@ -17,5 +19,22 @@ window.App.Controllers.User = Backbone.Router.extend({
       submit_colorbox("#submit", successCallback, errorCallback)
 
     call_colorbox("/users/new", "#", callback)
-   
+  
+  sendAuth: (id) ->
+    $.getJSON("/users/" + id + "/require_authorize_token", (res) ->
+      if(res.status == "success")
+        flash_notice(res.msg)
+      else
+        flash_error(res.msg)
+    )
+
+  auth: (id, token) ->
+    $.getJSON("/users/" + id + "/authorize/" + token, (res) ->
+      if(res.status == "success")
+        flash_notice(res.msg)
+      else
+        flash_error(res.msg)
+
+      window.nav.navigate("nav_map")
+    )
 })
