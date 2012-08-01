@@ -41,4 +41,34 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  def authorize
+    user = User.find(params[:id])
+    if user
+      user.update_attribute(:authorized, user.auth_token == params[:token])
+      if user.authorized
+        flash[:success] = "Authorized"
+      else
+        flash[:error] = "Cannot authorize user"
+      end
+    else
+      flash[:error] = "Cannot find user"
+    end
+    redirect_to root_path
+  end
+
+  def require_auth_token
+    if @session
+      unless @session.email.end_with? "@snu.ac.kr"
+        render :text => "You're not SNU student"
+      else
+        @session.generate_auth_token
+        AuthMailer.send_auth_token(@session).deliver
+        render :text => "authorization email sent"
+      end
+    else
+      #TODO : error 처리
+      render :text => "You're not logged in"
+    end
+  end
 end

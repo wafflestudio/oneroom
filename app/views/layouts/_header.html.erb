@@ -8,7 +8,17 @@
       <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
       </div>
     </div>
-    <div id="session"></div>
+    <div id="session">
+    </div>
+    <div>
+      <% if @session -%>
+        <% if @session.authorized -%>
+          서울대인증회원입니다.
+        <% else -%>
+          <%= link_to '서울대인증하기', require_auth_user_path(@session) -%>
+        <% end -%>
+      <% end -%>
+    </div>
   </div>
 </div>
 

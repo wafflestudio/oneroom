@@ -1,0 +1,4 @@
+<div>
+  안녕, 원룸(oneroom)에서 니가 서울대생임을 인증하려면 아래 링크를 누르도록해ㅋ<br />
+  <%= link_to '인증하기', authorize_user_url(:id => @user.id, :token =>@user.auth_token, :host => "oneroom.dev") %>
+</div>

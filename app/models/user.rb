@@ -14,6 +14,9 @@ class User
   field :name, type: String
   field :email, type: String
 
+  field :auth_token, type: String
+  field :authorized, type: Boolean, default: false
+
   #=== Relations ===
   has_many :evaluations
   embeds_one :image
@@ -32,11 +35,13 @@ class User
   validates_presence_of :name
   validates_presence_of :email
 
+  validates_uniqueness_of :email
+
   #=== Functions ===
   private
   def user_before_create
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
-    salt = Array.new(8) { chars[rand(chars.size-1)] }.to_s
+    salt = Array.new(8) { chars[rand(chars.size-1)] }.join("").to_s
     self.password_salt, self.password = salt, self.password.crypt("$6$#{salt}")
   end
 
@@ -60,5 +65,10 @@ class User
       u.destroy
     end
     nil
+  end
+
+  def generate_auth_token
+    chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+    self.update_attribute(:auth_token, Array.new(8) { chars[rand(chars.size-1)] }.join("").to_s)
   end
 end

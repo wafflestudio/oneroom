@@ -88,7 +88,6 @@ class Map
     $.each(rooms, (key, val) ->
       new_pin = new google.maps.Marker({
         position: new google.maps.LatLng(val.lat, val.lng),
-        title: val.name,
         id: val._id,
         title: val.name,
         icon: self.getPinImage(val.type)
