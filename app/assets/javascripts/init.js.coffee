@@ -7,7 +7,7 @@
   $.colorbox({
     href: url,
     transition: 'fade',
-    width: '850px',
+    width: '860px',
     close: '<button id="search_close" class="close">&times;</button>',
     escKey: false,
     arrowKey: false,
@@ -31,6 +31,23 @@
           success(res)
         else
           error(res)
+          if res.data != null
+            model = res.data.model
+            errors = res.data.errors
+            if errors != null
+              $(".control-group").removeClass("error")
+              $(".help-inline").html("")
+              $.each(errors, (key, val) ->
+                if val.length > 1
+                  res = ""
+                  $.each(val, (key, val) ->
+                    res = res + this + "<br>"
+                  )
+                else
+                  res = val[0]
+                $("#validation_" + model + "_" + key).parents(".control-group").addClass("error")
+                $("#validation_" + model + "_" + key).html(res)
+              )
       error: error
     })
   )

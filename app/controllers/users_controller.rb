@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       end
     end
 
-    return_data('error', '입력 내용이 유효하지 않습니다.', nil)
+    return_data('error', '입력 내용이 유효하지 않습니다.', :model => @user.class.to_s.downcase, :errors => @user.errors)
   end
 
   def edit

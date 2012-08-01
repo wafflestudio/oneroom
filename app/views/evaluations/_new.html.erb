@@ -17,6 +17,7 @@
       <label class="control-label h5">상세 내용</label>
       <div class="controls">
         <%= f.text_area :content %>
+        <span id="validation_evaluation_content" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
@@ -30,6 +31,7 @@
           <%= f.radio_button :type, Evaluation::LEASE %>
           전세
         </label>
+        <span id="validation_evaluation_type" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
@@ -39,6 +41,7 @@
           <%= f.text_field :deposit %>
           <span class="add-on">만원</span>
         </div>
+        <span id="validation_evaluation_deposit" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
@@ -48,6 +51,7 @@
           <%= f.text_field :rent %>
           <span class="add-on">만원</span>
         </div>
+        <span id="validation_evaluation_rent" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
@@ -57,6 +61,7 @@
           <%= f.text_field :maintenance %>
           <span class="add-on">만원</span>
         </div>
+        <span id="validation_evaluation_maintenance" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">

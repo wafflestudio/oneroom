@@ -45,7 +45,7 @@ class EvaluationsController < ApplicationController
       end
     end
 
-    return_data('error', 'Error Occurred on save', @evaluation.errors)
+    return_data('error', 'Error Occurred on save', :model => @evaluation.class.to_s.downcase, :errors => @evaluation.errors)
   end
 
   def update

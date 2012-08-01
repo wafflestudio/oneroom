@@ -59,7 +59,7 @@ class RoomsController < ApplicationController
       end
     end
 
-    return_data('error', '입력 내용이 유효하지 않습니다.', nil)
+    return_data('error', '입력 내용이 유효하지 않습니다.', :model => @room.class.to_s.downcase, :errors => @room.errors)
   end
 
   def edit
@@ -76,7 +76,7 @@ class RoomsController < ApplicationController
       return_data('success', '정보를 수정하였습니다.', [@room])
       return
     else
-      return_data('error', '수정 과정에서 문제가 발생했습니다. 다시 시도해주세요.', nil)
+      return_data('error', '입력 내용이 유효하지 않습니다.', :model => @room.class.to_s.downcase, :errors => @room.errors)
       return
     end
   end

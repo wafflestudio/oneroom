@@ -1,3 +1,4 @@
+#encoding: utf-8
 class User
   include Mongoid::Document
   before_create :user_before_create
@@ -24,18 +25,20 @@ class User
   #=== Validations ===
   attr_accessor :password_confirmation
 
-  validates_presence_of :username
-  validates_uniqueness_of	:username
-  validates_format_of	:username, :with => /^[a-zA-Z0-9_]{4,20}$/
+  validates_presence_of :username, :message => "아이디를 입력해주세요."
+  validates_uniqueness_of	:username, :message => "이미 존재하는 아이디입니다."
+  validates_format_of	:username, :with => /^[a-zA-Z0-9_]{4,20}$/, :message => "아이디는 영문과 숫자 4~20자만 가능합니다."
 
-  validates_presence_of :password
-  validates_presence_of :password_confirmation, :on => :create
-  validates_confirmation_of :password
+  validates_presence_of :password, :message => "비밀번호를 입력해주세요."
+  validates_presence_of :password_confirmation, :on => :create, :message => "비밀번호 확인을 입력해주세요."
+  validates_confirmation_of :password, :message => "비밀번호와 확인값이 다릅니다."
 
-  validates_presence_of :name
-  validates_presence_of :email
+  validates_presence_of :name, :message => "닉네임을 입력해주세요."
+  validates_uniqueness_of :name, :message => "이미 존재하는 닉네임입니다."
 
-  validates_uniqueness_of :email
+  validates_presence_of :email, :message => "이메일을 입력해주세요."
+  validates_uniqueness_of :email, :message => "이미 존재하는 이메일입니다."
+
 
   #=== Functions ===
   private

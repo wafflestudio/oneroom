@@ -11,30 +11,35 @@
       <label class="control-label h5">아이디</label>
       <div class="controls">
         <%= f.text_field :username %>
+        <span id="validation_user_username" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label h5">비밀번호</label>
       <div class="controls">
         <%= f.password_field :password %>
+        <span id="validation_user_password" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label h5">비밀번호 확인</label>
       <div class="controls">
         <%= f.password_field :password_confirmation %>
+        <span id="validation_user_password_confirmation" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label h5">닉네임</label>
       <div class="controls">
         <%= f.text_field :name %>
+        <span id="validation_user_name" class="help-inline"></span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label h5">이메일</label>
       <div class="controls">
         <%= f.text_field :email %>
+        <span id="validation_user_email" class="help-inline"></span>
         <p class="help-block">서울대 메일(@snu.ac.kr)로 작성하실 경우, 학생임을 인증하는 표식이 나타납니다.</p>
       </div>
     </div>

@@ -30,15 +30,16 @@ class Evaluation
 
   #=== Validations ===
   validates_inclusion_of :like, :in => [true, false]
-  validates_presence_of :content
+  validates_presence_of :content, :message => "평가 상세 내용을 입력해주세요."
 
-  validates_presence_of :type
-  validates_presence_of :deposit
-  validates_numericality_of :rent, :only_integer => true, :greater_than_or_equal_to => 0, :if => :is_rent?
-  validates_numericality_of :deposit, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_presence_of :type, :message => "월세/전세 여부를 선택해주세요."
+  validates_presence_of :deposit, :message => "보증금을 입력해주세요."
+  validates_numericality_of :deposit, :only_integer => true, :greater_than_or_equal_to => 0, :message => "보증금은 숫자로 입력해주세요."
+  validates_presence_of :rent, :if => :is_rent?, :message => "월세를 입력해주세요."
+  validates_numericality_of :rent, :only_integer => true, :greater_than_or_equal_to => 0, :if => :is_rent?, :message => "월세는 숫자로 입력해주세요."
 
-  validates_presence_of :maintenance
-  validates_numericality_of :maintenance, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_presence_of :maintenance, :message => "관리비를 입력해주세요."
+  validates_numericality_of :maintenance, :only_integer => true, :greater_than_or_equal_to => 0, :message => "관리비는 숫자로 입력해주세요."
 
   def is_rent?
     type == Evaluation::RENT

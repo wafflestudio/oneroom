@@ -39,6 +39,9 @@ class Room
   has_many :evaluations
   embeds_many :images
 
+  #=== Validations ===
+  validates_presence_of :name, :message => "이름을 입력해주세요."
+
   #=== Functions ===
   def self.add_room params
     r = Room.new(params)
