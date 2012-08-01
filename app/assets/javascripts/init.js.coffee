@@ -119,7 +119,7 @@
 $(document).ready ->
   #Accodion
   $("#nav").liteAccordion({
-    containerWidth: 1040,
+    containerWidth: 1030,
     containerHeight: 540,
     activateOn: 'click',
     firstSlide: 1,

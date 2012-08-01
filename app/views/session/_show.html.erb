@@ -1,8 +1,21 @@
-<%= @session.name %>
-<%= link_to_function "Logout", "", :id => "logout" %>
-<% if @session.authorized -%>
-  서울대 인증회원
-<% else -%>
-  <%= link_to '서울대 인증하기', "#users/#{@session.id}/auth" -%>
-<% end -%>
 
+<a class="dropfown-toggle" data-toggle="dropdown" href="#">
+  <strong><%= @session.name %></strong>
+  <b class="caret"></b>
+</a>
+<ul class="dropdown-menu">
+  <li>
+    <% if @session.authorized -%>
+      서울대 인증 회원
+    <% else %>
+      <%= link_to '서울대 인증', "#users/#{@session.id}/auth" -%>
+    <% end -%>
+ </li>
+  <li>
+    <%= link_to_function "정보수정", "" %>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <%= link_to_function "로그아웃", "", :id => "logout" %>
+  </li>
+</ul>

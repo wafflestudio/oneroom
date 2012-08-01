@@ -17,9 +17,9 @@ Trilby
 4. Evaluation Creation&Visualization
 6. Search
 7. Room CRU and Photo Upload
+1. User Email Authentication
 
 == To Do
-1. User Email Authentication
 4. Snulife Data 연동
 5. Design and layout with bootstrap
 6. Real Data!! 

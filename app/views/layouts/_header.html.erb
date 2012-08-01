@@ -2,13 +2,21 @@
   <div class="navbar-inner">
     <div class="container">
     <a class="brand" href="#">Project Oneroom</a>
-    <div class="search_form search_basic">
-      <div class="input-append">
-      <%= text_field :search, :keyword %>
-      <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
-      </div>
+    <div class="nav-collapse">
+      <ul class="nav pull-right">
+        <li>
+          <div class="search_form search_basic">
+            <div class="input-append">
+            <%= text_field :search, :keyword, :placeholder => "검색" %>
+            <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
+            </div>
+          </div>
+        </li>
+        <li class="divider-vertical"></li>
+        <li id="session" class="dropdown">
+        </li>
+      </ul>
     </div>
-    <div id="session"></div>
   </div>
 </div>
 <div id="status" class="transparent">0</div>

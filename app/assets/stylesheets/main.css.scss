@@ -2,8 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-//evaluations
+//form
 .form-horizontal {
   input[type=text] {
     width: 300px;
@@ -20,6 +19,17 @@
   }
 }
 
+
+
+//main
+#nav {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #333;
+
+  .nav_slide {
+  }
+}
 
 //search
 #search_result {
