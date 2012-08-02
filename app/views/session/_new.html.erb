@@ -1,0 +1,23 @@
+<div class="row">
+  <%= link_to_function raw('<button id="login_close" class="close">&times;</button>'), nil %>
+</div>
+<div class="row span3">
+  <%= form_tag session_index_path, :id => "new_session", :class => "form-horizontal form-horizontal-tooltip", :remote => true do %>
+    <div class="control-group">
+      <span class="h5">아이디</span>
+      <span>
+        <%= text_field :session, :username %>
+      </span>
+    </div>
+    <div class="control-group">
+      <span class="h5">비밀번호</label>
+      <span>
+        <%= password_field :session, :password %>
+      </span>
+    </div>
+  <% end %>
+</div>
+<div class="row offset1 span2">
+  <%= link_to_function '로그인', nil, :id => "login", :class => "btn", :rel => "#new_session" %>
+  <%= link_to '회원가입', "#users/new", :id => "login_signup", :class => "btn btn-inverse" %>
+</div>

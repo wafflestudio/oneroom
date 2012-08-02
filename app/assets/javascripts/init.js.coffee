@@ -8,7 +8,7 @@
     href: url,
     transition: 'fade',
     width: '860px',
-    close: '<button id="search_close" class="close">&times;</button>',
+    close: '<button class="close">&times;</button>',
     escKey: false,
     arrowKey: false,
     onClosed: () ->
@@ -55,26 +55,32 @@
 #=== qTip
 @init_qtip = (div, callback_function) ->
   $(div).each ->
+    self = $(this)
     $(this).qtip({
       content: {
-        text: 'loading...',
+        text: "<img src='/assets/loading.gif'>",
         ajax: {
           url: $(this).attr('rel'),
           type: 'GET',
           success: (data, status) ->
             this.set('content.text', data.html)
+            $("#login_close").live('click', () ->
+              self.qtip('hide')
+            )
+            $("#login_signup").live('click', () ->
+              self.qtip('hide')
+            )
             callback_function() if callback_function
             return true
-        },
-        title: {
-          text: $(this).attr('title'),
-          button: true
         }
       },
       position: {
-        at: 'bottom center', # Position the tooltip above the link
-        my: 'top center',
-        viewport: $(window), # Keep the tooltip on-screen at all times
+        my: 'top right',
+        at: 'bottom right',
+        target: self,
+        adjust: {
+          y: 10
+        }
         effect: false # Disable positioning animation
       },
       show: {
@@ -84,7 +90,12 @@
         event: 'unfocus'
       },
       style: {
-        classes: 'ui-tooltip-wiki ui-tooltip-light ui-tooltip-shadow'
+        tip: {
+          width: 10,
+          height: 10,
+          corner: 'top right'
+        }
+        classes: 'ui-tooltip-light ui-tooltip-shadow ui-tooltip-tip ui-tooltip-rounded'
       }
     })
     return false

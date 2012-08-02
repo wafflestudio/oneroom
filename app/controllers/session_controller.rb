@@ -1,3 +1,4 @@
+#encoding: utf-8
 class SessionController < ApplicationController
   layout :choose_layout
 
@@ -10,19 +11,19 @@ class SessionController < ApplicationController
 
   public
   def new
-    render :json => {'html' => render_to_string('new.html.erb')}
+    render :json => {'html' => render_to_string('_new.html.erb')}
   end
 
   def create
 		user = User.login(params[:session][:username], params[:session][:password])
 
     if user == User::NOTEXIST
-      return_data('error', 'User does not exist.', nil)
+      return_data('error', '존재하지 않는 사용자입니다.', nil)
     elsif user == User::PASSWORD
-      return_data('error', 'Password does not match.', nil)
+      return_data('error', '비밀번호가 일치하지 않습니다.', nil)
     else
       session[:user] = user.id
-      return_data('success', 'Logged in', user)
+      return_data('success', '로그인 성공!', user)
     end
   end
 
@@ -36,6 +37,6 @@ class SessionController < ApplicationController
 
   def destroy
     reset_session
-    return_data('success', 'Loggde out', nil)
+    return_data('success', '로그아웃 되었습니다.', nil)
   end
 end

@@ -1,6 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
   layout :choose_layout
+  before_filter :require_session_json, :only => [:edit, :require_auth_token]
 
   private
   def choose_layout
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
       'tooltip'
     end
   end
-  
+
   public
   def new
     @user = User.new
@@ -35,9 +36,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    if @user.id == @session.id
+      render '/users/_edit.html.erb'
+    else
+      render '/users/session/_edit.html.erb'
+    end
   end
 
   def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+      return_data('success', '정보를 수정하였습니다.', @user)
+      return
+    else
+      return_data('error', '입력 내용이 유효하지 않습니다.', :model => @user.class.to_s.downcase, :errors => @user.errors)
+      return
+    end
   end
 
   def destroy
@@ -58,16 +74,12 @@ class UsersController < ApplicationController
   end
 
   def require_auth_token
-    if @session
-      unless @session.email.end_with? "@snu.ac.kr"
-        return_data('error', '서울대학교 학생만 인증하실 수 있습니다.', nil)
-      else
-        @session.generate_auth_token
-        AuthMailer.send_auth_token(@session).deliver
-        return_data('success', '메일이 전송되었습니다.', nil)
-      end
+    unless @session.email.end_with? "@snu.ac.kr"
+      return_data('error', '서울대학교 학생만 인증하실 수 있습니다.', nil)
     else
-      return_data('error', '로그인이 필요합니다.', nil)
+      @session.generate_auth_token
+      AuthMailer.send_auth_token(@session).deliver
+      return_data('success', '메일이 전송되었습니다.', nil)
     end
   end
 end

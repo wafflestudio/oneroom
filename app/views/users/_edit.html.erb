@@ -1,16 +1,11 @@
-<div class="row span10">
-  <h2>회원가입하기</h2>
-
-  <p>
-    아래 정보를 모두 입력해주셔야 합니다.<br>
-    회원가입 후 메일 인증 후에 사용하실 수 있습니다.
-  </p>
+ <div class="row span10">
+  <h2>정보수정하기</h2>
 
   <%= form_for(@user, :html => {:class => 'form-horizontal form-horizontal-colorbox'}) do |f| %>
     <div class="control-group">
       <label class="control-label h5">아이디</label>
       <div class="controls">
-        <%= f.text_field :username %>
+        <%= f.text_field :username, :disabled => "true" %>
         <span id="validation_user_username" class="help-inline"></span>
       </div>
     </div>
@@ -46,6 +41,6 @@
   <% end -%>
 
   <div class="offset7 span3">
-    <%= link_to_function "가입신청", nil, :id => 'submit', :class => "btn btn-inverse", :rel => '#new_user' %>
+    <%= link_to_function "수정하기", nil, :id => 'submit', :class => "btn btn-inverse", :rel => "#edit_user_#{@user.id}" %>
   </div>
 </div>

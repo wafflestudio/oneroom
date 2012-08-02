@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //form
-.form-horizontal {
+.form-horizontal-colorbox {
   input[type=text] {
     width: 300px;
   }
@@ -16,6 +16,17 @@
   }
   .control-label {
 
+  }
+}
+
+.form-horizontal-tooltip {
+  input[type=text] {
+    width: 140px;
+    margin-left: 17px;
+  }
+  input[type=password] {
+    width: 140px;
+    margin-left: 6px;
   }
 }
 
@@ -91,4 +102,9 @@
   z-index: 9999;
 }
 
-
+//room
+.need_login {
+  border: 1px dashed gray;
+  padding: 10px;
+  background-color: #fcfbe6;
+}

@@ -141,7 +141,7 @@ class Map
   showInfoWindow: (id, marker) ->
     #get marker if do not exist       
     infowindow = this.infowindow
-    infowindow.setContent("loading..")
+    infowindow.setContent("<img src='/assets/loading.gif'>")
     infowindow.open(this.mapobj, marker)
 
     $.getJSON("rooms/" + id + "/info", (res) ->

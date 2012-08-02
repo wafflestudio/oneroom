@@ -1,33 +1,31 @@
 <div class="row span10">
-
   <dl class="dl-horizontal">
-        <% if @room_info[:size] > 0 %>
-          <% if @room_info[:fee][Evaluation::RENT] %>
-            <dt>월세</dt>
-            <dd><%= @room_info[:fee][Evaluation::RENT].fee %></dd>
-          <% end %>
-          <% if @room_info[:fee][Evaluation::LEASE] %>
-            <dt>전세</dt>
-            <dd><%= @room_info[:fee][Evaluation::LEASE].fee %></dd>
-          <% end %>
-          <dt>관리비</dt>
-          <dd>
-            <%= @room_info[:maintenance].maintenance %>만
-            <%= @room_info[:maintenance].maintenance_detail %>
-          </dd>
-        <% else %>
-          <dt>평가 없음</dt>
-          <dd>평가 해주세요!</dd>
-        <% end %>
-        </dl>
-
+    <% if @room_info[:size] > 0 %>
+      <% if @room_info[:fee][Evaluation::RENT] %>
+        <dt>월세</dt>
+        <dd><%= @room_info[:fee][Evaluation::RENT].fee %></dd>
+      <% end %>
+      <% if @room_info[:fee][Evaluation::LEASE] %>
+        <dt>전세</dt>
+        <dd><%= @room_info[:fee][Evaluation::LEASE].fee %></dd>
+      <% end %>
+      <dt>관리비</dt>
+      <dd>
+        <%= @room_info[:maintenance].maintenance %>만
+        <%= @room_info[:maintenance].maintenance_detail %>
+      </dd>
+    <% else %>
+      <dt>정보 없음</dt>
+      <dd>평가를 부탁드려요!</dd>
+    <% end %>
+  </dl>
 
   <table class="table table-striped table-condensed">
     <% @evaluations.each do |ev| %>
     <tr>
       <td>
         <p>
-          <span class="h4"><%= ev.user.name %></span>
+          <span class="h4"><%= ev.user.name %>(<%= ev.user.username %>)</span>
           <span class="h5-w">
             <strong><%= ev.type_name %></strong>
             <%= ev.fee %>

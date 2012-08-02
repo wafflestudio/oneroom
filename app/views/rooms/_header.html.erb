@@ -1,6 +1,6 @@
 <div class="row span10">
   <div class="span2">
-    <%= link_to image_tag(img(@room).image.thumb) %>
+    <%= link_to image_tag(img(@room).image.thumb), img(@room).image.url, :target => '_blank' %>
     <%# imgs(@room).each do |i| %>
     <%#= image_tag i.image.thumb %>
     <%# end %>  

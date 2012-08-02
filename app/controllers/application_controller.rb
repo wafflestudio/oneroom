@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def require_session_json
     unless @session
-      return_data('error', 'Login needed', nil)
+      return_data('error', '로그인이 필요합니다.', nil)
     end
   end
 

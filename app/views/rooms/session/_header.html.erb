@@ -1,12 +1,27 @@
-<div>
-  <%= @room.name %>
-  <br>
-  <%= @room.address %>
-  <br>
-  (<%= @room.phone %>)
+<div class="row span10">
+  <div class="span2">
+    <%= link_to image_tag(img(@room).image.thumb), img(@room).image.url, :target => '_blank' %>
+    <%# imgs(@room).each do |i| %>
+    <%#= image_tag i.image.thumb %>
+    <%# end %>  
+  </div>
+  <table>
+    <tr>
+      <td>
+        <h2><%= @room.name %></h2>
+      </td>
+      <td>
+        <span class="label label-inverse"><%= @room.type_name %></span>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan=2 class="span6">
+        <blockquote>
+        <strong><%= @room.address %></strong></br>
+        <small><%= @room.phone %></small>
+        </blockquote>
+      </td>
+    </tr>
+  </table>
 </div>
-<br>
-<div>
-  로그인이 필요합니다
-</div>
-

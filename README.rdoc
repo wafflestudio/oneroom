@@ -18,8 +18,10 @@ Trilby
 6. Search
 7. Room CRU and Photo Upload
 1. User Email Authentication
+5. Design and layout with bootstrap
 
 == To Do
+1. Design 마무리
+2. Evaluation별 평가
 4. Snulife Data 연동
-5. Design and layout with bootstrap
 6. Real Data!! 
