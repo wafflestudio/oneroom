@@ -111,16 +111,22 @@
         new_input = $("#uploadify_image_original").clone().attr('id', 'uploadify_cloned').attr('name', new_name)
         $("#uploadify_image_ids").append(new_input.val(res.data._id))
         $("#uploadify_image_thumbnails").append("<img src='" + res.data.image.thumb.url + "' />")
-
   )
 
 
+get_height = () ->
+  height = 500
+  if $(window).height()-150 > 500
+    height = $(window).height()-150
+  return height
+
 #init
 $(document).ready ->
+
   #Accodion
   $("#nav").liteAccordion({
     containerWidth: 1030,
-    containerHeight: 540,
+    containerHeight: get_height(),
     activateOn: 'click',
     firstSlide: 1,
     slideSpeed: 500,
@@ -132,6 +138,7 @@ $(document).ready ->
 
   #load google map
   window.map.initMap()
+  $("#map_canvas").height(get_height())
 
   #load room pins
   window.room.getRooms()
@@ -146,5 +153,5 @@ $(document).ready ->
 
   #session load
   window.user.reload()
-  
+
 ###

@@ -16,6 +16,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 /*--- common ---*/
+body {background: url(/assets/bg-gray.jpg)};
+
 a {color: #444; text-decoration: none; cursor: pointer; }
 /*
 a:link {color: #444;}
