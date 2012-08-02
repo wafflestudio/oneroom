@@ -120,7 +120,7 @@ class Room
         end
 
         room_ids = evs.flatten.collect{|e| e.room.id}.uniq
-        rooms = Room.where(:name => /#{params[:search][:keyword]}/, :region.in => regions).find(room_ids)
+        rooms = Room.where(:name => /#{params[:search][:keyword]}/, :region.in => regions, :_id.in => room_ids)
       else
         rooms = Room.where(:name => /#{params[:search][:keyword]}/, :region.in => regions)
       end

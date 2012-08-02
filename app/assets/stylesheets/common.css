@@ -58,5 +58,13 @@ a:hover {color: #666;}
 .h5{font-size:12px}
 .h6{font-size:11px;color:#999;text-transform:uppercase}
 
+h2.title{
+  margin: 0 20px 20px 20px;
+  padding: 10px;
+  background: url("/assets/bg-sky.jpg");
+  border-radius: 5px;
+  border: 2px solid #aaa;
+}
+
 /* room */
 #cboxLoadedContent {padding: 25px;}
