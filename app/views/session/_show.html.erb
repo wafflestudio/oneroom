@@ -6,7 +6,7 @@
 <ul class="dropdown-menu">
   <li>
     <% if @session.authorized -%>
-      서울대 인증 회원
+      <%= link_to '서울대 인증 회원', "#" -%>
     <% else %>
       <%= link_to '서울대 인증', "#users/#{@session.id}/auth" -%>
     <% end -%>

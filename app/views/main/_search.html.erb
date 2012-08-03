@@ -1,46 +1,63 @@
 <div class="search_form search_advanced inner_container">
-  <div>
-  <h3>지역</h3>
-  <br>
-  <%= check_box :region, Room::NOKDOO[:id], {}, true, false %>
-  녹두
+  <h3 class="title">상세검색</h3>
 
-  <%= check_box :region, Room::ENTRANCE[:id], {}, true, false %>
-  서울대입구
- 
-  <%= check_box :region, Room::NAKSEONGDAE[:id], {}, true, false %>
-  낙성대
+  <div class="form-horizontal form-horizontal-slide">
+    <div class="control-group">
+      <label class="control-label h5">지역</label>
+      <div class="controls">
+        <label class="checkbox">
+          <%= check_box :region, Room::NOKDOO[:id], {}, true, false %>
+          녹두
+        </label>
+        <label class="checkbox">
+          <%= check_box :region, Room::ENTRANCE[:id], {}, true, false %>
+          서울대입구
+        </label>
+        <label class="checkbox">
+          <%= check_box :region, Room::NAKSEONGDAE[:id], {}, true, false %>
+          낙성대
+        </label>
+      </div>
+    </div>
+    <div>
+    <div class="control-group">
+      <label class="control-label h5">가격</label>
+      <div class="controls">
+        <label class="checkbox">
+          <%= check_box :type, :rent, {}, true, false %>
+          월세
+        </label>
+        <div class="inner-controls">    
+          보증금
+          <%= hidden_field :rent, :deposit_min, {:id => "rent_deposit-min"} %>
+          <%= hidden_field :rent, :deposit_max, {:id => "rent_deposit-max"} %>
+          <div id="rent_deposit-value"></div>
+          <div id="rent_deposit-slider"></div>
+          <br>
+          월세
+          <%= hidden_field :rent, :rent_min, {:id => "rent_rent-min"} %>
+          <%= hidden_field :rent, :rent_max, {:id => "rent_rent-max"} %>
+          <div id="rent_rent-value"></div>
+          <div id="rent_rent-slider"></div>
+        </div>
+        <label class="checkbox">
+          <%= check_box :type, :lease, {}, true, false %>
+          전세
+        </label>
+        <div class="inner-controls">
+          보증금
+          <%= hidden_field :lease, :deposit_min, {:id => "lease_deposit-min"} %>
+          <%= hidden_field :lease, :deposit_max, {:id => "lease_deposit-max"} %>
+          <div id="lease_deposit-value"></div>
+          <div id="lease_deposit-slider"></div>
+        </div>
+      </div>
+    </div>
+  </div>  
 
+  <div class="offset8 span2">
+    <%= link_to_function '검색', nil, :class => 'search_btn btn-large btn-inverse', :rel => '.search_advanced' %>
   </div>
-  <div>
-  <h3>가격</h3>
-  <br>
-  <%= check_box :type, :rent, {}, true, false %>
-  월세
-  <br>
-  보증금
-  <%= hidden_field :rent, :deposit_min, {:id => "rent_deposit-min"} %>
-  <%= hidden_field :rent, :deposit_max, {:id => "rent_deposit-max"} %>
-  <div id="rent_deposit-value"></div>
-  <div id="rent_deposit-slider"></div>
-  <br>
-  월세
-  <%= hidden_field :rent, :rent_min, {:id => "rent_rent-min"} %>
-  <%= hidden_field :rent, :rent_max, {:id => "rent_rent-max"} %>
-  <div id="rent_rent-value"></div>
-  <div id="rent_rent-slider"></div>
- 
-  <br>
-  <%= check_box :type, :lease, {}, true, false %>
-  전세
-  <br>
-  보증금
-  <%= hidden_field :lease, :deposit_min, {:id => "lease_deposit-min"} %>
-  <%= hidden_field :lease, :deposit_max, {:id => "lease_deposit-max"} %>
-  <div id="lease_deposit-value"></div>
-  <div id="lease_deposit-slider"></div>
-
-  </div>
-  
-  <%= link_to_function 'Search', nil, :class => 'search_btn btn-large btn-inverse', :rel => '.search_advanced' %>
 </div>
+
+

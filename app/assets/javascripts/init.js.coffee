@@ -127,7 +127,7 @@
 
 get_height = () ->
   height = 500
-  if $(window).height()-150 > 500
+  if $(window).height()-180 > 500
     height = $(window).height()-150
   return height
 
@@ -143,6 +143,7 @@ $(document).ready ->
     slideSpeed: 500,
     easing: 'easeInOutQuart'
   })
+  $(".inner_container").height(get_height())
 
   #init locations
   window.map.initLoc()
