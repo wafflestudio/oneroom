@@ -1,36 +1,47 @@
 <div class="inner_container">
-  <h3 class="title">프로젝트 원룸은?</h3>
-  <p>
-    프로젝트 원룸은 블라블라 어쩌구저쩌구 입니다! 
-    <br>
-    우왕ㅋ굿ㅋ
-  </p>
-
-  <h3 class="title">문의 및 의견</h3>
-  <p>
-    프로젝트 원룸에 대한 문의 또는 의견이 있으신 분은 아래 항목을 통해 연락해주세요.
-    
-    <%= form_tag("#", :class => "form-horizontal form-horizontal-slide form_contact") do %>
-      <div class="control-group">
-        <label class="control-label h5">이름</label>
-        <div class="controls">
-          <%= text_field :contact, :name %>
-        </div>
-        <label class="control-label h5">이메일</label>
-        <div class="controls">
-          <%= text_field :contact, :email %>
-        </div>
-        <label class="control-label h5">메시지</label>
-        <div class="controls">
-          <%= text_area :contact, :content %>
-        </div>
-      </div>
-    <% end %>
-
-
-    <div class="offset8 span2">
-      <%= link_to_function '보내기', nil, :class => 'btn-large btn-inverse', :rel => '.form_contact' %>
+  <div class="row span9">
+    <div class="span9">
+      <h3 class="title">프로젝트 원룸은?</h3>
+      <p>
+        프로젝트 원룸은 블라블라 어쩌구저쩌구 입니다! 
+        <br>
+        우왕ㅋ굿ㅋ
+      </p>
     </div>
+  </div>
 
-  </p>
+  <div class="row span10">
+    <div class="span4">
+      <h3 class="title">만든사람들</h3>
+      <p>
+        와플스튜디오 비밀 결사대: the Daehakwonsaengs
+      </p>
+    </div>
+    <div class="offset1 span4">
+      <h3 class="title">문의 및 의견</h3>
+      <p>
+        프로젝트 원룸에 대한 문의 또는 의견이 있으신 분은 아래 항목을 통해 연락해주세요.
+        
+        <%= form_tag("#", :class => "form-horizontal form-horizontal-contact form_contact") do %>
+          <div class="control-group">
+            <label class="control-label h5">이름</label>
+            <div class="controls">
+              <%= text_field :contact, :name %>
+            </div>
+            <label class="control-label h5">이메일</label>
+            <div class="controls">
+              <%= text_field :contact, :email %>
+            </div>
+            <label class="control-label h5">메시지</label>
+            <div class="controls">
+              <%= text_area :contact, :content %>
+            </div>
+          </div>
+        <% end %>
+          
+        <span class="offset3 span2"><%= link_to_function '의견보내기', nil, :class => 'btn-large btn-inverse btn-small', :rel => '.form_contact' %></span>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

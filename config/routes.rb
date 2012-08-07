@@ -20,12 +20,17 @@ Oneroom::Application.routes.draw do
   resources :rooms do
     member do
       get :info
+      get :photo
     end
     collection do
       get :info_new
       get :search
     end
-    resources :evaluations
+    resources :evaluations do
+      member do
+        post :evaluate
+      end
+    end
   end
 
   resources :users do

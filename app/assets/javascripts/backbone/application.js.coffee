@@ -3,7 +3,7 @@ window.App = {
   Controllers: {},
   init: () ->
     new window.App.Controllers.Map()
-    new window.App.Controllers.Region()
+    new window.App.Controllers.About()
     new window.App.Controllers.Search()
     new window.App.Controllers.Room()
     new window.App.Controllers.User()

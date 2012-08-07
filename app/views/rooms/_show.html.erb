@@ -1,5 +1,8 @@
 <div class="row span10">
-  <dl class="dl-horizontal">
+  <h4 class="room_row_title">
+    <i class="icon-map-marker"></i> 방 정보
+  </h4>
+  <dl class="dl-horizontal room_row">
     <% if @room_info[:size] > 0 %>
       <% if @room_info[:fee][Evaluation::RENT] %>
         <dt>월세</dt>
@@ -16,26 +19,38 @@
       </dd>
     <% else %>
       <dt>정보 없음</dt>
-      <dd>평가를 부탁드려요!</dd>
+      <dd>평가로 정보를 채워주세요!</dd>
     <% end %>
   </dl>
 
-  <table class="table table-striped table-condensed">
+  <h4 class="room_row_title">
+    <i class="icon-comment"></i> 평가
+  </h4>
+  <table class="table table-striped table-condensed table-bordered">
     <% @evaluations.each do |ev| %>
     <tr>
       <td>
-        <p>
-          <span class="h4"><%= ev.user.name %>(<%= ev.user.username %>)</span>
+        <p class="clearfix">
+          <span class="h4 room_evaluation_username">
+            <% if ev.user.authorized %>
+              <span class="badge badge-inverse">학생</span>
+            <% end %>
+            <%= ev.user.name %>(<%= ev.user.username %>)
+          </span>
           <span class="h5-w">
-            <strong><%= ev.type_name %></strong>
+            <strong>
+              <%= ev.type_name %>
+            </strong>
             <%= ev.fee %>
 
             <strong>관리비</strong>
             <%= ev.maintenance %> <%= ev.maintenance_detail %>
           </span>
-          <span>
-            <i class="icon-ok-sign"></i>
-            <i class="icon-remove-sign"></i>
+          <span class="room_evaluation_eval right">
+            <%= link_to_function raw('<i class="icon-ok-sign"></i>'), "window.room.evaluateEvaluation('#{@room.id}', '#{ev.id}', 'agree'); return false;" %> 
+            <strong id="evaluation_<%= ev.id %>_agree_detail"><%= ev.agree.size %></strong> / 
+            <%= link_to_function raw('<i class="icon-remove-sign"></i>'), "window.room.evaluateEvaluation('#{@room.id}', '#{ev.id}', 'disagree'); return false;" %> 
+            <strong id="evaluation_<%= ev.id %>_disagree_detail"><%= ev.disagree.size %></strong>
           </span>
         </p>
         <p>
@@ -45,7 +60,7 @@
           <span class="label label-warning">싫어요</span>
           <% end %>
           <span>
-            <%= ev.content %>
+            <%= line_break(ev.content).html_safe %>
           </span>
         </p>
       </td>

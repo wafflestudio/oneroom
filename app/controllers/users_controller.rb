@@ -1,7 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
   layout :choose_layout
-  before_filter :require_session_json, :only => [:edit, :require_auth_token]
+  before_filter :require_session_json, :only => [:require_auth_token, :authorize]
 
   private
   def choose_layout

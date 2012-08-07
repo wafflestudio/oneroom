@@ -18,7 +18,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /*--- common ---*/
 body {background: url(/assets/bg-gray.jpg)};
 
-a {color: #444; text-decoration: none; cursor: pointer; }
+a {text-decoration: none; cursor: pointer; }
 /*
 a:link {color: #444;}
 a:visited {color: #444;}
@@ -28,6 +28,8 @@ a:hover {color: #666;}
 .left {float: left;}
 .right {float: right;}
 .transparent {display: none;}
+
+.center {text-align: center;}
 
 .clearfix {
     display: block;

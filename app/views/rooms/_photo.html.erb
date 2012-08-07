@@ -1,0 +1,16 @@
+<div class="row span10 center">
+  <div class="photo_thumbs">
+  <% if imgs(@room).size > 0 %>
+    <dd>
+      <% imgs(@room).each do |i| %>
+        <%= image_tag i.image.thumb %>
+      <% end %>  
+    </dd>
+  <% else %>
+    사진이 없습니다
+  <% end %>
+  </div>
+  <div class="photo_original">
+    <%= image_tag img(@room).image %>
+  </div>
+</div>

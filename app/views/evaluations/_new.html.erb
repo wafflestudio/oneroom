@@ -24,11 +24,11 @@
       <label class="control-label h5">정보</label>
       <div class="controls">
         <label class="radio">
-          <%= f.radio_button :type, Evaluation::RENT %>
+          <%= f.radio_button :type, Evaluation::RENT, :class => "evaluation_type" %>
           월세
         </label>
         <label class="radio">
-          <%= f.radio_button :type, Evaluation::LEASE %>
+          <%= f.radio_button :type, Evaluation::LEASE, :class => "evaluation_type" %>
           전세
         </label>
         <span id="validation_evaluation_type" class="help-inline"></span>
@@ -44,7 +44,7 @@
         <span id="validation_evaluation_deposit" class="help-inline"></span>
       </div>
     </div>
-    <div class="control-group">
+    <div class="control-group evaluation_type_fields">
       <label class="control-label h5">월세</label>
       <div class="controls">
         <div class="input-append">

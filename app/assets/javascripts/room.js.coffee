@@ -2,12 +2,16 @@
 class Room
   rooms: null
 
+  type: {
+    rent: 1,
+    lease: 2
+  }
 
   #==== STATUS ====
   #= get status
   getStatus: () ->
-    status = $("#status").html()
-    if(status == "0" or status == 0)
+    status = parseInt($("#status").html())
+    if(status == 0)
       return false
     else
       return true
@@ -44,6 +48,41 @@ class Room
         marker = window.map.findPin(id)
         window.map.showInfoWindow(id, marker)
       self.getRooms(id, call_func)
+ 
+  #= show photo on click
+  showPhoto: (from, to) ->
+    $(from).live('click', () ->
+      thumb_url = $(this).attr('src')
+      original_url = thumb_url.replace("/thumb_", "/")
+      $(to).html("<img src='" + original_url + "' />")
+
+      $.colorbox.resize()
+    )
+
+  #==== EVAL ====
+  #= form toggle on selection
+  toggleEvalFields: () ->
+    self = this
+    $("input.evaluation_type").live('click', () ->
+      t = parseInt($(this).attr('value'))
+      if t == self.type.rent
+        $(".evaluation_type_fields").show()
+      else if t == self.type.lease
+        $(".evaluation_type_fields").hide()
+    )
+ 
+  #= evaluate evaluations
+  evaluateEvaluation: (room_id, id, ev) ->
+    data = {'evaluate': ev}
+    $.post("/rooms/" + room_id + "/evaluations/" + id + "/evaluate", data, (res) ->
+      $("#evaluation_" + res.data._id + "_agree").html(res.data.agree.length)
+      $("#evaluation_" + res.data._id + "_disagree").html(res.data.disagree.length)
+      if res == "success"
+        flash_notice(res.msg)
+      else
+        flash_error(res.msg)
+    )
+
 
 #variables
 window.room = new Room

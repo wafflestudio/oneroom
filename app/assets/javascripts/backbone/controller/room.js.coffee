@@ -1,9 +1,10 @@
 window.App.Controllers.Room = Backbone.Router.extend({
   routes: {
     "rooms/:id": "showRoom"
-    "rooms/:id/evaluations/new": "newEvaluation"
     "rooms/new/:latlng": "newRoom"
     "rooms/:id/edit": "editRoom"
+    "rooms/:id/photo": "photo"
+    "rooms/:id/evaluations/new": "newEvaluation"
   }
 
   showRoom: (id) ->
@@ -11,20 +12,6 @@ window.App.Controllers.Room = Backbone.Router.extend({
     window.room.showInfo(id)
 
     call_colorbox("/rooms/" + id, "#map")
-
-  newEvaluation: (id) ->
-    #TODO: don't reload showInfo if infowindow exist
-    window.room.showInfo(id)
-
-    callback = () ->
-      successCallback = (res) ->
-        call_colorbox("/rooms/" + id, "#map")
-        flash_notice(res.msg)
-      errorCallback =  (res, status) ->
-        flash_error(res.msg)
-      submit_colorbox("#submit", successCallback, errorCallback)
-
-    call_colorbox("/rooms/" + id + "/evaluations/new", "#map", callback)
 
   newRoom: (latlng) ->
     pos = latlng.split(',')
@@ -44,6 +31,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
 
   editRoom: (id) ->
     callback = () ->
+      init_uploadify()
       successCallback = (res) ->
         id = res.data[0]._id
         window.location.href = "/#rooms/" + id
@@ -53,5 +41,27 @@ window.App.Controllers.Room = Backbone.Router.extend({
       submit_colorbox("#submit", successCallback, errorCallback)
 
     call_colorbox("/rooms/" + id + "/edit", "#map", callback)
-   
+  
+  photo: (id) ->
+    callback = () ->
+      window.room.showPhoto('.photo_thumbs img', '.photo_original')
+      $.colorbox.resize()
+
+    call_colorbox("/rooms/" + id + "/photo", "#map", callback)
+
+
+  newEvaluation: (id) ->
+    #TODO: don't reload showInfo if infowindow exist
+    window.room.showInfo(id)
+
+    callback = () ->
+      window.room.toggleEvalFields()
+      successCallback = (res) ->
+        call_colorbox("/rooms/" + id, "#map")
+        flash_notice(res.msg)
+      errorCallback =  (res, status) ->
+        flash_error(res.msg)
+      submit_colorbox("#submit", successCallback, errorCallback)
+
+    call_colorbox("/rooms/" + id + "/evaluations/new", "#map", callback)
 })

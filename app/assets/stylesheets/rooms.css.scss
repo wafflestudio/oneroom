@@ -1,3 +1,60 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.room_row {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #ddd;
+}
+
+.room_row_title {
+  margin: 0 10px 10px 10px;
+}
+
+//info
+.infobubble {
+  margin-left: 0px !important;
+}
+
+.room_info_thumb {
+  img {margin: 5px;}
+}
+
+.room_info_row {
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #ddd;
+  td {
+    padding: 5px;
+  }
+}
+
+.room_info_new_row {
+  margin: 5px;
+
+  .btn {
+    margin: 5px;
+  }
+}
+
+//show
+.room_evaluation_username {
+  margin: 10px;
+}
+
+.room_evaluation_eval {
+  margin-right: 10px;
+}
+
+
+//photo
+.photo_thumbs { 
+  img {
+    margin: 2px;
+    border: 1px solid #bbb;
+  }
+}
+
+.photo_original {
+  padding: 10px;
+}

@@ -1,14 +1,15 @@
-<div class="row span10">
-  <div class="span2">
+<div class="row span10 room_row">
+  <div class="span2 center">
     <%= link_to image_tag(img(@room).image.thumb), img(@room).image.url, :target => '_blank' %>
-    <%# imgs(@room).each do |i| %>
-    <%#= image_tag i.image.thumb %>
-    <%# end %>  
+    <br />
+    <% if imgs(@room).size > 0 %>
+      <%= link_to raw("<i class='icon-camera'></i>") + " 사진보기", "#rooms/#{@room.id}/photo", :class => "btn btn-mini" %>
+    <% end %>
   </div>
   <table>
     <tr>
       <td>
-        <h2><%= @room.name %></h2>
+        <%= link_to raw("<h2>" + @room.name + "</h2>"), "#rooms/#{@room.id}" %>
       </td>
       <td>
         <span class="label label-inverse"><%= @room.type_name %></span>
@@ -18,19 +19,26 @@
     <tr>
       <td colspan=2 class="span6">
         <blockquote>
-        <strong><%= @room.address %></strong></br>
-        <small><%= @room.phone %></small>
+          <strong><%= @room.address %></strong></br>
+          <small><%= @room.phone %></small>
         </blockquote>
       </td>
-      <td rowspan=2>
+      <td rowspan=2 class="center">
         <p>
-          <span class="label label-success">좋아요</span> <%= @room_info[:like][:true] %> / 
-          <span class="label label-warning">싫어요</span> <%= @room_info[:like][:false] %>
+          <span class="label label-success">좋아요</span> 
+          <strong><%= @room_info[:like][:true] %></strong> / 
+          <span class="label label-warning">싫어요</span> 
+          <strong><%= @room_info[:like][:false] %></strong>
         </p>
         <p>
-          <%= link_to '평가', "#rooms/#{@room.id}/evaluations/new", :class => 'btn btn-small'%>
+          <%= link_to raw("<i class='icon-pencil icon-white'></i>") + ' 평가', "#rooms/#{@room.id}/evaluations/new", :class => 'btn btn-small btn-inverse'%>
           <%= link_to '정보 수정', "#rooms/#{@room.id}/edit", :class => 'btn btn-small' %>
         </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= line_break(@room.description).html_safe %>
       </td>
     </tr>
   </table>

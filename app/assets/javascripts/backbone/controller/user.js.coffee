@@ -51,7 +51,7 @@ window.App.Controllers.User = Backbone.Router.extend({
         flash_notice(res.msg)
       else
         flash_error(res.msg)
-
+      window.user.reload()
       window.nav.navigate("nav_map")
     )
 })

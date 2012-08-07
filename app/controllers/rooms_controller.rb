@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   private
   def choose_layout
-    if ['show', 'edit'].include? action_name
+    if ['show', 'edit', 'photo'].include? action_name
       'room'
     else
       'tooltip'
@@ -82,6 +82,17 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def photo
+    @room = Room.find(params[:id])
+    @room_info = @room.info
+
+    if @session
+      render '/rooms/_photo.html.erb'
+    else
+      render '/rooms/session/_photo.html.erb'
+    end
   end
 
   # INFO WINDOWS 

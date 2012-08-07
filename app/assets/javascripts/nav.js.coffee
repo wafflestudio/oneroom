@@ -5,7 +5,7 @@ class Nav
     $("#" + nav_id).trigger('click')
 
     if nav_id == "nav_map" and window.search.getResultStatus()
-        window.search.showResult()
+      window.search.showResult()
     else
       window.search.hideResult()
 

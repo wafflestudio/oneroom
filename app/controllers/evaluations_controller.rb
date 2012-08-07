@@ -54,4 +54,30 @@ class EvaluationsController < ApplicationController
 
   def destroy
   end
+
+  def evaluate
+    @evaluation = Evaluation.find(params[:id])
+
+    if @evaluation.user.id == @session.id
+      return_data('error', '자신의 평가는 평가할 수 없습니다.', @evaluation)
+      return
+    end
+
+    if @evaluation.agree.include? @session.id or @evaluation.disagree.include? @session.id
+      return_data('error', '이미 평가하셨습니다.', @evaluation)
+      return
+    end
+
+    if params[:evaluate] == "agree"
+      @evaluation.agree << @session.id
+    else params[:evaluate] == "disagree"
+      @evaluation.disagree << @session.id
+    end
+
+    if @evaluation.save
+      return_data('success', '평가 완료되었습니다.', @evaluation)
+    else
+      return_data('error', '평가 과정에서 문제가 발생했습니다. 다시 시도해주세요.', @evaluation)
+    end
+  end
 end

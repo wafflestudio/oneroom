@@ -46,7 +46,7 @@ class Map
       maxWidth: 260,
       arrowPosition: 20,
       arrowSize:5,
-      padding: 5
+      padding: 15
     })
 
     #show add room pin
