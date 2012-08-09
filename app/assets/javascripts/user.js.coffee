@@ -2,6 +2,7 @@
 class User
   session_div: "#session"
   login_button: "a#login"
+  login_field: "input.field_login"
   logout_button: "a#logout"
 
   session: false
@@ -22,6 +23,10 @@ class User
       if res.data == null
         self.setSession(false)
         callback = () ->
+          $(self.login_field).live('keypress', (e) ->
+            if e.keyCode == 13
+              self.login()
+          )
           $(self.login_button).live('click', () ->
             self.login()
           )

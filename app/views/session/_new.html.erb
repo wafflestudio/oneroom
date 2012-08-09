@@ -6,13 +6,13 @@
     <div class="control-group">
       <span class="h5">아이디</span>
       <span>
-        <%= text_field :session, :username %>
+        <%= text_field :session, :username, :class => 'field_login' %>
       </span>
     </div>
     <div class="control-group">
       <span class="h5">비밀번호</label>
       <span>
-        <%= password_field :session, :password %>
+        <%= password_field :session, :password, :class => 'field_login' %>
       </span>
     </div>
   <% end %>
