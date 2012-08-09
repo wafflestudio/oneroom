@@ -1,11 +1,18 @@
-<h3>검색결과</h3>
-
-<button id="search_close" class="close">&times;</button>
-
+<div>
+  <span class="h4">
+    <i class="icon-search"></i>
+    검색결과
+  </span>
+  <button id="search_close" class="close right">&times;</button>
+</div>
 <table>
   <% @rooms.each do |r| %>
-  <tr>
-    <td><%= link_to_function r.name, "", :class => 'searched_room', :rel => r.id %></td>
+  <tr class="search_row">
+    <td>
+      <span class="label label-info"><%= r.region_name %></span>
+      <span class="label label-inverse"><%= r.type_name %></span>
+      <%= link_to_function r.name, "", :class => 'searched_room', :rel => r.id %>
+    </td>
   </tr>
   <% end %>
 </table>

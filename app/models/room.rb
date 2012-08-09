@@ -24,6 +24,7 @@ class Room
   SEARCH_BASIC = 1
   SEARCH_ADVANCED = 2
 
+  PER_PAGE = 10
   #=== Fields ===
   field :name, type: String
   field :type, type: Integer
@@ -35,6 +36,8 @@ class Room
   field :region, type: Integer
   field :address, type: String
   field :phone, type: String
+
+  field :etc, type: String
   field :description, type: String
 
   #=== Relations ===
@@ -102,6 +105,14 @@ class Room
     end
   end
 
+  def region_name
+    REGION.each do |t|
+      if self.type == t[:id]
+        return t[:name]
+      end
+    end
+  end
+
   def self.search params
     if params[:search][:type].to_i != SEARCH_ADVANCED
       rooms = Room.where(:name => /#{params[:search][:keyword]}/)
@@ -128,6 +139,6 @@ class Room
       end
     end
 
-    rooms.page(params[:page]).per(1)
+    rooms.page(params[:page]).per(Room::PER_PAGE)
   end
 end

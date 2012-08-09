@@ -12,6 +12,7 @@
         <%= link_to raw("<h2>" + @room.name + "</h2>"), "#rooms/#{@room.id}" %>
       </td>
       <td>
+        <span class="label label-info"><%= @room.region_name %></span>
         <span class="label label-inverse"><%= @room.type_name %></span>
       </td>
       <td></td>

@@ -7,11 +7,8 @@
     <div class="nav-collapse">
       <ul class="nav pull-right">
         <li>
-          <div class="search_form search_basic">
-            <div class="input-append">
-            <%= text_field :search, :keyword, :placeholder => "검색" %>
-            <%= link_to_function 'Search', nil, :class => 'search_btn btn btn-inverse', :rel => '.search_basic' %>
-            </div>
+          <div class="search_basic navbar-search">
+            <%= text_field :search, :keyword, :placeholder => "검색", :class => 'search_keyword', :rel => '.search_basic' %>
           </div>
         </li>
         <li class="divider-vertical"></li>

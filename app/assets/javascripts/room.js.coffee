@@ -56,7 +56,9 @@ class Room
       original_url = thumb_url.replace("/thumb_", "/")
       $(to).html("<img src='" + original_url + "' />")
 
-      $.colorbox.resize()
+      $(to + " img").load(() ->
+        $.colorbox.resize()
+      )
     )
 
   #==== EVAL ====

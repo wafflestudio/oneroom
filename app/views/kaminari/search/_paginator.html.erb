@@ -7,7 +7,7 @@
     paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
-  <nav class="kaminari">
+  <nav class="kaminari kaminari_search center">
     <%= prev_page_tag unless current_page.first? %>
     <% each_page do |page| -%>
       <% if page.left_outer? || page.right_outer? || page.inside_window? -%>

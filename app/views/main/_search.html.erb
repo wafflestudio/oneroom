@@ -29,29 +29,34 @@
           <%= check_box :type, :rent, {}, true, false %>
           월세
         </label>
-        <div class="inner-controls">    
-          보증금
-          <%= hidden_field :rent, :deposit_min, {:id => "rent_deposit-min"} %>
-          <%= hidden_field :rent, :deposit_max, {:id => "rent_deposit-max"} %>
-          <div id="rent_deposit-value"></div>
-          <div id="rent_deposit-slider"></div>
-          <br>
-          월세
-          <%= hidden_field :rent, :rent_min, {:id => "rent_rent-min"} %>
-          <%= hidden_field :rent, :rent_max, {:id => "rent_rent-max"} %>
-          <div id="rent_rent-value"></div>
-          <div id="rent_rent-slider"></div>
+        <div class="inner-controls">   
+          <div class="search_controls">
+            <%= hidden_field :rent, :deposit_min, {:id => "rent_deposit-min"} %>
+            <%= hidden_field :rent, :deposit_max, {:id => "rent_deposit-max"} %>
+            <strong>보증금</strong>
+            <span id="rent_deposit-value" class="search_values"></span>
+            <div id="rent_deposit-slider" class="search_slider"></div>
+          </div>
+          <div class="search_controls">
+            <%= hidden_field :rent, :rent_min, {:id => "rent_rent-min"} %>
+            <%= hidden_field :rent, :rent_max, {:id => "rent_rent-max"} %>
+            <strong>월세</strong>
+            <span id="rent_rent-value" class="search_values"></span>
+            <div id="rent_rent-slider" class="search_slider"></div>
+          </div>
         </div>
         <label class="checkbox">
           <%= check_box :type, :lease, {}, true, false %>
           전세
         </label>
         <div class="inner-controls">
-          보증금
-          <%= hidden_field :lease, :deposit_min, {:id => "lease_deposit-min"} %>
-          <%= hidden_field :lease, :deposit_max, {:id => "lease_deposit-max"} %>
-          <div id="lease_deposit-value"></div>
-          <div id="lease_deposit-slider"></div>
+          <div class="search_controls">
+            <%= hidden_field :lease, :deposit_min, {:id => "lease_deposit-min"} %>
+            <%= hidden_field :lease, :deposit_max, {:id => "lease_deposit-max"} %>
+            <strong>보증금</strong>
+            <span id="lease_deposit-value" class="search_values"></span>
+            <div id="lease_deposit-slider" class="search_slider"></div>
+          </div>
         </div>
       </div>
     </div>

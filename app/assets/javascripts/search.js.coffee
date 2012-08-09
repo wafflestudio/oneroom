@@ -29,14 +29,16 @@ class Search
   #= init search button
   initSearch: () ->
     self = this
-    $(".search_btn").live('click', () ->
-      type = $(this).attr("rel")
-      params = $(self.search_basic_div + " input").fieldSerialize()
-
-      if type == self.search_basic_div
+    $(".search_keyword").live('keypress', (e) ->
+      if e.keyCode == 13
+        params = $(self.search_basic_div + " input").fieldSerialize()
         params = params + "&search[type]=1"
-      else
-        params = params + "&" + $(self.search_advanced_div + " input").fieldSerialize() + "&search[type]=2"
+
+        window.location.href = "#search/" + params
+    )
+    $(".search_btn").live('click', () ->
+      params = $(self.search_basic_div + " input").fieldSerialize()
+      params = params + "&" + $(self.search_advanced_div + " input").fieldSerialize() + "&search[type]=2"
 
       window.location.href = "#search/" + params
     )

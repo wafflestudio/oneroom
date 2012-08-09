@@ -151,9 +151,29 @@ background: url("/assets/bgp-light.png") repeat scroll 0 0 transparent !importan
   display: none;
   top: 50px;
   right: 20px;
-  width: 200px;
+  width: 230px;
   overflow: auto;
   z-index: 9999;
+}
+
+.search_row {
+  td {
+    padding: 5px;
+    border-bottom: 1px dotted #bbb;
+  }
+}
+
+.search_controls {
+  margin-left: 50px;
+  margin-bottom: 10px;
+  .search_values {
+    position: absolute;
+    left: 350px;
+  }
+  .search_slider {
+    width: 420px;
+    margin-left: 70px;
+  }
 }
 
 //room

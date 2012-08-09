@@ -13,10 +13,6 @@
 }
 
 //info
-.infobubble {
-  margin-left: 0px !important;
-}
-
 .room_info_thumb {
   img {margin: 5px;}
 }
@@ -44,6 +40,10 @@
 
 .room_evaluation_eval {
   margin-right: 10px;
+}
+
+.room_evaluation_eval_content {
+  padding: 0 15px 0 15px;
 }
 
 
