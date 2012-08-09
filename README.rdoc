@@ -19,9 +19,8 @@ Trilby
 7. Room CRU and Photo Upload
 1. User Email Authentication
 5. Design and layout with bootstrap
+2. Evaluation별 평가
 
 == To Do
-1. Design 마무리
-2. Evaluation별 평가
 4. Snulife Data 연동
 6. Real Data!! 

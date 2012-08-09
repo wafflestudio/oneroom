@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     render :json => {'html' => render_to_string(html)}
   end
 
+  def return_html_with_locals html, locals
+    render :json => {'html' => render_to_string(html, :locals => locals)}
+  end
+
+
   def return_data_and_html status, msg, data, html
      render :json => {'status' => status, 'msg' => msg, 'data' => data, 'html' => html}
   end

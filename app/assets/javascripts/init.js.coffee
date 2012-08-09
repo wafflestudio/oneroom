@@ -128,7 +128,7 @@
 get_height = () ->
   height = 500
   if $(window).height()-180 > 500
-    height = $(window).height()-150
+    height = $(window).height()-200
   return height
 
 #init

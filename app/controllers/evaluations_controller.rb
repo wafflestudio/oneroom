@@ -18,8 +18,12 @@ class EvaluationsController < ApplicationController
 
   public
   def index
-    #TODO: Filtering Index
-    #TODO: Return as JSON
+    @evaluations = @room.evaluations.desc(:created_at).page(params[:page]).per(Evaluation::PER_PAGE)
+
+    if @session
+      return_html_with_locals('/evaluations/_index.html.erb', {:evaluations => @evaluations})
+    else
+    end
   end
 
   def new

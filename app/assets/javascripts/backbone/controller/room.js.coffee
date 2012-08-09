@@ -4,6 +4,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
     "rooms/new/:latlng": "newRoom"
     "rooms/:id/edit": "editRoom"
     "rooms/:id/photo": "photo"
+    "rooms/:id/:options": "indexEvaluation"
     "rooms/:id/evaluations/new": "newEvaluation"
   }
 
@@ -50,8 +51,17 @@ window.App.Controllers.Room = Backbone.Router.extend({
     call_colorbox("/rooms/" + id + "/photo", "#map", callback)
 
 
+  indexEvaluation: (id, options) ->
+    self = this
+    if $("#colorbox").css("display") == "none"
+      self.showRoom(id)
+
+    callback = () ->
+      $.colorbox.resize()
+
+    window.room.getEvaluations(id, options, callback)
+    
   newEvaluation: (id) ->
-    #TODO: don't reload showInfo if infowindow exist
     window.room.showInfo(id)
 
     callback = () ->

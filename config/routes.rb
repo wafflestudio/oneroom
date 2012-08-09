@@ -30,6 +30,9 @@ Oneroom::Application.routes.draw do
       member do
         post :evaluate
       end
+      collection do
+        get :page
+      end
     end
   end
 

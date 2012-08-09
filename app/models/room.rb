@@ -1,6 +1,8 @@
 #encoding: UTF-8
 class Room
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps::Updated
 
   #=== Constants ===
   #REGION TYPE
@@ -126,6 +128,6 @@ class Room
       end
     end
 
-    rooms.page(params[:page]).per(5)
+    rooms.page(params[:page]).per(1)
   end
 end

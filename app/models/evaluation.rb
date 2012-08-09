@@ -1,12 +1,15 @@
 #encoding: UTF-8
 class Evaluation
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
 
   #=== Constants ===
   #CONTRACT TYPE
   RENT = 1
   LEASE = 2
   BOARDING = 3
+
+  PER_PAGE = 3
 
   #=== Fields ===
   field :content, type: String

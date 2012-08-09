@@ -14,13 +14,21 @@ module ApplicationHelper
     hash_url(url)
   end
 
+  def eval_url url
+    url.gsub!("/evaluations", "")
+    url.gsub!("?", "/")
+    unless url.include? "page="
+      url += "/page=1"
+    end
+    hash_url(url)
+  end
+
   def hash_url url
     if url[0] == "/"
       url.gsub!(/^\//, "/#")
     end
     url
   end
-
 
   #=== Images Methods ===#
   def imgs obj

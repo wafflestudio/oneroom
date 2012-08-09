@@ -60,6 +60,13 @@ class Room
     )
 
   #==== EVAL ====
+  getEvaluations: (room_id, options, callback) ->
+    $.get("/rooms/" + room_id + "/evaluations?" + options, (res) ->
+      $(".room_evals").html(res.html)
+
+      callback() if callback
+    )
+
   #= form toggle on selection
   toggleEvalFields: () ->
     self = this
