@@ -57,14 +57,14 @@
 
 .form-horizontal-contact {
   input[type=text] {
-    width: 250px;
+    width: 170px;
   }
   input[type=password] {
-    width: 250px;
+    width: 170px;
   }
   textarea {
-    width: 250px;
-    height: 120px;
+    width: 170px;
+    height: 80px;
   }
   .control-label {
     width: 50px !important;
@@ -139,6 +139,14 @@ background: url("/assets/bgp-light.png") repeat scroll 0 0 transparent !importan
     }
   }
 }
+
+img#about_creators {
+  margin: 5px 10px 5px 5px;
+  border: 1px solid #bbb;
+}
+
+.b_b {border-bottom: 1px dotted #bbb;}
+.b_l {border-left: 1px dotted #bbb; padding-left: 10px;}
 
 #footer {
   text-align: center;

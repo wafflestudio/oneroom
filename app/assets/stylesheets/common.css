@@ -57,12 +57,12 @@ a {text-decoration: none; cursor: pointer; }
 .h6{font-size:11px;color:#999;text-transform:uppercase}
 
 /* h3 title */
-#cboxLoadedContent h3.title {
+#cboxLoadedContent h4.title {
   margin: 0 20px 20px 20px;
   padding: 10px;
 }
 
-.inner_container h3.title {
+.inner_container h4.title {
   padding: 10px;
 }
 
@@ -73,7 +73,7 @@ div.infobubble{
 
 /* colorbox */
 #colorbox {top: 30px !important;}
-#cboxLoadedContent {padding: 25px;}
+#cboxLoadedContent {padding: 25px; overflow:hidden !important;}
 #cboxLoadedContent {background: url("/assets/bgp-light.png") repeat scroll 0 0 transparent !important;}
 
 /* paginator */

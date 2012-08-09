@@ -1,27 +1,42 @@
 <div class="inner_container">
-  <div class="row span9">
-    <div class="span9">
-      <h3 class="title">프로젝트 원룸은?</h3>
+  <div class="row span10">
+    <div class="span10 b_b">
+      <h4 class="title">
+        <%= image_tag 'bullet_black.png' %>
+        프로젝트 원룸은?
+      </h4>
       <p>
-        프로젝트 원룸은 블라블라 어쩌구저쩌구 입니다! 
-        <br>
-        우왕ㅋ굿ㅋ
+        &nbsp;&nbsp;<strong>프로젝트 원룸(가칭)</strong>은 서울대학교 주변의 원룸/오피스텔 등 서울대학교의 학생들이 거주하는 자취 공간에 대한 정보를 공유하자는 취지로 만들었습니다. 실제로 방을 구할 때는 방에 인터넷이 잘 되는지, 세탁실이 공용인지 같은 것도 중요하지만, 전에 살았던 사람이 들려주는 경험담도 매우 중요하기 때문입니다.
+      </p>
+      <p>
+        &nbsp;&nbsp;프로젝트 원룸은 자율적으로 정보의 공유가 이루어지는 사이트를 제공 할 뿐이며, 금액 등의 다양한 정보는 오로지 여러분의 참여를 통해서 작성됩니다. 부디 정보만 보러 오진 마시고, 자신이 지냈던, 혹은 지내고 있는 곳에 대한 살아있는 정보를 제공해주시면 감사하겠습니다. 
       </p>
     </div>
   </div>
 
-  <div class="row span10">
-    <div class="span4">
-      <h3 class="title">만든사람들</h3>
+  <div class="row span11">
+    <div class="span6">
+      <h4 class="title">
+        <%= image_tag 'bullet_black.png' %>
+        만든 사람들
+      </h4>
+      <%= image_tag "dh.png", :id => 'about_creators', :class => 'left' %>
       <p>
-        와플스튜디오 비밀 결사대: the Daehakwonsaengs
+        &nbsp;&nbsp;본 사이트는 <strong>와플스튜디오</strong> 내 비밀결사조직인 <strong>'더 대학원생스(The Dahakwonsaengs)'</strong>에 의해 만들어졌습니다.
+      </p>
+      <p>
+        &nbsp;&nbsp;대학원생스는 대학원 연구실을 중심으로 활동중이며, 최소한의 노력으로 적당한 결과를 추구하면서 언제나 빠른 퇴근에 힘쓰고 있습니다.
+      </p>
+      <p>
+        &nbsp;&nbsp;멤버들은 교수님의 매서운 눈초리를 피하기 위해 철저하게 비밀에 붙여져 있으며, 치킨이나 아이유 등의 단어에 반응하는 것으로 알려져 있습니다.
       </p>
     </div>
-    <div class="offset1 span4">
-      <h3 class="title">문의 및 의견</h3>
-      <p>
-        프로젝트 원룸에 대한 문의 또는 의견이 있으신 분은 아래 항목을 통해 연락해주세요.
-        
+    <div class="span3 b_l">
+      <h4 class="title">
+        <%= image_tag 'bullet_black.png' %>
+        문의 및 의견
+      </h4>
+      <p>        
         <%= form_tag("#", :class => "form-horizontal form-horizontal-contact form_contact") do %>
           <div class="control-group">
             <label class="control-label h5">이름</label>
@@ -39,7 +54,7 @@
           </div>
         <% end %>
           
-        <span class="offset3 span2"><%= link_to_function '의견보내기', nil, :class => 'btn-large btn-inverse btn-small', :rel => '.form_contact' %></span>
+        <span class="right span2"><%= link_to_function '의견보내기', nil, :class => 'btn-large btn-inverse btn-small', :rel => '.form_contact' %></span>
         </p>
       </div>
     </div>

@@ -1,48 +1,55 @@
-<table class="table table-striped table-condensed table-bordered">
-  <% evaluations.each do |ev| %>
-  <tr>
-    <td>
-      <p class="clearfix">
-        <span class="h4 room_evaluation_username">
-          <% if ev.user.authorized %>
-            <span class="badge badge-inverse">학생</span>
+<% if evaluations.size > 0 %>
+  <table class="table table-striped table-condensed table-bordered">
+    <% evaluations.each do |ev| %>
+    <tr>
+      <td>
+        <p class="clearfix">
+          <span class="h4 room_evaluation_username">
+            <% if ev.user.authorized %>
+              <span class="badge badge-inverse">학생</span>
+            <% end %>
+            <%= ev.user.name %>(<%= ev.user.username %>)
+          </span>
+          <span>
+            <%= ev.created_at %>
+          </span>
+          <span class="room_evaluation_eval right">
+            <%= link_to_function raw('<i class="icon-ok-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'agree'); return false;" %> 
+            <strong id="evaluation_<%= ev.id %>_agree_detail"><%= ev.agree.size %></strong> / 
+            <%= link_to_function raw('<i class="icon-remove-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'disagree'); return false;" %> 
+            <strong id="evaluation_<%= ev.id %>_disagree_detail"><%= ev.disagree.size %></strong>
+          </span>
+        </p>
+        <p class="room_evaluation_eval_content">
+          <% if ev.like %>
+          <span class="label label-success">좋아요</span>
+          <% else %>
+          <span class="label label-warning">싫어요</span>
           <% end %>
-          <%= ev.user.name %>(<%= ev.user.username %>)
-        </span>
-        <span>
-          <%= ev.created_at %>
-        </span>
-        <span class="room_evaluation_eval right">
-          <%= link_to_function raw('<i class="icon-ok-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'agree'); return false;" %> 
-          <strong id="evaluation_<%= ev.id %>_agree_detail"><%= ev.agree.size %></strong> / 
-          <%= link_to_function raw('<i class="icon-remove-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'disagree'); return false;" %> 
-          <strong id="evaluation_<%= ev.id %>_disagree_detail"><%= ev.disagree.size %></strong>
-        </span>
-      </p>
-      <p class="room_evaluation_eval_content">
-        <% if ev.like %>
-        <span class="label label-success">좋아요</span>
-        <% else %>
-        <span class="label label-warning">싫어요</span>
-        <% end %>
-        <span class="h5-w">
-          <strong>
-            <%= ev.type_name %>
-          </strong>
-          <%= ev.fee %>
+          <span class="h5-w">
+            <strong>
+              <%= ev.type_name %>
+            </strong>
+            <%= ev.fee %>
 
-          <strong>관리비</strong>
-          <%= ev.maintenance %>만 <%= ev.maintenance_detail %>
-        </span>
-      </p>
-      <p class="room_evaluation_eval_content">
-        <span>
-          <%= line_break(ev.content).html_safe %>
-        </span>
-      </p>
-    </td>
-  </tr>
-  <% end %>
-</table>
+            <strong>관리비</strong>
+            <%= ev.maintenance %>만 <%= ev.maintenance_detail %>
+          </span>
+        </p>
+        <p class="room_evaluation_eval_content">
+          <span>
+            <%= line_break(ev.content).html_safe %>
+          </span>
+        </p>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 
-<%= paginate evaluations, :theme => 'evaluations' %>
+  <%= paginate evaluations, :theme => 'evaluations' %>
+<% else %>
+  <div class="center">
+    현재 이 방에 평가가 없습니다.<br>
+    이 방에 대해 알고 계시다면 평가 버튼을 눌러 평가를 해주세요!
+  </div>
+<% end %>
