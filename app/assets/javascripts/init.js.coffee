@@ -7,7 +7,7 @@
   $.colorbox({
     href: url,
     transition: 'fade',
-    width: '860px',
+    width: '880px',
     close: '<button class="close">&times;</button>',
     escKey: false,
     arrowKey: false,

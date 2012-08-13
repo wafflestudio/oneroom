@@ -11,7 +11,9 @@ class MainController < ApplicationController
   end
 
   public
-  def index    
+  def index   
+    @room_size = Room.all.length
+    @eval_size = Evaluation.all.length
   end
 
   def about

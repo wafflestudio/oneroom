@@ -9,15 +9,15 @@
       <label class="control-label h5">지역</label>
       <div class="controls">
         <label class="checkbox">
-          <%= check_box :region, Room::NOKDOO[:id], {}, true, false %>
+          <%= check_box :region, Room::NOKDOO[:id], {:checked => true}, true, false %>
           녹두
         </label>
         <label class="checkbox">
-          <%= check_box :region, Room::ENTRANCE[:id], {}, true, false %>
+          <%= check_box :region, Room::ENTRANCE[:id], {:checked => true}, true, false %>
           서울대입구
         </label>
         <label class="checkbox">
-          <%= check_box :region, Room::NAKSEONGDAE[:id], {}, true, false %>
+          <%= check_box :region, Room::NAKSEONGDAE[:id], {:checked => true}, true, false %>
           낙성대
         </label>
       </div>

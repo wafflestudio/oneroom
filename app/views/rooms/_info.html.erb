@@ -8,8 +8,8 @@
     <tr>
       <td class="room_info_thumb" rowspan=2><%= link_to image_tag(img(@room).image.thumb, :width => 50), "#rooms/#{@room.id}" %></td>
       <td>
-        <span class="label label-success">Good</span> <%= @room_info[:like][:true] %> / 
-        <span class="label label-warning">Bad</span> <%= @room_info[:like][:false] %>
+        <span class="label label-success">좋아요</span> <%= @room_info[:like][:true] %> / 
+        <span class="label label-warning">싫어요</span> <%= @room_info[:like][:false] %>
       </td>
     </tr>
     <tr>
@@ -18,14 +18,12 @@
         <% if @room_info[:size] > 0 %>
           <% if @room_info[:fee][Evaluation::RENT] %>
             <strong>월세</strong>
-            <%= @room_info[:fee][Evaluation::RENT].fee %>
+            <%= @room_info[:fee][Evaluation::RENT].fee %><br>
           <% end %>
-          <br>
           <% if @room_info[:fee][Evaluation::LEASE] %>
             <strong>전세</strong>
-            <%= @room_info[:fee][Evaluation::LEASE].fee %>
+            <%= @room_info[:fee][Evaluation::LEASE].fee %><br>
           <% end %>
-          <br>
           <strong>관리비</strong>
           <%= @room_info[:maintenance].maintenance %>만
           <%= @room_info[:maintenance].maintenance_detail %>

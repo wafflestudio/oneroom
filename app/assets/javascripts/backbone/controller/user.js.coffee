@@ -8,6 +8,9 @@ window.App.Controllers.User = Backbone.Router.extend({
 
   new: () ->
     callback = () ->
+      username = $("#session_username").val()
+      if username and username.length > 0
+        $("#user_username").val(username)
       successCallback = (res, status) ->
         user = window.user
         user.setSession(res.status)
@@ -20,6 +23,7 @@ window.App.Controllers.User = Backbone.Router.extend({
       submit_colorbox("#submit", successCallback, errorCallback)
 
     call_colorbox("/users/new", "#", callback)
+
  
   edit: (id) ->
     callback = () ->

@@ -23,8 +23,10 @@ class UsersController < ApplicationController
       user = User.add_user(params[:user])
 
       if user
-        session[:user] = user.id
-        return_data('success', '가입 되었습니다.', user)
+        user.generate_auth_token
+        AuthMailer.send_auth_token(user).deliver
+
+        return_data('success', '가입 되었습니다. 메일을 통해 인증을 마무리해주세요.', user)
         return
       else
         return_data('error', '가입 과정에서 문제가 발생했습니다. 다시 시도해주세요.', nil)

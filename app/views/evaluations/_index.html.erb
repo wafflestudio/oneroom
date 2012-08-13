@@ -5,18 +5,15 @@
       <td>
         <p class="clearfix">
           <span class="h4 room_evaluation_username">
-            <% if ev.user.authorized %>
-              <span class="badge badge-inverse">학생</span>
-            <% end %>
-            <%= ev.user.name %>(<%= ev.user.username %>)
+            <%= ev.user.name %>(<%= hide_str(ev.user.username) %>)
           </span>
           <span>
             <%= ev.created_at %>
           </span>
           <span class="room_evaluation_eval right">
-            <%= link_to_function raw('<i class="icon-ok-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'agree'); return false;" %> 
+            <%= link_to_function raw('<i class="icon-thumbs-up"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'agree'); return false;" %> 
             <strong id="evaluation_<%= ev.id %>_agree_detail"><%= ev.agree.size %></strong> / 
-            <%= link_to_function raw('<i class="icon-remove-sign"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'disagree'); return false;" %> 
+            <%= link_to_function raw('<i class="icon-thumbs-down"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'disagree'); return false;" %> 
             <strong id="evaluation_<%= ev.id %>_disagree_detail"><%= ev.disagree.size %></strong>
           </span>
         </p>
@@ -33,7 +30,7 @@
             <%= ev.fee %>
 
             <strong>관리비</strong>
-            <%= ev.maintenance %>만 <%= ev.maintenance_detail %>
+            <%= ev.maintenance_value %> / <%= ev.maintenance_detail %>
           </span>
         </p>
         <p class="room_evaluation_eval_content">

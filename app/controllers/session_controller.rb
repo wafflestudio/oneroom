@@ -21,6 +21,8 @@ class SessionController < ApplicationController
       return_data('error', '존재하지 않는 사용자입니다.', nil)
     elsif user == User::PASSWORD
       return_data('error', '비밀번호가 일치하지 않습니다.', nil)
+    elsif user == User::NOTAUTHORIZED
+      return_data('error', '아직 인증되지 않은 사용자입니다.', nil)
     else
       session[:user] = user.id
       return_data('success', '로그인 성공!', user)

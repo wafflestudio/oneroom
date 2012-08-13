@@ -92,6 +92,14 @@ class Evaluation
     end
   end
 
+  def maintenance_value
+    if self.maintenance > 0
+      return self.maintenance.to_s + "만"
+    else
+      return "없음"
+    end
+  end
+
   def maintenance_detail
     unless self.gas or self.electricity or self.water
       return "가스, 전기 등 비용 미포함"
@@ -99,15 +107,15 @@ class Evaluation
 
     res = ""
     if self.gas
-      res = res + "가스비"
+      res = res + "가스비,"
     end
     if self.electricity
-      res = res + "전기료"
+      res = res + "전기료,"
     end
     if self.water
-      res = res + "수도료"
+      res = res + "수도료,"
     end
-    res = res + " 포함"
+    res = res.slice(0,res.length-1) + " 포함"
     res
   end
 end

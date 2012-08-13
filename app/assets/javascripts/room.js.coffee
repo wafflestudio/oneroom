@@ -84,8 +84,8 @@ class Room
   evaluateEvaluation: (room_id, id, ev) ->
     data = {'evaluate': ev}
     $.post("/rooms/" + room_id + "/evaluations/" + id + "/evaluate", data, (res) ->
-      $("#evaluation_" + res.data._id + "_agree").html(res.data.agree.length)
-      $("#evaluation_" + res.data._id + "_disagree").html(res.data.disagree.length)
+      $("#evaluation_" + res.data._id + "_agree_detail").html(res.data.agree.length)
+      $("#evaluation_" + res.data._id + "_disagree_detail").html(res.data.disagree.length)
       if res == "success"
         flash_notice(res.msg)
       else

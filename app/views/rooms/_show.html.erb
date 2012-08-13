@@ -14,18 +14,18 @@
       <% end %>
       <dt>관리비</dt>
       <dd>
-        <%= @room_info[:maintenance].maintenance %>만
+        <%= @room_info[:maintenance].maintenance_value %> / 
         <%= @room_info[:maintenance].maintenance_detail %>
       </dd>
     <% else %>
       <dt>가격 정보</dt>
       <dd>여러분의 평가로 가격 정보가 채워집니다.</dd>
     <% end %>
-    <% if @room.etc %>
+    <% if @room.etc.length > 0 %>
       <dt>기타 사항</dt>
       <dd><%= @room.etc %></dt>
     <% end %>
-     </dl>
+  </dl>
 
   <h4 class="room_row_title">
     <i class="icon-comment"></i> 평가

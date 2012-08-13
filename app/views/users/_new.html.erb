@@ -1,10 +1,13 @@
 <div class="row span10">
-  <h3 class="title">회원 가입하기</h2>
+  <h4 class="title">
+    <%= image_tag 'bullet_black.png' %>
+    회원 가입하기
+  </h4>
 
-  <p>
-    아래 정보를 모두 입력해주셔야 합니다.<br>
-    회원가입 후 메일 인증 후에 사용하실 수 있습니다.
-  </p>
+  <ul class="form_description">
+    <li>아래 정보를 모두 입력해주셔야 합니다.</li>
+    <li>회원가입 후 서울대 메일 인증 후에 사용하실 수 있습니다.</li>
+  </ul>
 
   <%= form_for(@user, :html => {:class => 'form-horizontal form-horizontal-colorbox'}) do |f| %>
     <div class="control-group">
@@ -40,7 +43,7 @@
       <div class="controls">
         <%= f.text_field :email %>
         <span id="validation_user_email" class="help-inline"></span>
-        <p class="help-block">서울대 메일(@snu.ac.kr)로 작성하실 경우, 학생임을 인증하는 표식이 나타납니다.</p>
+        <p class="help-block">서울대 포털 메일(@snu.ac.kr)로 작성해주세요.</p>
       </div>
     </div>
   <% end -%>

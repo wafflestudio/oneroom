@@ -8,6 +8,12 @@ module ApplicationHelper
     str.gsub("\n", "<br/>")
   end
 
+  def hide_str str
+    str = str.slice(0, 3)
+    str = str + "***"
+    str
+  end
+
   #pagination
   def search_url url
     url.gsub!("rooms/search?", "search/")

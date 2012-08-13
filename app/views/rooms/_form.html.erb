@@ -5,6 +5,10 @@
 <% end %>
 
 <div class="row span10">
+  <ul class="form_description">
+    <li>방에 대한 정보를 간략하게 입력해주세요! 위치와 이름 외엔 모르셔도 괜찮습니다.</li>
+    <li>월세, 관리비 등의 <strong>금액 정보는 평가를 통해 제공합니다.</strong> 여기에서는 고민하실 필요 없습니다.</li>
+  </ul>
   <%= form_for(@room, :url => url, :html => {:class => "form-horizontal form-horizontal-colorbox"}) do |f| %>
     <%= f.hidden_field :lat, :value => @room.lat %>
     <%= f.hidden_field :lng, :value => @room.lng %>
@@ -48,6 +52,7 @@
       <div class="controls">
         <%= f.text_area :description %>
         <span id="validation_room_description" class="help-inline"></span>
+        <p class="help-block">방에 대한 소개글을 적어주세요.</p>
       </div>
     </div>
     <div class="control-group">
@@ -55,7 +60,7 @@
       <div class="controls">
         <%= f.text_field :etc %>
         <span id="validation_room_etc" class="help-inline"></span>
-        <p class="help-block">인터넷 제공, 세탁실 공용 등의 간단한 정보를 적어주시면 좋습니다.</p>
+        <p class="help-block">예) 인터넷 제공, 세탁실 공용</p>
       </div>
     </div>
     <div class="control-group">

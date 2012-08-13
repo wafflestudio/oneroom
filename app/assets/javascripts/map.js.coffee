@@ -6,6 +6,9 @@ class Map
   pins: []
   new_pin: null
 
+  min_zoom: 16
+  max_zoom: 19
+
   type: {
     new: 0,
     oneroom: 1,
@@ -28,7 +31,7 @@ class Map
     self.loc = {
       default: new google.maps.LatLng(37.459300249665695, 126.95059418678284),
       nokdoo: new google.maps.LatLng(37.47060916727359, 126.9401228427887),
-      entrance: new google.maps.LatLng(37.47883430817924, 126.95232152938843),
+      entrance: new google.maps.LatLng(37.48003430817924, 126.95232152938843),
       nakseongdae: new google.maps.LatLng(37.47760825763003, 126.96056127548218)
     }
 
@@ -41,6 +44,14 @@ class Map
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     self.mapobj = new google.maps.Map(document.getElementById("map_canvas"), map_options)
+    google.maps.event.addListener(self.mapobj, 'zoom_changed', () ->
+      cur_zoom = self.mapobj.getZoom()
+      if cur_zoom > self.max_zoom
+        self.mapobj.setZoom(self.max_zoom)
+      else if cur_zoom < self.min_zoom
+        self.mapobj.setZoom(self.min_zoom)
+    )
+
     self.infowindow = new InfoBubble({
       content: "Loading..",
       arrowPosition: 20,
@@ -68,7 +79,7 @@ class Map
         infowindow.setContent(res.html)
       )
     )
-
+    
     #infowindow close event
     google.maps.event.addListener(self.infowindow, 'closeclick', () ->
       window.location.href = "#map"

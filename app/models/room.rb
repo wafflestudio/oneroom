@@ -107,7 +107,7 @@ class Room
 
   def region_name
     REGION.each do |t|
-      if self.type == t[:id]
+      if self.region == t[:id]
         return t[:name]
       end
     end
