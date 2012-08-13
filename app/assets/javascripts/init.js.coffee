@@ -166,4 +166,7 @@ $(document).ready ->
   #session load
   window.user.reload()
 
+  #contact
+  window.nav.contact()
+
 ###

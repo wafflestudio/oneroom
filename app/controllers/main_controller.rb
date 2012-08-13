@@ -1,3 +1,4 @@
+#encoding: utf-8
 class MainController < ApplicationController
   layout :choose_layout
 
@@ -16,9 +17,8 @@ class MainController < ApplicationController
     @eval_size = Evaluation.all.length
   end
 
-  def about
-  end
-
   def contact
+    ContactMailer.send_contact_mail(params[:contact]).deliver
+    return_data("success", "메일을 전송하였습니다.", nil)
   end
 end

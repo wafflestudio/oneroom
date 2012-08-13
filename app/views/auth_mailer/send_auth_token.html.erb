@@ -1,4 +1,12 @@
 <div>
-  원룸에서 서울대 학생 인증하려면 아래 링크를 누질러주thㅔ요<br />
+  <%= @user.name %>님!<br />
+  스누ZIP에 가입하신 걸 환영합니다!
+</div>
+<div>
+  스누ZIP에서 활동하기 위해서는 학생 인증이 필요합니다.<br />
+  가입하신 본인이 맞다면 아래 링크를 눌러주세요!<br /><br />
+  본인이 아닐 경우에는 본 메일(oneroom@wafflestudio.com)으로 알려주시기 바랍니다.
+</div>
+<div>
   <%= link_to '인증하기', "http://choco.wafflestudio.net:2224/#users/#{@user.id}/auth/#{@user.auth_token}" %>
 </div>
