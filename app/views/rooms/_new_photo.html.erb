@@ -1,0 +1,22 @@
+<div class="row span10">
+  <h4 class="title">
+    <%= image_tag 'bullet_black.png' %>
+    사진 추가하기
+  </h4>
+</div>
+
+<div class="row span10">
+  <%= form_for(@room, :url => room_path(@room), :html => {:class => "form-horizontal form-horizontal-colorbox"}) do |f| %>
+    <div class="control-group">
+      <label class="control-label h5">사진</label>
+      <div class="controls">
+        <%= render :partial => 'layouts/image_form', :locals => {:model => 'room', :object => @room} %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="offset7 span3">
+    <%= link_to_function '수정하기', nil, :id => 'submit', :class => 'btn btn-inverse', :rel => "#edit_room_#{@room.id}" %>
+  </div>
+</div>
+

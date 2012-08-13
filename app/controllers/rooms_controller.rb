@@ -1,11 +1,11 @@
 #encoding: utf-8
 class RoomsController < ApplicationController
   layout :choose_layout
-  before_filter :require_session_json, :only => [:search]
+  before_filter :require_session_json, :only => [:search, :create, :update]
 
   private
   def choose_layout
-    if ['show', 'edit', 'photo'].include? action_name
+    if ['show', 'edit', 'photo', 'new_photo'].include? action_name
       'room'
     else
       'tooltip'
@@ -42,7 +42,11 @@ class RoomsController < ApplicationController
     @room.lat = params[:lat]
     @room.lng = params[:lng]
 
-    render '_new.html.erb'
+    if @session
+      render '_new.html.erb'
+    else
+      render '/rooms/session/_show.html.erb'
+    end
   end
 
   def create
@@ -67,7 +71,11 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id]) 
     @room_info = @room.info
 
-    render '_edit.html.erb'
+    if @session
+      render '_edit.html.erb'
+    else
+      render '/rooms/session/_show.html.erb'
+    end
   end
 
   def update
@@ -91,6 +99,17 @@ class RoomsController < ApplicationController
 
     if @session
       render '/rooms/_photo.html.erb'
+    else
+      render '/rooms/session/_photo.html.erb'
+    end
+  end
+
+  def new_photo
+    @room = Room.find(params[:id]) 
+    @room_info = @room.info
+
+    if @session
+      render '_new_photo.html.erb'
     else
       render '/rooms/session/_photo.html.erb'
     end

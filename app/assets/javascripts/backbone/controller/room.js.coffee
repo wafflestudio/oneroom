@@ -4,6 +4,7 @@ window.App.Controllers.Room = Backbone.Router.extend({
     "rooms/new/:latlng": "newRoom"
     "rooms/:id/edit": "editRoom"
     "rooms/:id/photo": "photo"
+    "rooms/:id/new_photo": "newPhoto"
     "rooms/:id/:options": "indexEvaluation"
     "rooms/:id/evaluations/new": "newEvaluation"
   }
@@ -49,6 +50,21 @@ window.App.Controllers.Room = Backbone.Router.extend({
       $.colorbox.resize()
 
     call_colorbox("/rooms/" + id + "/photo", "#map", callback)
+
+  newPhoto: (id) ->
+    callback = () ->
+      init_uploadify()
+      $.colorbox.resize()
+      successCallback = (res) ->
+        id = res.data[0]._id
+        window.location.href = "/#rooms/" + id + "/photo"
+        flash_notice(res.msg)
+      errorCallback =  (res, status) ->
+        flash_error(res.msg)
+      submit_colorbox("#submit", successCallback, errorCallback)
+
+
+    call_colorbox("/rooms/" + id + "/new_photo", "#map", callback)
 
 
   indexEvaluation: (id, options) ->

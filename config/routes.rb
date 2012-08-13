@@ -20,6 +20,7 @@ Oneroom::Application.routes.draw do
     member do
       get :info
       get :photo
+      get :new_photo
     end
     collection do
       get :info_new

@@ -3,8 +3,9 @@
     <%= link_to image_tag(img(@room).image.thumb), img(@room).image.url, :target => '_blank' %>
     <br />
     <% if imgs(@room).size > 0 %>
-      <%= link_to raw("<i class='icon-camera'></i>") + " 사진보기", "#rooms/#{@room.id}/photo", :class => "btn btn-mini" %>
+      <%= link_to raw("<i class='icon-camera'></i>") + " 더보기", "#rooms/#{@room.id}/photo", :class => "btn btn-mini" %>
     <% end %>
+    <%= link_to raw("<i class='icon-plus-sign'></i>") + " 추가", "#rooms/#{@room.id}/new_photo", :class => "btn btn-mini" %>
   </div>
   <table>
     <tr>

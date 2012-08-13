@@ -122,6 +122,7 @@
         new_input = $("#uploadify_image_original").clone().attr('id', 'uploadify_cloned').attr('name', new_name)
         $("#uploadify_image_ids").append(new_input.val(res.data._id))
         $("#uploadify_image_thumbnails").append("<img src='" + res.data.image.thumb.url + "' />")
+        $.colorbox.resize()
   )
 
 
