@@ -1,7 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
   layout :choose_layout
-  before_filter :require_session_json, :only => [:require_auth_token, :authorize]
+  before_filter :require_session_json, :only => [:require_auth_token]
 
   private
   def choose_layout
@@ -66,7 +66,9 @@ class UsersController < ApplicationController
     if user
       user.update_attribute(:authorized, user.auth_token == params[:token])
       if user.authorized
-        return_data('success', '인증이 완료되었습니다!', nil)
+        session[:user] = user.id
+        @session = user
+        return_data('success', '인증이 완료되었습니다!', @session.id)
       else
         return_data('error', '인증 과정에서 에러가 발생했습니다.', nil)
       end
@@ -75,6 +77,7 @@ class UsersController < ApplicationController
     end
   end
 
+=begin
   def require_auth_token
     unless @session.email.end_with? "@snu.ac.kr"
       return_data('error', '서울대학교 학생만 인증하실 수 있습니다.', nil)
@@ -84,4 +87,5 @@ class UsersController < ApplicationController
       return_data('success', '메일이 전송되었습니다.', nil)
     end
   end
+=end
 end

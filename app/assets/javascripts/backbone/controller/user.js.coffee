@@ -11,6 +11,10 @@ window.App.Controllers.User = Backbone.Router.extend({
       username = $("#session_username").val()
       if username and username.length > 0
         $("#user_username").val(username)
+      $("#user_new_before a#submit").live("click", () ->
+        $("#user_new_before").hide()
+        $("#user_new_after").show()
+      )
       successCallback = (res, status) ->
         user = window.user
         user.setSession(res.status)
@@ -20,6 +24,8 @@ window.App.Controllers.User = Backbone.Router.extend({
         flash_notice(res.msg)
       errorCallback =  (res, status) ->
         flash_error(res.msg)
+        $("#user_new_after").hide()
+        $("#user_new_before").show()
       submit_colorbox("#submit", successCallback, errorCallback)
 
     call_colorbox("/users/new", "#", callback)
@@ -50,12 +56,13 @@ window.App.Controllers.User = Backbone.Router.extend({
     )
 
   auth: (id, token) ->
-    $.getJSON("/users/" + id + "/authorize/" + token, (res) ->
-      if(res.status == "success")
-        flash_notice(res.msg)
-      else
-        flash_error(res.msg)
-      window.user.reload()
-      window.nav.navigate("nav_map")
-    )
+    $(document).ready ->
+      $.getJSON("/users/" + id + "/authorize/" + token, (res) ->
+        if(res.status == "success")
+          window.user.reload(true)
+          flash_notice(res.msg)
+        else
+          flash_error(res.msg)
+        window.nav.navigate("nav_map")
+      )
 })

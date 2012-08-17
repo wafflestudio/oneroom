@@ -31,7 +31,7 @@ class SessionController < ApplicationController
 
   def show
     if @session
-      return_data_and_html('success', nil, @session, render_to_string('_show.html.erb'))
+      return_data_and_html('success', nil, @session.id, render_to_string('_show.html.erb'))
     else
       return_data_and_html('success', nil, nil, render_to_string('_login.html.erb'))
     end

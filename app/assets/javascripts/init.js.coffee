@@ -128,8 +128,8 @@
 
 get_height = () ->
   height = 500
-  if $(window).height()-180 > 500
-    height = $(window).height()-200
+  if $(window).height()-220 > 500
+    height = $(window).height()-220
   return height
 
 #init
@@ -164,7 +164,7 @@ $(document).ready ->
   window.search.initSlider("#rent_rent", 0, 80, 30, 40)
   window.search.initSlider("#lease_deposit", 2000, 10000, 3000, 7000)
 
-  #session load
+  #session load when not on auth
   window.user.reload()
 
   #contact

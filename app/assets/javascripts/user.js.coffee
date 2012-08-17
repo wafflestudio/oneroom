@@ -9,6 +9,13 @@ class User
   data: null
 
   #==== SESSION ====
+  needSessionLoad: () ->
+    status = parseInt($("#need_session").html())
+    if(status == 0)
+      return false
+    else
+      return true
+
   getSession: () ->
     return session
 
@@ -16,10 +23,15 @@ class User
     self = this
     self.session = status
 
-  reload: () ->
+  reload: (no_cache) ->
     self = this
-    $.get("/session", (res) ->
-      $(self.session_div).html(res.html)
+    if no_cache
+      url = "/session?no_cache"
+    else
+      url = "/session"
+
+    $.get(url, (res) ->
+      self.reload_html(res.html)
       if res.data == null
         self.setSession(false)
         callback = () ->
@@ -37,6 +49,10 @@ class User
           self.logout()
         )
     )
+
+  reload_html: (html) ->
+    self = this
+    $(self.session_div).html(html)
 
   login: () ->
     self = this

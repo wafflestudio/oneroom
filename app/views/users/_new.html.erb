@@ -48,7 +48,11 @@
     </div>
   <% end -%>
 
-  <div class="offset7 span3">
+  <div id="user_new_before" class="offset7 span3">
     <%= link_to_function "가입신청", nil, :id => 'submit', :class => "btn btn-inverse", :rel => '#new_user' %>
   </div>
+  <div id="user_new_after" class="offset7 span3">
+    <%= link_to_function "처리중", nil, :class => "btn btn-inverse disabled" %>
+  </div>
+
 </div>
