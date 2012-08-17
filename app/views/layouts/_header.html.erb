@@ -1,20 +1,21 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-    <a class="brand" href="#">
-      <%= image_tag "logo.png" %>
-    </a>
-    <div class="nav-collapse">
-      <ul class="nav pull-right">
-        <li>
-          <div class="search_basic navbar-search">
-            <%= text_field :search, :keyword, :placeholder => "검색", :class => 'search_keyword', :rel => '.search_basic' %>
-          </div>
-        </li>
-        <li class="divider-vertical"></li>
-        <li id="session" class="dropdown">
-        </li>
-      </ul>
+      <a class="brand" href="#">
+        <%= image_tag "logo.png" %>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
+          <li>
+            <div class="search_basic navbar-search">
+              <%= text_field :search, :keyword, :placeholder => "검색", :class => 'search_keyword', :rel => '.search_basic' %>
+            </div>
+          </li>
+          <li class="divider-vertical"></li>
+          <li id="session" class="dropdown">
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

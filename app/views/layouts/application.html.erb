@@ -12,16 +12,16 @@
     <div id="header">
       <%= render :partial => 'layouts/header' %>
     </div>
-  </div>
-  <div class="container">
-    <div id="descriptor">
-      <%= render :partial => 'layouts/descriptor' %>
-    </div>
-    <div id="content">
-      <%= yield %>
-    </div>
-    <div id="footer" class="center clearfix">
-      <%= render :partial => 'layouts/footer' %>
+    <div class="container">
+      <div id="descriptor">
+        <%= render :partial => 'layouts/descriptor' %>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div id="footer" class="center clearfix">
+        <%= render :partial => 'layouts/footer' %>
+      </div>
     </div>
   </div>
 </body>
