@@ -17,8 +17,9 @@ class Room
   TWOROOM = {:id => 2, :name => "투룸 이상"}
   OFFICETEL = {:id => 3, :name => "오피스텔"}
   BOARDING = {:id => 4, :name => "하숙"}
+  GOSI = {:id => 5, :name => "고시원"}
 
-  TYPE = [ONEROOM, TWOROOM, OFFICETEL, BOARDING]
+  TYPE = [ONEROOM, TWOROOM, OFFICETEL, BOARDING, GOSI]
 
   #SEARCH TYPE
   SEARCH_BASIC = 1

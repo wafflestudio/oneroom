@@ -14,7 +14,8 @@ class Map
     oneroom: 1,
     tworoom: 2,
     office: 3,
-    boarding: 4
+    boarding: 4,
+    gosi: 5
   }
 
   marker: {
@@ -22,7 +23,8 @@ class Map
     oneroom: "/assets/marker/marker_oneroom.png",
     tworoom: "/assets/marker/marker_tworoom.png",
     office: "/assets/marker/marker_office.png",
-    boarding: "/assets/marker/marker_boarding.png"
+    boarding: "/assets/marker/marker_boarding.png",
+    gosi: "/assets/marker/marker_gosi.png"
   }
 
   #==== INIT
@@ -142,6 +144,8 @@ class Map
       img = self.marker.office
     else if(type == self.type.boarding)
       img = self.marker.boarding
+    else if(type == self.type.gosi)
+      img = self.marker.gosi
     else if(type == self.type.new)
       img = self.marker.new
     return img
