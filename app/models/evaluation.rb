@@ -29,7 +29,7 @@ class Evaluation
 
   #=== Relations ===
   belongs_to :user
-  belongs_to :room
+  belongs_to :room, index: true
 
   #=== Validations ===
   validates_inclusion_of :like, :in => [true, false]

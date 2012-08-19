@@ -41,6 +41,7 @@ class Room
   field :etc, type: String
   field :description, type: String
 
+  index({ type: 1, region: 1 })
   #=== Relations ===
   has_many :evaluations
   embeds_many :images
