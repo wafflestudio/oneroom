@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-  <title>snuZIP - 서울대 원룸 정보 공유 사이트</title>
+  <meta charset="UTF-8">
   <meta property="og:title" content="snuZIP" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://www.snuzip.com" />
-  <meta property="og:image" content="http://www.snuzip.com/assets/logo.png" />
+  <meta property="og:image" content="http://www.snuzip.com/logo_big.png" />
   <meta property="og:site_name" content="snuZIP - 서울대 원룸 정보 공유 사이트" />
+  <meta property="og:description" content="서울대 주변의 원룸/오피스텔 등의 정보 공유 및 평가 플랫폼" />
   <meta property="fb:admins" content="100000049761864" />
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>snuZIP - 서울대 원룸 정보 공유 사이트</title>
   <link rel="shortcut icon" href="favicon.ico" />
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_RLxR1wom4dMhw5EaityZt4ZgsmlXVgE&sensor=true"></script>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_RLxR1wom4dMhw5EaityZt4ZgsmlXVgE&sensor=true"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=275758869193029";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <div class="banner">
     <div id="header">
       <%= render :partial => 'layouts/header' %>
