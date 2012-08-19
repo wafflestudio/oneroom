@@ -45,7 +45,7 @@ Oneroom::Application.routes.draw do
   resources :session, :only => ['new', 'create'] do
     collection do
       get :show
-      delete :destroy
+      match "/destroy", :via => :post, :action => :destroy, :as => :destroy
     end
   end
 

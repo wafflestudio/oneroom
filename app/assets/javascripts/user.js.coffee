@@ -70,8 +70,8 @@ class User
 
   logout: () ->
     self = this
-    $.ajax("/session", {
-      type: 'DELETE',
+    $.ajax("/session/destroy", {
+      type: 'POST',
       success: (res, status) ->
         self.reload()
     })
