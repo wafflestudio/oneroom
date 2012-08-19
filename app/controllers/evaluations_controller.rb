@@ -3,10 +3,11 @@ class EvaluationsController < ApplicationController
   layout :choose_layout
 
   before_filter :init_room
+  before_filter :is_author, :only => ["edit", "update", "destroy"]
 
   private
   def choose_layout
-    if ['new'].include? action_name
+    if ['new', 'edit'].include? action_name
       'room'
     end
   end
@@ -14,6 +15,15 @@ class EvaluationsController < ApplicationController
   def init_room
     @room = Room.find(params[:room_id]) 
     @room_info = @room.info
+  end
+
+  def is_author
+    @evaluation = Evaluation.find(params[:id])
+
+    unless @session.id == @evaluation.user.id
+      redirect_to room_path(@room)
+      return
+    end
   end
 
   public
@@ -32,7 +42,7 @@ class EvaluationsController < ApplicationController
     if @session
       render '_new.html.erb'
     else
-      return_data('error', '로그인이 필요합니다.', nil)
+      render '/rooms/session/_show.html.erb'
     end
   end
 
@@ -53,7 +63,26 @@ class EvaluationsController < ApplicationController
     return_data('error', '입력이 유효하지 않습니다.', :model => @evaluation.class.to_s.downcase, :errors => @evaluation.errors)
   end
 
+  def edit
+    @evaluation = Evaluation.find(params[:id])
+
+    if @session
+      render '_edit.html.erb'
+    else
+      render '/rooms/session/_show.html.erb'
+    end
+  end
+
   def update
+    @evaluation = Evaluation.find(params[:id])
+
+    if @evaluation.update_attributes(params[:evaluation])
+      return_data('success', '평가가 수정되었습니다!', @evaluation)
+      return
+    else
+      return_data('error', '수정 과정에서 문제가 발생하였습니다. 다시 시도해주세요.', nil)
+      return
+    end
   end
 
   def destroy

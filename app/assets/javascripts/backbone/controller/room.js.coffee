@@ -6,11 +6,11 @@ window.App.Controllers.Room = Backbone.Router.extend({
     "rooms/:id/photo": "photo"
     "rooms/:id/new_photo": "newPhoto"
     "rooms/:id/:options": "indexEvaluation"
-    "rooms/:id/evaluations/new": "newEvaluation"
+    "rooms/:room_id/evaluations/new": "newEvaluation"
+    "rooms/:room_id/evaluations/:id/edit": "editEvaluation"
   }
 
   showRoom: (id) ->
-    #TODO: don't reload showInfo if infowindow exist
     window.room.showInfo(id)
 
     call_colorbox("/rooms/" + id, "#map")
@@ -77,17 +77,32 @@ window.App.Controllers.Room = Backbone.Router.extend({
 
     window.room.getEvaluations(id, options, callback)
     
-  newEvaluation: (id) ->
-    window.room.showInfo(id)
+  newEvaluation: (room_id) ->
+    window.room.showInfo(room_id)
 
     callback = () ->
       window.room.toggleEvalFields()
       successCallback = (res) ->
-        call_colorbox("/rooms/" + id, "#map")
+        window.location.href = "/#rooms/" + room_id
         flash_notice(res.msg)
       errorCallback =  (res, status) ->
         flash_error(res.msg)
       submit_colorbox("#submit", successCallback, errorCallback)
 
-    call_colorbox("/rooms/" + id + "/evaluations/new", "#map", callback)
+    call_colorbox("/rooms/" + room_id + "/evaluations/new", "#map", callback)
+
+ 
+  editEvaluation: (room_id, id) ->
+    window.room.showInfo(room_id)
+
+    callback = () ->
+      window.room.toggleEvalFields()
+      successCallback = (res) ->
+        window.location.href = "/#rooms/" + room_id
+        flash_notice(res.msg)
+      errorCallback =  (res, status) ->
+        flash_error(res.msg)
+      submit_colorbox("#submit", successCallback, errorCallback)
+
+    call_colorbox("/rooms/" + room_id + "/evaluations/" + id + "/edit", "#map", callback)
 })

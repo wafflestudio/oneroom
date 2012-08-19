@@ -10,6 +10,11 @@
           <span>
             <%= ev.created_at %>
           </span>
+          <span class="room_evaluation_method">
+            <% if ev.user.id == @session.id %>
+              <%= link_to raw('<i class="icon-edit"></i><strong>수정</strong>'), "#rooms/#{ev.room.id}/evaluations/#{ev.id}/edit" %>
+            <% end %>
+          </span>
           <span class="room_evaluation_eval right">
             <%= link_to_function raw('<i class="icon-thumbs-up"></i>'), "window.room.evaluateEvaluation('#{ev.room.id}', '#{ev.id}', 'agree'); return false;" %> 
             <strong id="evaluation_<%= ev.id %>_agree_detail"><%= ev.agree.size %></strong> / 
