@@ -21,8 +21,8 @@
     <tr>
       <td colspan=2 class="span6">
         <blockquote>
-          <strong><%= @room.address %></strong></br>
-          <small><%= @room.phone %></small>
+          <strong><%= if @room.address != "" and @room.address != nil then @room.address else "주소 정보 없음" end %></strong></br>
+          <small><%= if @room.phone != "" and @room.phone != nil then @room.phone else "연락처 정보 없음" end %></small>
         </blockquote>
       </td>
       <td rowspan=2 class="center">
