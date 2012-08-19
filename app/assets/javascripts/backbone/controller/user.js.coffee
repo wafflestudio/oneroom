@@ -58,6 +58,7 @@ window.App.Controllers.User = Backbone.Router.extend({
   auth: (id, token) ->
     $(document).ready ->
       $.getJSON("/users/" + id + "/authorize/" + token, (res) ->
+        flash_notice("인증 중..")
         if(res.status == "success")
           window.user.reload(true)
           flash_notice(res.msg)

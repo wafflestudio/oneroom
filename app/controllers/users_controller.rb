@@ -68,13 +68,11 @@ class UsersController < ApplicationController
       if user.authorized
         session[:user] = user.id
         @session = user
-        return_data('success', '인증이 완료되었습니다!', @session.id)
-      else
-        return_data('error', '인증 과정에서 에러가 발생했습니다.', nil)
+
       end
-    else
-      return_data('error', '잘못된 접근입니다.', nil)
     end
+
+    redirect_to root_path
   end
 
 =begin

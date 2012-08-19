@@ -26,7 +26,7 @@ class User
   reload: (no_cache) ->
     self = this
     if no_cache
-      url = "/session?no_cache"
+      url = "/session?no_cache=true"
     else
       url = "/session"
 
