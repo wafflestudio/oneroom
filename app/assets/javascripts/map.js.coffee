@@ -58,7 +58,8 @@ class Map
       content: "Loading..",
       arrowPosition: 20,
       arrowSize:5,
-      padding: 15
+      padding: 15,
+      disableAutoPan: true
     })
 
     #show add room pin
@@ -129,9 +130,14 @@ class Map
         return pin
 
   #= focus pin
-  focusPin: (id) ->
+  focusPin: (id, left) ->
     self = this
-    self.moveTo(self.findPin(id).position)
+    pos = self.findPin(id).position
+
+    if left
+      pos = new google.maps.LatLng(pos.lat()+0.0003, pos.lng()+0.0008)
+
+    self.moveTo(pos)
 
   #= pin image
   getPinImage: (type) ->
@@ -157,6 +163,8 @@ class Map
     infowindow = this.infowindow
     infowindow.setContent("<img src='/assets/loading.gif'>")
     infowindow.open(this.mapobj, marker)
+
+    this.focusPin(id, true)
 
     $.getJSON("rooms/" + id + "/info", (res) ->
       infowindow.setContent(res.html)
