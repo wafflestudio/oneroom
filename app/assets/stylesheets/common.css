@@ -75,6 +75,7 @@ div.infobubble{
 #colorbox {top: 30px !important;}
 #cboxLoadedContent {padding: 25px; overflow:hidden !important;}
 #cboxLoadedContent {background: url("/assets/bgp-light.png") repeat scroll 0 0 transparent !important;}
+.cb_margin {margin-bottom: 50px;}
 
 /* paginator */
 .kaminari {margin: 10px 5px 5px 5px;}
