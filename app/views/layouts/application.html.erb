@@ -17,14 +17,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=275758869193029";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
   <div class="banner">
     <div id="header">
       <%= render :partial => 'layouts/header' %>
