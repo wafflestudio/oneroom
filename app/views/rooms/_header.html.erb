@@ -1,7 +1,7 @@
 <div class="row span10 room_row">
   <div class="span2 center">
     <%= link_to image_tag(img(@room).image.thumb), img(@room).image.url, :target => '_blank' %>
-    <br />
+    <br /><br />
     <% if imgs(@room).size > 0 %>
       <%= link_to raw("<i class='icon-camera'></i>") + " 더보기", "#rooms/#{@room.id}/photo", :class => "btn btn-mini" %>
     <% end %>
