@@ -39,7 +39,7 @@ class User
 
   validates_presence_of :email, :message => "이메일을 입력해주세요."
   validates_uniqueness_of :email, :message => "이미 존재하는 이메일입니다."
-  validates_format_of :email, :with => /@snu.ac.kr$/, :message => "서울대학교 포털 메일 주소가 아닙니다."
+  validates_format_of :email, :with => /@snu\.ac\.kr$/, :message => "서울대학교 포털 메일 주소가 아닙니다."
 
   #=== Functions ===
   private
