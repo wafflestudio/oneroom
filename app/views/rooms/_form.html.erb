@@ -48,14 +48,6 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label h5">기타 사항</label>
-      <div class="controls">
-        <%= f.text_field :etc %>
-        <span id="validation_room_etc" class="help-inline"></span>
-        <p class="help-block">예) 인터넷 제공, 세탁실 공용</p>
-      </div>
-    </div>
-    <div class="control-group">
       <label class="control-label h5">그림</label>
       <div class="controls">
         <%= render :partial => 'layouts/image_form', :locals => {:model => 'room', :object => @room} %>

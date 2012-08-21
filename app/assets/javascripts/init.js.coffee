@@ -160,7 +160,7 @@ $(document).ready ->
   window.search.initSearch()
 
   #load search sliders
-  window.search.initSlider("#rent_deposit", 0, 1200, 200, 500)
+  window.search.initSlider("#rent_deposit", 0, 2500, 200, 500)
   window.search.initSlider("#rent_rent", 0, 80, 30, 40)
   window.search.initSlider("#lease_deposit", 2000, 10000, 3000, 7000)
 
