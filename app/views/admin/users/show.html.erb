@@ -1,0 +1,65 @@
+<div id="container">
+	<div class="shell">		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">유저(Users)</a>
+			<span>&gt;</span>
+      <%= @user.username %>
+		</div>
+		<!-- End Small Nav -->
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>유저 정보</h2>
+					</div>
+					<!-- End Box Head -->
+					
+
+						
+						  <div class="form">
+						  	<p>
+									<label>Username</label>
+                  <%= @user.username %>
+								</p>
+								<p>
+									<label>Name</label>
+                  <%= @user.name %>
+								</p>	
+								<p>
+									<label>Email</label>
+                  <%= @user.email %>
+								</p>	
+								<p>
+									<label>Autorized</label>
+                  <%= @user.authorized %>
+								</p>	
+
+						</div>
+						<!-- End Form -->
+						
+						<!-- Form Buttons -->
+						<div class="buttons">
+						  <%= link_to '돌아가기', admin_users_path, :class => 'button' %>
+						  <%= link_to '수정', edit_admin_user_path(@user), :class => 'button' %>
+						</div>
+						<!-- End Form Buttons -->
+
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+

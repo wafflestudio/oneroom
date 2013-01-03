@@ -1,0 +1,25 @@
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1>
+        <%= image_tag "logo.png" %>
+			</h1>
+			<div id="top-navigation">
+				Welcome <strong>Administrator</strong>
+				<span>|</span>
+				<%= link_to '메인으로', root_path %>
+			</div>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="<%= admin_main_index_path %>" <%= if @title=="main" then raw('class="active"') end %>><span>대시보드</span></a></li>
+			    <li><a href="<%= admin_users_path %>" <%= if @title=="users" then raw('class="active"') end %>><span>유저(Users)</span></a></li>
+			    <li><a href="<%= admin_rooms_path %>" <%= if @title=="rooms" then raw('class="active"') end %>><span>방(Rooms)</span></a></li>
+			    <li><a href="<%= admin_evaluations_path %>" <%= if @title=="evaluations" then raw('class="active"') end %>><span>평가(Evaluations)</span></a></li>
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>

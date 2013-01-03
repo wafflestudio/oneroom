@@ -1,0 +1,89 @@
+<div id="container">
+	<div class="shell">		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">방(Rooms)</a>
+			<span>&gt;</span>
+      <%= @room.name %>
+			<span>&gt;</span>
+      수정
+		</div>
+		<!-- End Small Nav -->
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>수정</h2>
+					</div>
+					<!-- End Box Head -->
+					
+
+						
+						<!-- Form -->
+            <%= form_for(@room, :url => admin_room_path(@room)) do |f| %>
+						  <div class="form">
+						  	<p>
+									<label>Name</label>
+                  <%= f.text_field :name %>
+								</p>
+								<p>
+									<label>Type</label>
+                  <%= f.select :type, Room.option_for_type %>
+								</p>	
+								<p>
+									<label>Region</label>
+                  <%= f.select :region, Room.option_for_region %>
+								</p>	
+								<p>
+									<label>Lat</label>
+                  <%= f.text_field :lat %>
+								</p>	
+								<p>
+									<label>Lng</label>
+                  <%= f.text_field :lng %>
+								</p>	
+								<p>
+									<label>Address</label>
+                  <%= f.text_field :address %>
+								</p>	
+								<p>
+									<label>Phone</label>
+                  <%= f.text_field :phone %>
+								</p>	
+								<p>
+									<label>Etc</label>
+                  <%= f.text_field :etc %>
+								</p>	
+								<p>
+									<label>Desc</label>
+                  <%= f.text_field :description %>
+								</p>	
+						</div>
+						<!-- End Form -->
+						
+						<!-- Form Buttons -->
+						<div class="buttons">
+              <%= link_to '돌아가기', admin_room_path(@room), :class => 'button' %>
+						  <%= f.submit '저장', :class => 'button' %>
+						</div>
+						<!-- End Form Buttons -->
+
+  			  <% end %>
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+

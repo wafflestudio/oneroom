@@ -1,5 +1,5 @@
 <div class="row">
-  <%= link_to_function raw('<button id="login_close" class="close">&times;</button>'), nil %>
+  <%= link_to_function raw('<button id="login_close" class="close">&times</button>'), nil %>
 </div>
 <div class="row span3">
   <%= form_tag session_index_path, :id => "new_session", :class => "form-horizontal form-horizontal-tooltip", :remote => true do %>
@@ -21,3 +21,14 @@
   <%= link_to_function '로그인', nil, :id => "login", :class => "btn", :rel => "#new_session" %>
   <%= link_to '회원가입', "#users/new", :id => "login_signup", :class => "btn btn-inverse" %>
 </div>
+
+<!--
+<div id="session-new-sub" class="row">
+  <div class="">
+    비밀번호를 잊으셨다면 <%#= link_to_function '비밀번호 찾기', nil, :class => "btn btn-mini" %>
+  </div>
+  <div class="">
+    인증 메일이 오지 않는다면 <%#= link_to '재인증 하기', nil, :class => "btn btn-mini btn-inverse" %>
+  </div>
+</div>
+!>

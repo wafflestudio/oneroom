@@ -1,9 +1,15 @@
-
-<a class="dropfown-toggle" data-toggle="dropdown" href="#">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">
   <strong><%= @session.name %></strong>
   <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
+  <li>
+    <%= link_to '내가 올린 정보', "#" %>
+  </li>
+  <li>
+    <%= link_to '관심 있는 정보', "#" %>
+  </li>
+  <li class="divider"></li>
   <li>
     <% if @session.authorized -%>
       <%= link_to '서울대 인증 회원', "#" -%>

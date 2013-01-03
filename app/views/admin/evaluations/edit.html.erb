@@ -1,0 +1,72 @@
+<div id="container">
+	<div class="shell">		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">평가(Evaluations)</a>
+			<span>&gt;</span>
+      자세히 보기
+			<span>&gt;</span>
+      수정
+		</div>
+		<!-- End Small Nav -->
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>수정</h2>
+					</div>
+					<!-- End Box Head -->
+					
+
+						<!-- Form -->
+            <%= form_for(@evaluation, :url => admin_evaluation_path(@evaluation)) do |f| %>
+						  <div class="form">
+						  	<p>
+									<label>Content</label>
+                  <%= f.text_area :content %>
+								</p>
+								<p>
+									<label>Like</label>
+                  <%= f.text_field :like %>
+								</p>	
+								<p>
+									<label>Type</label>
+                  <%= f.text_field :type %>
+								</p>	
+								<p>
+									<label>Deposit</label>
+                  <%= f.text_field :deposit %>
+								</p>	
+								<p>
+									<label>Rent</label>
+                  <%= f.text_field :rent %>
+								</p>	
+						</div>
+						<!-- End Form -->
+						
+						<!-- Form Buttons -->
+						<div class="buttons">
+              <%= link_to '돌아가기', admin_evaluation_path(@evaluation), :class => 'button' %>
+						  <%= f.submit '저장', :class => 'button' %>
+						</div>
+						<!-- End Form Buttons -->
+
+  			  <% end %>
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+

@@ -50,6 +50,13 @@ Oneroom::Application.routes.draw do
   end
 
   resources :images
+
+  namespace :admin do
+    resources :main, :only => ['index'] 
+    resources :users
+    resources :rooms
+    resources :evaluations
+  end
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

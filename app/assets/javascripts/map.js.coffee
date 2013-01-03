@@ -34,7 +34,8 @@ class Map
       default: new google.maps.LatLng(37.459300249665695, 126.95059418678284),
       nokdoo: new google.maps.LatLng(37.47060916727359, 126.9401228427887),
       entrance: new google.maps.LatLng(37.48003430817924, 126.95232152938843),
-      nakseongdae: new google.maps.LatLng(37.47760825763003, 126.96056127548218)
+      nakseongdae: new google.maps.LatLng(37.47760825763003, 126.96056127548218),
+      sinrim: new google.maps.LatLng(37.48395, 126.92960)
     }
 
   initMap: () ->

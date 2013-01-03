@@ -1,0 +1,70 @@
+<div id="container">
+	<div class="shell">		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">펑가(Evaluations)</a>
+			<span>&gt;</span>
+      목록
+		</div>
+		<!-- End Small Nav -->
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2 class="left">평가 목록</h2>
+					</div>
+					<!-- End Box Head -->	
+
+					<!-- Table -->
+					<div class="table">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th>Room</th>
+								<th>User</th>
+								<th>Content</th>
+								<th>Like</th>
+								<th width="110" class="ac">Content Control</th>
+							</tr>
+							<% @evaluations.each do |e| %>
+							<tr>
+								<td><%= e.room.name %></td>
+								<td><%= e.user.name %></td>
+								<td>
+								  <h3><%= link_to cut_str(e.content, 30, "..."), admin_evaluation_path(e) %></h3>
+								</td>
+								<td><%= e.like %></td>
+								<td>
+							  	<%= link_to "수정", edit_admin_evaluation_path(e), :class => "ico edit" %>
+							  	<%= link_to "삭제", admin_evaluation_path(e), :method => :delete, :confirm => "정말로 삭제하시겠습니까?", :class => "ico del" %>
+							  </td>
+							</tr>
+							<% end %>
+						</table>
+						
+						
+						<!-- Pagging -->
+						<div class="pagging">
+						</div>
+						<!-- End Pagging -->
+						
+					</div>
+					<!-- Table -->
+					
+				</div>
+				<!-- End Box -->
+			</div>
+			<!-- End Content -->
+		<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+

@@ -1,0 +1,84 @@
+<div id="container">
+	<div class="shell">		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">방(Rooms)</a>
+			<span>&gt;</span>
+      <%= @room.name %>
+		</div>
+		<!-- End Small Nav -->
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>방 정보</h2>
+					</div>
+					<!-- End Box Head -->
+					
+
+						
+						  <div class="form">
+						  	<p>
+									<label>Name</label>
+                  <%= @room.name %>
+								</p>
+								<p>
+									<label>Type</label>
+                  <%= @room.type_name %>
+								</p>	
+								<p>
+									<label>Region</label>
+                  <%= @room.region_name %>
+								</p>	
+								<p>
+									<label>Lat</label>
+                  <%= @room.lat %>
+								</p>	
+								<p>
+									<label>Lng</label>
+                  <%= @room.lng %>
+								</p>	
+								<p>
+									<label>Address</label>
+                  <%= @room.address %>
+								</p>	
+								<p>
+									<label>Phone</label>
+                  <%= @room.phone %>
+								</p>	
+								<p>
+									<label>Etc</label>
+                  <%= @room.etc %>
+								</p>	
+								<p>
+									<label>Desc</label>
+                  <%= @room.description %>
+								</p>	
+						</div>
+						<!-- End Form -->
+						
+						<!-- Form Buttons -->
+						<div class="buttons">
+						  <%= link_to '돌아가기', admin_rooms_path, :class => 'button' %>
+						  <%= link_to '수정', edit_admin_room_path(@room), :class => 'button' %>
+						</div>
+						<!-- End Form Buttons -->
+
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+

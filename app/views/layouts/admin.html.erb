@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>snuZIP ADMIN</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <%= stylesheet_link_tag    "admin/style" %>
+  <%= javascript_include_tag "jquery-1.7.2.min" %>
+  <%= javascript_include_tag "jquery_ujs" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="header">
+    <%= render :partial => 'layouts/admin/header' %>
+  </div>
+  <%= yield %>
+  <div id="footer">
+    <%= render :partial => 'layouts/admin/footer' %>
+  </div>
+</body>
+</html>
