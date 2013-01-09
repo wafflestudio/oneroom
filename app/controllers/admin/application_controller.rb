@@ -4,6 +4,11 @@ class Admin::ApplicationController < ApplicationController
   before_filter :init_title
 
   def require_admin
+    unless @session
+      redirect_to root_path
+      return
+    end
+  
     if @session[:admin]
       return
     end
@@ -12,7 +17,7 @@ class Admin::ApplicationController < ApplicationController
   end
 
   def init_title
-    @title = controller_name
+    #@title = controller_name
   end
 
 end

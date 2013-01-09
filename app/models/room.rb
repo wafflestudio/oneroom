@@ -9,8 +9,10 @@ class Room
   NOKDOO = {:id => 1, :name => "녹두"}
   ENTRANCE = {:id => 2, :name => "서울대입구"}
   NAKSEONGDAE = {:id => 3, :name => "낙성대"}
+  SINRIM = {:id => 4, :name => "신림"}
 
-  REGION = [NOKDOO, ENTRANCE, NAKSEONGDAE]
+
+  REGION = [NOKDOO, ENTRANCE, NAKSEONGDAE, SINRIM]
 
   #ROOM TYPE
   ONEROOM = {:id => 1, :name => "원룸"}
