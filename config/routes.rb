@@ -41,6 +41,12 @@ Oneroom::Application.routes.draw do
       match "authorize/:token", :via => :get, :action => "authorize", :as => :authorize
       match "require_authorize_token", :via => :get, :action => "require_auth_token", :as => :require_auth
     end
+    collection do
+      get :find_password
+      post :reset_password
+      get :reauthorize
+      post :do_reauthorize
+    end
   end
   resources :session, :only => ['new', 'create'] do
     collection do

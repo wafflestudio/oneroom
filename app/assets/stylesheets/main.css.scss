@@ -157,8 +157,11 @@ img#about_creators {
 
 //session
 #session-new-sub {
+  margin-top: 15px;
+  border-top: 1px dashed #ccc;
+
   div {
-    margin: 10px;
+    margin: 5px;
     font-size: 11px;
   }
 
@@ -169,7 +172,12 @@ img#about_creators {
 #user_new_after {
   display: none;
 }
-
+#find_password_after {
+  display: none;
+}
+#reauthorize_after {
+  display: none;
+}
 //search
 #search_result {
   position: absolute;

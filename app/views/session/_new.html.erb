@@ -22,13 +22,13 @@
   <%= link_to '회원가입', "#users/new", :id => "login_signup", :class => "btn btn-inverse" %>
 </div>
 
-<!--
-<div id="session-new-sub" class="row">
-  <div class="">
-    비밀번호를 잊으셨다면 <%#= link_to_function '비밀번호 찾기', nil, :class => "btn btn-mini" %>
+
+<div id="session-new-sub" class="row span3">
+  <div>
+    비밀번호를 잊으셨다면 <%= link_to '비밀번호 찾기', '#users/find_password', :class => "btn btn-mini" %>
   </div>
-  <div class="">
-    인증 메일이 오지 않는다면 <%#= link_to '재인증 하기', nil, :class => "btn btn-mini btn-inverse" %>
+  <div>
+    인증 메일이 오지 않는다면 <%= link_to '재인증 하기', '#users/reauthorize', :class => "btn btn-mini btn-inverse" %>
   </div>
 </div>
-!>
+

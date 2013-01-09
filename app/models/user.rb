@@ -1,7 +1,8 @@
 #encoding: utf-8
 class User
   include Mongoid::Document
-  before_create :user_before_create
+  before_create :user_save_password
+  #before_update :user_before_create
 
   #=== Constants
   NOTEXIST = 1
@@ -42,14 +43,14 @@ class User
   validates_format_of :email, :with => /@snu\.ac\.kr$/, :message => "서울대학교 포털 메일 주소가 아닙니다."
 
   #=== Functions ===
-  private
-  def user_before_create
+
+  def user_save_password
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
     salt = Array.new(8) { chars[rand(chars.size-1)] }.join("").to_s
     self.password_salt, self.password = salt, self.password.crypt("$6$#{salt}")
   end
 
-  public
+
   def self.login username, password
     user = User.where(:username => username).first
     return NOTEXIST if user.nil?
