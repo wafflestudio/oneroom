@@ -1,6 +1,7 @@
 #class
 class Map
   mapobj: null
+  smallmapobj: null
   loc: null
   infowindow: null
   pins: []
@@ -89,6 +90,35 @@ class Map
       window.location.href = "#map"
       self.new_pin.setVisible(false)
     )
+
+  initSmallMap: (lat, lng, editable, lat_field, lng_field) ->
+    self = this
+    #map options
+    map_options = {
+      center: new google.maps.LatLng(lat, lng),
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+    }
+
+    self.smallmapobj = new google.maps.Map(document.getElementById("smallmap_canvas"), map_options)
+    small_pin = new google.maps.Marker({
+      position: new google.maps.LatLng(lat, lng),
+      icon: self.getPinImage(self.type.new)
+    })
+    small_pin.setMap(self.smallmapobj)
+
+    if editable
+      google.maps.event.addListener(self.smallmapobj, 'click', (event) ->
+        pos = event.latLng
+        pin = small_pin
+        pin.setPosition(pos)
+        pin.setVisible(true)
+
+        lat_field.val(pos.lat())
+        lng_field.val(pos.lng())
+      )
+
 
   #==== MAP ====
   #= move to location

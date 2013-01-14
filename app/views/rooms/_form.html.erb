@@ -20,6 +20,14 @@
       </div>
     </div>
     <div class="control-group">
+      <label class="control-label h5">위치</label>
+      <div class="controls">
+        <div id="smallmap_canvas" style="width:200px; height:200px"></div>
+        <span id="validation_room_type" class="help-inline"></span>
+        <p class="help-block">클릭하여 방의 위치를 변경할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="control-group">
       <label class="control-label h5">종류</label>
       <div class="controls">
         <%= f.select :type, Room.option_for_type %>
