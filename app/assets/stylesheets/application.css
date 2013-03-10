@@ -10,5 +10,8 @@
  *
  *= require_self
  *= require_tree ./plugins
- *= require_directory .
-*/
+ *= require main
+ *= require rooms
+ *= require tooltip
+ *= require common
+ */

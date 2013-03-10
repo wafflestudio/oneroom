@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require_directory ./plugins/dependency
 //= require_directory ./plugins
-//= require_directory .
+//= require init
+//= require map
+//= require nav
+//= require room
+//= require search
+//= require user
 //= require_tree ./backbone
